@@ -4,8 +4,8 @@
              xmlns:local="clr-namespace:InstallerAppForms"
              x:Class="InstallerAppForms.LoginPage">
     <StackLayout VerticalOptions="Center" Margin="20,0">
-        <Entry Placeholder="Email" Keyboard="Email"/>
-        <Entry Placeholder="Password" IsPassword="True"/>
-        <Button x:Name="btnLogin" BackgroundColor="LightBlue" Text="Login"/>
+        <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email"/>
+        <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True"/>
+        <Button x:Name="btnLogin" BackgroundColor="LightBlue" Text="Login" Clicked="btnLogin_Clicked"/>
     </StackLayout>
 </ContentPage>
