@@ -13,7 +13,7 @@ namespace InstallerAppForms
         {
             InitializeComponent();
 
-            MainPage = new InstallerAppForms.MainPage();
+            MainPage = new LoginPage();
         }
 
         protected override void OnStart()
