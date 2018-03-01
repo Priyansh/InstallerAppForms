@@ -78,7 +78,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Images\FrendelLogo.png" />
+    <Content Include="Images\FrendelLogo.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Frendel40.jpg" />

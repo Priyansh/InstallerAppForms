@@ -7,7 +7,7 @@
     <StackLayout VerticalOptions="Center" Margin="20,0">
         <Image x:Name="imgFrendelLogo"
                Aspect="AspectFit"
-               Source="{local:EmbeddedImage InstallerAppForms.Images.Frendel40.jpg}" /> <!--ResourceId= InstallerAppForms.Images.Frendel40.jpg-->
+               Source="{local:EmbeddedImage InstallerAppForms.Images.Frendel40.jpg}" BackgroundColor="Transparent" /> <!--ResourceId= InstallerAppForms.Images.Frendel40.jpg-->
         <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email"/>
         <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True"/>
         <Button x:Name="btnLogin" BackgroundColor="LightBlue" Text="Login" Clicked="btnLogin_Clicked"/>

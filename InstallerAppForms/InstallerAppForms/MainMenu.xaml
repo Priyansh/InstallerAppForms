@@ -1,12 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="InstallerAppForms.MainMenu">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+             x:Class="InstallerAppForms.MainMenu"
+             Padding="0, 15, 0, 0">
+    <Grid RowSpacing="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="25"/>
+        </Grid.RowDefinitions>
+        <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan= "3" Text="Stellato Installations and Services" FontSize="20" />
+        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+            <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent"/>
+            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
         </StackLayout>
-    </ContentPage.Content>
+        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">
+            <Label  HorizontalOptions="CenterAndExpand" Text="Jobs" Margin="15, -25, 0, 0" FontSize="20" />
+            <Label  HorizontalOptions="CenterAndExpand" Text="Messages"  Margin="15, -25, 0, 0" FontSize="20" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
+            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Payment.png" BackgroundColor="Transparent"/>
+            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Settings.png" BackgroundColor="Transparent"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="3">
+            <Label  HorizontalOptions="CenterAndExpand" Text="Payments" Margin="0, -25, 0, 0" FontSize="20" />
+            <Label  HorizontalOptions="CenterAndExpand" Text="Settings"  Margin="0, -25, 5, 0" FontSize="20" />
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="5" Grid.ColumnSpan="3">
+            <Button HorizontalOptions="CenterAndExpand" Text="" Image="LogOut.png" BackgroundColor="Transparent"/>
+        </StackLayout>
+        <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="3">
+            <Label  HorizontalOptions="CenterAndExpand" Text="LogOut" Margin="0, -25, 0, 0" FontSize="20" />
+        </StackLayout>
+    </Grid>
 </ContentPage>
