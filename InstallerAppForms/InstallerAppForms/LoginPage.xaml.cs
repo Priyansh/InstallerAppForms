@@ -16,7 +16,8 @@ namespace InstallerAppForms
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            if (! (string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text)) ) {
+            if (!(string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text)))
+            {
                 Navigation.PushAsync(new MainMenu());
             }
             else

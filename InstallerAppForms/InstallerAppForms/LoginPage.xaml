@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:InstallerAppForms"
-             x:Class="InstallerAppForms.LoginPage">
+             xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
+             x:Class="InstallerAppForms.LoginPage"
+             NavigationPage.HasNavigationBar="False">
     <StackLayout VerticalOptions="Center" Margin="20,0">
+        <Image x:Name="imgFrendelLogo"
+               Aspect="AspectFit"
+               Source="{local:EmbeddedImage InstallerAppForms.Images.Frendel40.jpg}" /> <!--ResourceId= InstallerAppForms.Images.Frendel40.jpg-->
         <Entry x:Name="txtEmail" Placeholder="Email" Keyboard="Email"/>
         <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True"/>
         <Button x:Name="btnLogin" BackgroundColor="LightBlue" Text="Login" Clicked="btnLogin_Clicked"/>
