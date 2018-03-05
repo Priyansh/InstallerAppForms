@@ -1,0 +1,30 @@
+Issue : How to avaoid .svn folder locally while don't want to submit to Git repo
+Answer : in Visual studio simply right click & Ignor .svn folder
+After that, changes applied automatically in .gitignor file and then commit this file to git repo 
+--------------------------------------------------------------------------
+Issue : When creating new project like cross platform app through Visual studio
+with Git. And submitting project to git remote repo on to master branch, 
+it won't allow to push changes
+
+Solution-Ref : https://stackoverflow.com/questions/23401652/fatal-the-current-branch-master-has-no-upstream-branch
+
+git pull --rebase git_url(Ex: https://github.com/username/reponame.git)
+git push origin master
+
+If it shows any fatal error regarding upstream after any future push then simply run :
+
+git push --set-upstream origin master
+-----------------------------------------------------------------------
+Remove directory from git and local
+You could checkout 'master' with both directories;
+
+git rm -r one-of-the-directories
+git commit -m "Remove duplicated directory"
+git push origin <your-git-branch> (typically 'master', but not always)
+Remove directory from git but NOT local
+As mentioned in the comments, what you usually want to do is remove this directory from git but not delete it entirely from the filesystem (local)
+
+In that case use:
+
+git rm -r --cached myFolder
+------------------------------------------------------------------------
