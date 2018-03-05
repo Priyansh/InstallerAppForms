@@ -1,8 +1,9 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InstallerAppForms.MainMenu"
-             Padding="0, 15, 0, 0">
+             Padding="0, 15, 0, 0"
+             Title="Frendel Kitchens-Installer App">
     <Grid RowSpacing="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="40"/>
@@ -15,7 +16,7 @@
         </Grid.RowDefinitions>
         <Label VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan= "3" Text="Stellato Installations and Services" FontSize="20" />
         <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
-            <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent"/>
+            <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" Clicked="btnJobs_Clicked"/>
             <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
         </StackLayout>
         <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">

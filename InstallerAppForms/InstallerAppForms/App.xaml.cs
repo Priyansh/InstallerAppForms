@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 
 using Xamarin.Forms;
+using InstallerAppForms.Interface;
 
 namespace InstallerAppForms
 {
@@ -29,6 +30,20 @@ namespace InstallerAppForms
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        private static IJobsInstallerList _JobsInstallerList;
+        public static IJobsInstallerList FrendelSOAPService
+        {
+            get
+            {
+                if (_JobsInstallerList == null)
+                {
+                    _JobsInstallerList = DependencyService.Get<IJobsInstallerList>();
+                }
+
+                return _JobsInstallerList;
+            }
         }
     }
 }

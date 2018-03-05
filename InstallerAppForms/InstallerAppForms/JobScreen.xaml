@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InstallerAppForms.JobScreen"
+             Title="Jobs"
+             Padding="0, 20, 0, 0">
+	<ListView x:Name="lstJobScreen" 
+              HasUnevenRows="True">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Horizontal">
+                        <!--<Image Source="" />-->
+                        <StackLayout Orientation="Vertical">
+                            <!--<Label Style="{StaticResource InfoLabelStyle}" FontAttributes="Bold" FontSize="20">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <Span Text="Job Number : " />
+                                        <Span Text="{Binding JobNum}" />
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>-->
+                            <Label Text="{Binding Company}" FontSize="15"/>
+                            <Label Text="{Binding Project}" FontSize="15"/>
+                            <Label Text="{Binding Lot}" FontSize="15"/>
+                            <!--<Label FormattedText="{Binding AwesomeText, Converter={StaticResource rtfConverter}}" />-->
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

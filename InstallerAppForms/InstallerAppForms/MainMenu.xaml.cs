@@ -16,5 +16,10 @@ namespace InstallerAppForms
         {
             InitializeComponent();
         }
+
+        void btnJobs_Clicked(object sender, System.EventArgs e)
+        {
+            Navigation.PushAsync(new JobScreen());
+        }
     }
 }
