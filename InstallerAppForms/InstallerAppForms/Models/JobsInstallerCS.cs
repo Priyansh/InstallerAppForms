@@ -35,5 +35,10 @@ namespace InstallerAppForms
 
         public string InstallerJobComplete { get; set; }
 
+        public string ImageJobStatus { get; set; }
+
+        public string JobCurrentStatus { get; set; }
+
+        public string JobStatusTextColor { get; set; }
     }
 }

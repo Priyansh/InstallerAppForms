@@ -49,6 +49,7 @@
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
     <Compile Include="MarkupExtension\EmbeddedImage.cs" />
+    <Compile Include="MarkupExtension\StringToColorConverter.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
