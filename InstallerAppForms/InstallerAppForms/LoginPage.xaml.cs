@@ -16,15 +16,14 @@ namespace InstallerAppForms
 
         private void btnLogin_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushAsync(new MainMenu());
-            //if (!(string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text)))
-            //{
-            //    Navigation.PushAsync(new MainMenu());
-            //}
-            //else
-            //{
+            if (!(string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text)))
+            {
+                Navigation.PushAsync(new MainMenu());
+            }
+            else
+            {
 
-            //}
+            }
         }
     }
 }

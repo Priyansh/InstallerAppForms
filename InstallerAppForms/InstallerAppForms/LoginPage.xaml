@@ -6,7 +6,7 @@
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
-            <!--For Image Validator -->
+            <!--For Image of Email Field Validator -->
             <local:BooleanToObjectConverter x:Key="boolToStyleImage"
                                               x:TypeArguments="Style">
                 <local:BooleanToObjectConverter.FalseObject>
@@ -23,26 +23,18 @@
                     </Style>
                 </local:BooleanToObjectConverter.TrueObject>
             </local:BooleanToObjectConverter>
-            
-            <!--Label Error Message-->
-            <!--<Style x:Key="baseStyle"
-             TargetType="Label">
-                <Setter Property="XAlign" Value="Start" />
-                <Setter Property="YAlign" Value="Center" />
-                <Setter Property="FontSize" Value="Micro" />
-                <Setter Property="FontAttributes" Value="Italic" />
-            </Style>-->
+            <!-- For Label of Email Field Validator -->
             <local:BooleanToObjectConverter x:Key="boolToStyleEmail"
                                            x:TypeArguments="Style">
                 <local:BooleanToObjectConverter.FalseObject>
-                    <Style TargetType="Label">  <!--  BasedOn="{StaticResource baseStyle}" -->
+                    <Style TargetType="Label">
                         <Setter Property="TextColor" Value="#F44336" />
                         <Setter Property="Text" Value="Enter a valid email" />
                     </Style>
                 </local:BooleanToObjectConverter.FalseObject>
 
                 <local:BooleanToObjectConverter.TrueObject>
-                    <Style TargetType="Label"> <!--  BasedOn="{StaticResource baseStyle}" -->
+                    <Style TargetType="Label">
                         <Setter Property="TextColor" Value="#4CAF50" />
                         <Setter Property="Text" Value="Your email looks good" />
                     </Style>
