@@ -8,16 +8,16 @@ using Xamarin.Forms.Xaml;
 
 namespace InstallerAppForms.MarkupExtension
 {
-    [ContentProperty("ResourceId")]
+    [ContentProperty("Source")]
     public class EmbeddedImage : IMarkupExtension
     {
-        public string ResourceId { get; set; }
+        public string Source { get; set; }
 
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            if (string.IsNullOrEmpty(ResourceId))
+            if (string.IsNullOrEmpty(Source))
                 return null;
-            return ImageSource.FromResource(ResourceId);
+            return ImageSource.FromResource(Source);
         }
     }
 }

@@ -48,7 +48,10 @@
     <Compile Include="MainMenu.xaml.cs">
       <DependentUpon>MainMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarkupExtension\BooleanToObjectConverter.cs" />
+    <Compile Include="MarkupExtension\EmailValidatorBehaviour.cs" />
     <Compile Include="MarkupExtension\EmbeddedImage.cs" />
+    <Compile Include="MarkupExtension\NumberValidatorBehavior.cs" />
     <Compile Include="MarkupExtension\StringToColorConverter.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,7 +87,9 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Images\error.png" />
     <Content Include="Images\FrendelLogo.png" />
+    <EmbeddedResource Include="Images\success.png" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Frendel40.jpg" />
