@@ -10,16 +10,7 @@ namespace InstallerAppForms.Droid
 {
     public class FrendelSOAPService : IJobsInstallerList
     {
-        FrendelWebService.phonegap FrendelWS;
-
-        public FrendelSOAPService()
-        {
-            FrendelWS = new FrendelWebService.phonegap()
-            {
-                Url = "http://ws.frendel.com/mobile/phonegap.asmx"
-            };
-        }
-
+        FrendelWebService.phonegap FrendelWS = new FrendelWebService.phonegap();
         public async Task<List<JobsInstallerCS>> GetInstaller(string criteria = null)
         {
             var lstInstallerInfoClass = new List<JobsInstallerCS>();
