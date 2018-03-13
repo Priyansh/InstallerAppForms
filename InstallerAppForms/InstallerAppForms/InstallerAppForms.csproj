@@ -38,7 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Interface\IJobsInstallerList.cs" />
+    <Compile Include="Interface\IInstallerAppMethods.cs" />
     <Compile Include="JobScreen.xaml.cs">
       <DependentUpon>JobScreen.xaml</DependentUpon>
     </Compile>

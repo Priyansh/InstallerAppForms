@@ -8,7 +8,7 @@ using Xamarin.Forms;
 [assembly: Dependency(typeof(InstallerAppForms.Droid.FrendelSOAPService))]
 namespace InstallerAppForms.Droid
 {
-    public class FrendelSOAPService : IJobsInstallerList
+    public class FrendelSOAPService : IInstallerAppMethods
     {
         FrendelWebService.phonegap FrendelWS;
         public FrendelSOAPService()

@@ -32,14 +32,14 @@ namespace InstallerAppForms
             // Handle when your app resumes
         }
 
-        private static IJobsInstallerList _JobsInstallerList;
-        public static IJobsInstallerList FrendelSOAPService
+        private static IInstallerAppMethods _JobsInstallerList;
+        public static IInstallerAppMethods FrendelSOAPService
         {
             get
             {
                 if (_JobsInstallerList == null)
                 {
-                    _JobsInstallerList = DependencyService.Get<IJobsInstallerList>();
+                    _JobsInstallerList = DependencyService.Get<IInstallerAppMethods>();
                 }
 
                 return _JobsInstallerList;
