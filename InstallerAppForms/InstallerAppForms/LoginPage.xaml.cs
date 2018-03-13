@@ -14,15 +14,17 @@ namespace InstallerAppForms
             InitializeComponent();
         }
 
-        private void btnLogin_Clicked(object sender, EventArgs e)
+        private async void btnLogin_Clicked(object sender, EventArgs e)
         {
-            if (!(string.IsNullOrEmpty(txtEmail.Text) || string.IsNullOrEmpty(txtPassword.Text)))
+            if (!(string.IsNullOrEmpty(txtUserName.Text) || string.IsNullOrEmpty(txtPassword.Text)))
             {
-                Navigation.PushAsync(new MainMenu());
+                var installerId = await App.FrendelSOAPService.LoginSuccess(txtUserName.Text, txtPassword.Text);
+                if (installerId == 0){ lblErrorMsg.Text = "Invalid UserName/Password"; }
+                else { await Navigation.PushAsync(new MainMenu()); }
             }
             else
             {
-
+                lblErrorMsg.Text = "Invalid UserName/Password";
             }
         }
     }

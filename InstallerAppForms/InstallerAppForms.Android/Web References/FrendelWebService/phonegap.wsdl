@@ -1046,6 +1046,21 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InsKP_Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_LoginResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="insKP_InsertInstallerImages">
         <s:complexType>
           <s:sequence>
@@ -1373,6 +1388,12 @@
   <wsdl:message name="InsKP_UpdateInstallerStatusSoapOut">
     <wsdl:part name="parameters" element="tns:InsKP_UpdateInstallerStatusResponse" />
   </wsdl:message>
+  <wsdl:message name="InsKP_LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_Login" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_LoginResponse" />
+  </wsdl:message>
   <wsdl:message name="insKP_InsertInstallerImagesSoapIn">
     <wsdl:part name="parameters" element="tns:insKP_InsertInstallerImages" />
   </wsdl:message>
@@ -1577,6 +1598,10 @@
     <wsdl:operation name="InsKP_UpdateInstallerStatus">
       <wsdl:input message="tns:InsKP_UpdateInstallerStatusSoapIn" />
       <wsdl:output message="tns:InsKP_UpdateInstallerStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <wsdl:input message="tns:InsKP_LoginSoapIn" />
+      <wsdl:output message="tns:InsKP_LoginSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="insKP_InsertInstallerImages">
       <wsdl:input message="tns:insKP_InsertInstallerImagesSoapIn" />
@@ -1995,6 +2020,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsKP_UpdateInstallerStatus">
       <soap:operation soapAction="http://tempuri.org/InsKP_UpdateInstallerStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <soap:operation soapAction="http://tempuri.org/InsKP_Login" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2439,6 +2473,15 @@
     </wsdl:operation>
     <wsdl:operation name="InsKP_UpdateInstallerStatus">
       <soap12:operation soapAction="http://tempuri.org/InsKP_UpdateInstallerStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_Login" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

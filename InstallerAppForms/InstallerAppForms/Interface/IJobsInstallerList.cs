@@ -7,6 +7,7 @@ namespace InstallerAppForms.Interface
 {
     public interface IJobsInstallerList
     {
+        Task<int> LoginSuccess(string uName, string Pwd);
         Task<List<JobsInstallerCS>> GetInstaller(string criteria = null);
     }
 }

@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
              x:Class="InstallerAppForms.LoginPage"
+             BackgroundColor="#AFDAE6"
              NavigationPage.HasNavigationBar="False">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -43,25 +44,33 @@
             </local:BooleanToObjectConverter>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
+
+    <!-- NOTE: txtEmail and it's validator elments are "IsVisisble=False" , no longer require in this project
+    But in future if txtEmail is require to be validate ,just simply makes "IsVisible=True"-->
     <StackLayout VerticalOptions="Center" Margin="20,0">
         <Image x:Name="imgFrendelLogo"
                Aspect="AspectFit"
-               Source="{local:EmbeddedImage InstallerAppForms.Images.Frendel40.jpg}" BackgroundColor="Transparent" /> <!--Source= InstallerAppForms.Images.Frendel40.jpg-->
+               Source="FrendelLogo.png" BackgroundColor="Transparent" /> <!--Source="{local:EmbeddedImage InstallerAppForms.Images.FrendelLogo.png}"-->
+        <Label x:Name="lblErrorMsg" HorizontalTextAlignment="Center" TextColor="Red" Text=""/>
         <StackLayout Orientation="Horizontal">
-            <Entry x:Name="txtEmail" Placeholder=" Email Address " Keyboard="Email" HorizontalOptions="FillAndExpand">
+            <Entry x:Name="txtEmail" Placeholder=" Email Address " Keyboard="Email" IsVisible="False" HorizontalOptions="FillAndExpand">
                 <Entry.Behaviors>
                     <local:EmailValidatorBehaviour x:Name="emailValidator" />
                 </Entry.Behaviors>
             </Entry>
-            <Image x:Name="emailSuccessErrorMsg" Style="{Binding Source={x:Reference emailValidator},
+            <Image x:Name="emailSuccessErrorMsg" IsVisible="False" Style="{Binding Source={x:Reference emailValidator},
                                                                  Path=IsValid,
                                                                  Converter={StaticResource boolToStyleImage}}" />
         </StackLayout>
-        <Label HorizontalTextAlignment="Center"  Style="{Binding Source={x:Reference emailValidator}, 
+        <Label HorizontalTextAlignment="Center" IsVisible="False"  Style="{Binding Source={x:Reference emailValidator}, 
                                 Path=IsValid, 
                                 Converter={StaticResource boolToStyleEmail}}" />
-        <Entry x:Name="txtPassword" Placeholder="Password" IsPassword="True"/>
-        <Button x:Name="btnLogin" BackgroundColor="LightBlue" Text="Login" Clicked="btnLogin_Clicked"/>
+        <Frame BackgroundColor="#BF043055" HasShadow="False">
+            <StackLayout Orientation="Vertical" Spacing="10">
+                <Entry x:Name="txtUserName" Placeholder="UserName" PlaceholderColor="White" TextColor="White"/>
+                <Entry x:Name="txtPassword" Placeholder="Password" PlaceholderColor="White" IsPassword="True" TextColor="White"/>
+            </StackLayout>
+        </Frame>
+        <Button x:Name="btnLogin" BackgroundColor="#088da5" Text="Login" Clicked="btnLogin_Clicked"/>
     </StackLayout>
 </ContentPage>
