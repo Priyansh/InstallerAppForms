@@ -48,6 +48,12 @@
     <!-- NOTE: txtEmail and it's validator elments are "IsVisisble=False" , no longer require in this project
     But in future if txtEmail is require to be validate ,just simply makes "IsVisible=True"-->
     <StackLayout VerticalOptions="Center" Margin="20,0">
+        <ProgressBar x:Name="ProgrssBarLogin"
+                     IsVisible="False"
+                     Progress="0.0"
+                     WidthRequest="300" HeightRequest="20"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"/>
         <Image x:Name="imgFrendelLogo"
                Aspect="AspectFit"
                Source="FrendelLogo.png" BackgroundColor="Transparent" /> <!--Source="{local:EmbeddedImage InstallerAppForms.Images.FrendelLogo.png}"-->
