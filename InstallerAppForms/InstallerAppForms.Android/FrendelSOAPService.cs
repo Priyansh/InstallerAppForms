@@ -27,12 +27,12 @@ namespace InstallerAppForms.Droid
                 return installerId;
             });
         }
-        public async Task<List<JobsInstallerCS>> GetInstaller(string criteria = null)
+        public async Task<List<JobsInstallerCS>> GetInstaller(int installerId)
         {
             var lstInstallerInfoClass = new List<JobsInstallerCS>();
             return await Task.Run(() =>
             {
-                var result = FrendelWS.InsKP_GetInstaller();
+                var result = FrendelWS.InsKP_GetInstaller(installerId);
                 for (int i = 0; i < result.Length; i++)
                 {
                     // Only display jobs if InstallerJobStatus != 2

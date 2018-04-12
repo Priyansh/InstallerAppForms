@@ -904,7 +904,11 @@
         </s:complexType>
       </s:element>
       <s:element name="InsKP_GetInstaller">
-        <s:complexType />
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="installerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
       </s:element>
       <s:complexType name="Ins_GetInstallerList">
         <s:sequence>
@@ -938,6 +942,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="installerId" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -992,6 +997,8 @@
           <s:element minOccurs="0" maxOccurs="1" name="LFinish" type="s:string" />
           <s:element minOccurs="0" maxOccurs="1" name="RFinish" type="s:string" />
           <s:element minOccurs="1" maxOccurs="1" name="PartType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfIns_GetPartsInfoList">
@@ -1010,6 +1017,7 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="1" maxOccurs="1" name="PartType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartOrderID" type="s:int" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1017,6 +1025,8 @@
         <s:sequence>
           <s:element minOccurs="1" maxOccurs="1" name="PartIssueListID" type="s:int" />
           <s:element minOccurs="0" maxOccurs="1" name="PartDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCbSelected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCbEnabled" type="s:boolean" />
         </s:sequence>
       </s:complexType>
       <s:complexType name="ArrayOfInsKP_GetPartIssueList">
@@ -1067,6 +1077,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="CSID" type="s:string" />
             <s:element minOccurs="0" maxOccurs="1" name="installerImage" type="s:base64Binary" />
             <s:element minOccurs="0" maxOccurs="1" name="RoomNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1093,6 +1104,73 @@
         <s:complexType>
           <s:sequence>
             <s:element minOccurs="0" maxOccurs="1" name="insKP_getInstallerImagesResult" type="tns:ArrayOfBase64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_PartsOrderResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrderIssue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartOrderID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartIssueListID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="InsertRequest" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_PartsOrderIssueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_PartsOrderIssueResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartOrderIssuesCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartOrderIssuesCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_GetPartOrderIssuesCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="installerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetInstallerCompanyResult" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -1406,6 +1484,30 @@
   <wsdl:message name="insKP_getInstallerImagesSoapOut">
     <wsdl:part name="parameters" element="tns:insKP_getInstallerImagesResponse" />
   </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrder" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderIssueSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderIssue" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderIssueSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderIssueResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartOrderIssuesCountSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartOrderIssuesCount" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartOrderIssuesCountSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartOrderIssuesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerCompany" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerCompanyResponse" />
+  </wsdl:message>
   <wsdl:message name="ServerTimeSoapIn">
     <wsdl:part name="parameters" element="tns:ServerTime" />
   </wsdl:message>
@@ -1610,6 +1712,22 @@
     <wsdl:operation name="insKP_getInstallerImages">
       <wsdl:input message="tns:insKP_getInstallerImagesSoapIn" />
       <wsdl:output message="tns:insKP_getInstallerImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <wsdl:input message="tns:InsKP_PartsOrderSoapIn" />
+      <wsdl:output message="tns:InsKP_PartsOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <wsdl:input message="tns:InsKP_PartsOrderIssueSoapIn" />
+      <wsdl:output message="tns:InsKP_PartsOrderIssueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <wsdl:input message="tns:InsKP_GetPartOrderIssuesCountSoapIn" />
+      <wsdl:output message="tns:InsKP_GetPartOrderIssuesCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <wsdl:input message="tns:InsKP_GetInstallerCompanySoapIn" />
+      <wsdl:output message="tns:InsKP_GetInstallerCompanySoapOut" />
     </wsdl:operation>
     <wsdl:operation name="ServerTime">
       <wsdl:input message="tns:ServerTimeSoapIn" />
@@ -2047,6 +2165,42 @@
     </wsdl:operation>
     <wsdl:operation name="insKP_getInstallerImages">
       <soap:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <soap:operation soapAction="http://tempuri.org/InsKP_PartsOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <soap:operation soapAction="http://tempuri.org/InsKP_PartsOrderIssue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetPartOrderIssuesCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetInstallerCompany" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2500,6 +2654,42 @@
     </wsdl:operation>
     <wsdl:operation name="insKP_getInstallerImages">
       <soap12:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_PartsOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_PartsOrderIssue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetPartOrderIssuesCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetInstallerCompany" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

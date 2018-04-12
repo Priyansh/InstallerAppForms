@@ -8,6 +8,6 @@ namespace InstallerAppForms.Interface
     public interface IInstallerAppMethods
     {
         Task<int> LoginSuccess(string uName, string Pwd);
-        Task<List<JobsInstallerCS>> GetInstaller(string criteria = null);
+        Task<List<JobsInstallerCS>> GetInstaller(int installerId);
     }
 }

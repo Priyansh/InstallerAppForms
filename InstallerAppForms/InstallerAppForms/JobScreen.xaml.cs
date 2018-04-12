@@ -8,16 +8,18 @@ namespace InstallerAppForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class JobScreen : ContentPage
     {
-        public JobScreen()
+        int installerId;
+        public JobScreen(int getInstallerId)
         {
             InitializeComponent();
+            installerId = getInstallerId;
             GetJSON();
         }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             lstJobScreen.BeginRefresh();
-            var jobList = await App.FrendelSOAPService.GetInstaller();
+            var jobList = await App.FrendelSOAPService.GetInstaller(installerId);
             lstJobScreen.ItemsSource = jobList;
             lstJobScreen.EndRefresh();
         }

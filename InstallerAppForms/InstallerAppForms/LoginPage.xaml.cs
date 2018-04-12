@@ -24,7 +24,7 @@ namespace InstallerAppForms
                 ProgrssBarLogin.Progress = 0;
                 await ProgrssBarLogin.ProgressTo(0.8, 1000, Easing.Linear);
                 if (installerId == 0){ lblErrorMsg.Text = "Invalid UserName/Password"; }
-                else { await Navigation.PushAsync(new MainMenu()); }
+                else { await Navigation.PushAsync(new MainMenu(installerId)); }
             }
             else
             {

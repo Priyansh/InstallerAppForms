@@ -12,14 +12,16 @@ namespace InstallerAppForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MainMenu : ContentPage
     {
-        public MainMenu()
+        int installerId;
+        public MainMenu(int getInstallerId)
         {
             InitializeComponent();
+            installerId = getInstallerId;
         }
 
         void btnJobs_Clicked(object sender, System.EventArgs e)
         {
-            Navigation.PushAsync(new JobScreen());
+            Navigation.PushAsync(new JobScreen(installerId));
         }
     }
 }

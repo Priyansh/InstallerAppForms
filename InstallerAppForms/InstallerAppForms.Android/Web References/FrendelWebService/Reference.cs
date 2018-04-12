@@ -125,6 +125,14 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         private System.Threading.SendOrPostCallback insKP_getInstallerImagesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsKP_PartsOrderOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsKP_PartsOrderIssueOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsKP_GetPartOrderIssuesCountOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback InsKP_GetInstallerCompanyOperationCompleted;
+        
         private System.Threading.SendOrPostCallback ServerTimeOperationCompleted;
         
         private System.Threading.SendOrPostCallback ServerTimeJsonOperationCompleted;
@@ -310,6 +318,18 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         public event insKP_getInstallerImagesCompletedEventHandler insKP_getInstallerImagesCompleted;
+        
+        /// <remarks/>
+        public event InsKP_PartsOrderCompletedEventHandler InsKP_PartsOrderCompleted;
+        
+        /// <remarks/>
+        public event InsKP_PartsOrderIssueCompletedEventHandler InsKP_PartsOrderIssueCompleted;
+        
+        /// <remarks/>
+        public event InsKP_GetPartOrderIssuesCountCompletedEventHandler InsKP_GetPartOrderIssuesCountCompleted;
+        
+        /// <remarks/>
+        public event InsKP_GetInstallerCompanyCompletedEventHandler InsKP_GetInstallerCompanyCompleted;
         
         /// <remarks/>
         public event ServerTimeCompletedEventHandler ServerTimeCompleted;
@@ -1473,22 +1493,24 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_GetInstaller", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Ins_GetInstallerList[] InsKP_GetInstaller() {
-            object[] results = this.Invoke("InsKP_GetInstaller", new object[0]);
+        public Ins_GetInstallerList[] InsKP_GetInstaller(int installerId) {
+            object[] results = this.Invoke("InsKP_GetInstaller", new object[] {
+                        installerId});
             return ((Ins_GetInstallerList[])(results[0]));
         }
         
         /// <remarks/>
-        public void InsKP_GetInstallerAsync() {
-            this.InsKP_GetInstallerAsync(null);
+        public void InsKP_GetInstallerAsync(int installerId) {
+            this.InsKP_GetInstallerAsync(installerId, null);
         }
         
         /// <remarks/>
-        public void InsKP_GetInstallerAsync(object userState) {
+        public void InsKP_GetInstallerAsync(int installerId, object userState) {
             if ((this.InsKP_GetInstallerOperationCompleted == null)) {
                 this.InsKP_GetInstallerOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_GetInstallerOperationCompleted);
             }
-            this.InvokeAsync("InsKP_GetInstaller", new object[0], this.InsKP_GetInstallerOperationCompleted, userState);
+            this.InvokeAsync("InsKP_GetInstaller", new object[] {
+                        installerId}, this.InsKP_GetInstallerOperationCompleted, userState);
         }
         
         private void OnInsKP_GetInstallerOperationCompleted(object arg) {
@@ -1500,24 +1522,26 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_GetInstallerByCSID", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public Ins_GetInstallerList[] InsKP_GetInstallerByCSID(int CSID) {
+        public Ins_GetInstallerList[] InsKP_GetInstallerByCSID(int CSID, int installerId) {
             object[] results = this.Invoke("InsKP_GetInstallerByCSID", new object[] {
-                        CSID});
+                        CSID,
+                        installerId});
             return ((Ins_GetInstallerList[])(results[0]));
         }
         
         /// <remarks/>
-        public void InsKP_GetInstallerByCSIDAsync(int CSID) {
-            this.InsKP_GetInstallerByCSIDAsync(CSID, null);
+        public void InsKP_GetInstallerByCSIDAsync(int CSID, int installerId) {
+            this.InsKP_GetInstallerByCSIDAsync(CSID, installerId, null);
         }
         
         /// <remarks/>
-        public void InsKP_GetInstallerByCSIDAsync(int CSID, object userState) {
+        public void InsKP_GetInstallerByCSIDAsync(int CSID, int installerId, object userState) {
             if ((this.InsKP_GetInstallerByCSIDOperationCompleted == null)) {
                 this.InsKP_GetInstallerByCSIDOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_GetInstallerByCSIDOperationCompleted);
             }
             this.InvokeAsync("InsKP_GetInstallerByCSID", new object[] {
-                        CSID}, this.InsKP_GetInstallerByCSIDOperationCompleted, userState);
+                        CSID,
+                        installerId}, this.InsKP_GetInstallerByCSIDOperationCompleted, userState);
         }
         
         private void OnInsKP_GetInstallerByCSIDOperationCompleted(object arg) {
@@ -1589,24 +1613,26 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_GetPartIssueList", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public InsKP_GetPartIssueList[] InsKP_GetPartIssueList(int PartType) {
+        public InsKP_GetPartIssueList[] InsKP_GetPartIssueList(int PartType, int PartOrderID) {
             object[] results = this.Invoke("InsKP_GetPartIssueList", new object[] {
-                        PartType});
+                        PartType,
+                        PartOrderID});
             return ((InsKP_GetPartIssueList[])(results[0]));
         }
         
         /// <remarks/>
-        public void InsKP_GetPartIssueListAsync(int PartType) {
-            this.InsKP_GetPartIssueListAsync(PartType, null);
+        public void InsKP_GetPartIssueListAsync(int PartType, int PartOrderID) {
+            this.InsKP_GetPartIssueListAsync(PartType, PartOrderID, null);
         }
         
         /// <remarks/>
-        public void InsKP_GetPartIssueListAsync(int PartType, object userState) {
+        public void InsKP_GetPartIssueListAsync(int PartType, int PartOrderID, object userState) {
             if ((this.InsKP_GetPartIssueListOperationCompleted == null)) {
                 this.InsKP_GetPartIssueListOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_GetPartIssueListOperationCompleted);
             }
             this.InvokeAsync("InsKP_GetPartIssueList", new object[] {
-                        PartType}, this.InsKP_GetPartIssueListOperationCompleted, userState);
+                        PartType,
+                        PartOrderID}, this.InsKP_GetPartIssueListOperationCompleted, userState);
         }
         
         private void OnInsKP_GetPartIssueListOperationCompleted(object arg) {
@@ -1680,28 +1706,30 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/insKP_InsertInstallerImages", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public byte[][] insKP_InsertInstallerImages(string CSID, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] installerImage, string RoomNo) {
+        public byte[][] insKP_InsertInstallerImages(string CSID, [System.Xml.Serialization.XmlElementAttribute(DataType="base64Binary")] byte[] installerImage, string RoomNo, string RoomName) {
             object[] results = this.Invoke("insKP_InsertInstallerImages", new object[] {
                         CSID,
                         installerImage,
-                        RoomNo});
+                        RoomNo,
+                        RoomName});
             return ((byte[][])(results[0]));
         }
         
         /// <remarks/>
-        public void insKP_InsertInstallerImagesAsync(string CSID, byte[] installerImage, string RoomNo) {
-            this.insKP_InsertInstallerImagesAsync(CSID, installerImage, RoomNo, null);
+        public void insKP_InsertInstallerImagesAsync(string CSID, byte[] installerImage, string RoomNo, string RoomName) {
+            this.insKP_InsertInstallerImagesAsync(CSID, installerImage, RoomNo, RoomName, null);
         }
         
         /// <remarks/>
-        public void insKP_InsertInstallerImagesAsync(string CSID, byte[] installerImage, string RoomNo, object userState) {
+        public void insKP_InsertInstallerImagesAsync(string CSID, byte[] installerImage, string RoomNo, string RoomName, object userState) {
             if ((this.insKP_InsertInstallerImagesOperationCompleted == null)) {
                 this.insKP_InsertInstallerImagesOperationCompleted = new System.Threading.SendOrPostCallback(this.OninsKP_InsertInstallerImagesOperationCompleted);
             }
             this.InvokeAsync("insKP_InsertInstallerImages", new object[] {
                         CSID,
                         installerImage,
-                        RoomNo}, this.insKP_InsertInstallerImagesOperationCompleted, userState);
+                        RoomNo,
+                        RoomName}, this.insKP_InsertInstallerImagesOperationCompleted, userState);
         }
         
         private void OninsKP_InsertInstallerImagesOperationCompleted(object arg) {
@@ -1737,6 +1765,134 @@ namespace InstallerAppForms.Droid.FrendelWebService {
             if ((this.insKP_getInstallerImagesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.insKP_getInstallerImagesCompleted(this, new insKP_getInstallerImagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_PartsOrder", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsKP_PartsOrder(int PartTypeID, int LabelNo, int CSID) {
+            object[] results = this.Invoke("InsKP_PartsOrder", new object[] {
+                        PartTypeID,
+                        LabelNo,
+                        CSID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsKP_PartsOrderAsync(int PartTypeID, int LabelNo, int CSID) {
+            this.InsKP_PartsOrderAsync(PartTypeID, LabelNo, CSID, null);
+        }
+        
+        /// <remarks/>
+        public void InsKP_PartsOrderAsync(int PartTypeID, int LabelNo, int CSID, object userState) {
+            if ((this.InsKP_PartsOrderOperationCompleted == null)) {
+                this.InsKP_PartsOrderOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_PartsOrderOperationCompleted);
+            }
+            this.InvokeAsync("InsKP_PartsOrder", new object[] {
+                        PartTypeID,
+                        LabelNo,
+                        CSID}, this.InsKP_PartsOrderOperationCompleted, userState);
+        }
+        
+        private void OnInsKP_PartsOrderOperationCompleted(object arg) {
+            if ((this.InsKP_PartsOrderCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsKP_PartsOrderCompleted(this, new InsKP_PartsOrderCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_PartsOrderIssue", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int[] InsKP_PartsOrderIssue(int PartOrderID, int PartIssueListID, int InsertRequest) {
+            object[] results = this.Invoke("InsKP_PartsOrderIssue", new object[] {
+                        PartOrderID,
+                        PartIssueListID,
+                        InsertRequest});
+            return ((int[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsKP_PartsOrderIssueAsync(int PartOrderID, int PartIssueListID, int InsertRequest) {
+            this.InsKP_PartsOrderIssueAsync(PartOrderID, PartIssueListID, InsertRequest, null);
+        }
+        
+        /// <remarks/>
+        public void InsKP_PartsOrderIssueAsync(int PartOrderID, int PartIssueListID, int InsertRequest, object userState) {
+            if ((this.InsKP_PartsOrderIssueOperationCompleted == null)) {
+                this.InsKP_PartsOrderIssueOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_PartsOrderIssueOperationCompleted);
+            }
+            this.InvokeAsync("InsKP_PartsOrderIssue", new object[] {
+                        PartOrderID,
+                        PartIssueListID,
+                        InsertRequest}, this.InsKP_PartsOrderIssueOperationCompleted, userState);
+        }
+        
+        private void OnInsKP_PartsOrderIssueOperationCompleted(object arg) {
+            if ((this.InsKP_PartsOrderIssueCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsKP_PartsOrderIssueCompleted(this, new InsKP_PartsOrderIssueCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_GetPartOrderIssuesCount", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsKP_GetPartOrderIssuesCount(int PartTypeID, int LabelNo, int CSID) {
+            object[] results = this.Invoke("InsKP_GetPartOrderIssuesCount", new object[] {
+                        PartTypeID,
+                        LabelNo,
+                        CSID});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsKP_GetPartOrderIssuesCountAsync(int PartTypeID, int LabelNo, int CSID) {
+            this.InsKP_GetPartOrderIssuesCountAsync(PartTypeID, LabelNo, CSID, null);
+        }
+        
+        /// <remarks/>
+        public void InsKP_GetPartOrderIssuesCountAsync(int PartTypeID, int LabelNo, int CSID, object userState) {
+            if ((this.InsKP_GetPartOrderIssuesCountOperationCompleted == null)) {
+                this.InsKP_GetPartOrderIssuesCountOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_GetPartOrderIssuesCountOperationCompleted);
+            }
+            this.InvokeAsync("InsKP_GetPartOrderIssuesCount", new object[] {
+                        PartTypeID,
+                        LabelNo,
+                        CSID}, this.InsKP_GetPartOrderIssuesCountOperationCompleted, userState);
+        }
+        
+        private void OnInsKP_GetPartOrderIssuesCountOperationCompleted(object arg) {
+            if ((this.InsKP_GetPartOrderIssuesCountCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsKP_GetPartOrderIssuesCountCompleted(this, new InsKP_GetPartOrderIssuesCountCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_GetInstallerCompany", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public string InsKP_GetInstallerCompany(int installerID) {
+            object[] results = this.Invoke("InsKP_GetInstallerCompany", new object[] {
+                        installerID});
+            return ((string)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsKP_GetInstallerCompanyAsync(int installerID) {
+            this.InsKP_GetInstallerCompanyAsync(installerID, null);
+        }
+        
+        /// <remarks/>
+        public void InsKP_GetInstallerCompanyAsync(int installerID, object userState) {
+            if ((this.InsKP_GetInstallerCompanyOperationCompleted == null)) {
+                this.InsKP_GetInstallerCompanyOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_GetInstallerCompanyOperationCompleted);
+            }
+            this.InvokeAsync("InsKP_GetInstallerCompany", new object[] {
+                        installerID}, this.InsKP_GetInstallerCompanyOperationCompleted, userState);
+        }
+        
+        private void OnInsKP_GetInstallerCompanyOperationCompleted(object arg) {
+            if ((this.InsKP_GetInstallerCompanyCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsKP_GetInstallerCompanyCompleted(this, new InsKP_GetInstallerCompanyCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -1858,6 +2014,10 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         private string partDescriptionField;
         
+        private bool isCbSelectedField;
+        
+        private bool isCbEnabledField;
+        
         /// <remarks/>
         public int PartIssueListID {
             get {
@@ -1877,6 +2037,26 @@ namespace InstallerAppForms.Droid.FrendelWebService {
                 this.partDescriptionField = value;
             }
         }
+        
+        /// <remarks/>
+        public bool IsCbSelected {
+            get {
+                return this.isCbSelectedField;
+            }
+            set {
+                this.isCbSelectedField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public bool IsCbEnabled {
+            get {
+                return this.isCbEnabledField;
+            }
+            set {
+                this.isCbEnabledField = value;
+            }
+        }
     }
     
     /// <remarks/>
@@ -1894,6 +2074,10 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         private string rFinishField;
         
         private int partTypeField;
+        
+        private int labelNoField;
+        
+        private int cSIDField;
         
         /// <remarks/>
         public string CabinetName {
@@ -1932,6 +2116,26 @@ namespace InstallerAppForms.Droid.FrendelWebService {
             }
             set {
                 this.partTypeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int LabelNo {
+            get {
+                return this.labelNoField;
+            }
+            set {
+                this.labelNoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int CSID {
+            get {
+                return this.cSIDField;
+            }
+            set {
+                this.cSIDField = value;
             }
         }
     }
@@ -6177,6 +6381,110 @@ namespace InstallerAppForms.Droid.FrendelWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((byte[][])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsKP_PartsOrderCompletedEventHandler(object sender, InsKP_PartsOrderCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsKP_PartsOrderCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsKP_PartsOrderCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsKP_PartsOrderIssueCompletedEventHandler(object sender, InsKP_PartsOrderIssueCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsKP_PartsOrderIssueCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsKP_PartsOrderIssueCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsKP_GetPartOrderIssuesCountCompletedEventHandler(object sender, InsKP_GetPartOrderIssuesCountCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsKP_GetPartOrderIssuesCountCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsKP_GetPartOrderIssuesCountCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsKP_GetInstallerCompanyCompletedEventHandler(object sender, InsKP_GetInstallerCompanyCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsKP_GetInstallerCompanyCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsKP_GetInstallerCompanyCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public string Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((string)(this.results[0]));
             }
         }
     }
