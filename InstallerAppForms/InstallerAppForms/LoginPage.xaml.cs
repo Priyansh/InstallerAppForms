@@ -22,9 +22,13 @@ namespace InstallerAppForms
                 var installerId = await App.FrendelSOAPService.LoginSuccess(txtUserName.Text, txtPassword.Text);
                 ProgrssBarLogin.IsVisible = true;
                 ProgrssBarLogin.Progress = 0;
-                await ProgrssBarLogin.ProgressTo(0.8, 1000, Easing.Linear);
+                await ProgrssBarLogin.ProgressTo(0.9, 1000, Easing.Linear);
                 if (installerId == 0){ lblErrorMsg.Text = "Invalid UserName/Password"; }
-                else { await Navigation.PushAsync(new MainMenu(installerId)); }
+                else {
+                    await Navigation.PushAsync(new MainMenu(installerId));
+                    lblErrorMsg.Text = "";
+                }
+                ProgrssBarLogin.IsVisible = false;
             }
             else
             {
