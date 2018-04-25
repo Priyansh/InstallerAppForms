@@ -5,6 +5,9 @@ using System.Text;
 
 using Xamarin.Forms;
 using InstallerAppForms.Interface;
+using Microsoft.AppCenter;
+using Microsoft.AppCenter.Analytics;
+using Microsoft.AppCenter.Crashes;
 
 namespace InstallerAppForms
 {
@@ -19,7 +22,7 @@ namespace InstallerAppForms
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            AppCenter.Start("android=feca7798-445c-4e63-8fd2-2ac71125395c;" + "uwp={Your UWP App secret here};" + "ios={Your iOS App secret here}", typeof(Analytics), typeof(Crashes));
         }
 
         protected override void OnSleep()
