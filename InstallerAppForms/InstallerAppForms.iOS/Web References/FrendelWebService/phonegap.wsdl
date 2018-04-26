@@ -1,0 +1,2769 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="spKP_UserLogin">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="User_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_UserLoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="spKP_UserLoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_getBuilderListFromtblBuilder">
+        <s:complexType />
+      </s:element>
+      <s:element name="spKP_getBuilderListFromtblBuilderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_getBuilderListFromtblBuilderResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_ProjectList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="builder_Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ProjectListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_ProjectListResult" type="tns:ArrayOfProjectListClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProjectListClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProjectListClass" nillable="true" type="tns:ProjectListClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProjectListClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProjNUM" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjNAME" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_seqLITEUsage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_seqLITEUsageResponse">
+        <s:complexType />
+      </s:element>
+      <s:element name="spKP_InsertLast10ViewedProjects">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="userName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="projectNum" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="projectName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="builderName" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="loginClick" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_InsertLast10ViewedProjectsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_InsertLast10ViewedProjectsResult" type="tns:ArrayOfViewedProjectClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfViewedProjectClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ViewedProjectClass" nillable="true" type="tns:ViewedProjectClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ViewedProjectClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="ProjectID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserTimeStamp" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BuilderName" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_Last10ViewedProjectList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_Last10ViewedProjectListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_Last10ViewedProjectListResult" type="tns:ArrayOfViewedProjectClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_StyleColourInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_StyleColourInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_StyleColourInfoResult" type="tns:ArrayOfStyleColourClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfStyleColourClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="StyleColourClass" nillable="true" type="tns:StyleColourClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="StyleColourClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StyleColour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Glazing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CounterTop" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hardware" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_ScheduleInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ScheduleInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_ScheduleInfoResult" type="tns:ArrayOfScheduleClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfScheduleClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ScheduleClass" nillable="true" type="tns:ScheduleClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ScheduleClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="MeasuringDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measurer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast_YN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpectedShipped" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpectedShipped_YN" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiteRequestDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CommentSchedule" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignedDeliveryDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shipped_Done" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Installed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Installer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InspectedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutDoneUser" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_OfficeStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_OfficeStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_OfficeStatusResult" type="tns:ArrayOfOfficeStatusClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOfficeStatusClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OfficeStatusClass" nillable="true" type="tns:OfficeStatusClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OfficeStatusClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Colour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ColourUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Extras" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExtrasUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoExtra" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutStartUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutDone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutDoneUser" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NoCT" nillable="true" type="s:boolean" />
+          <s:element minOccurs="0" maxOccurs="1" name="PricingChecked" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PricingCheckedUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderStartUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderFinish" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderFinishUser" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoorOrderDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_ProductionInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ProductionInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_ProductionInfoResult" type="tns:ArrayOfProductionStatusClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProductionStatusClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProductionStatusClass" nillable="true" type="tns:ProductionStatusClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProductionStatusClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ProductionR" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessoriesDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccessoriesEmployee" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssemblyStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoorsPicked" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoorsHinge" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProductionComplete" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TotalCabinets" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="WrapDate" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="ScanDate" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="DoorCount" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="RowDate" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="PaintDate" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_CabinetList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_CabinetListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_CabinetListResult" type="tns:ArrayOfProdCabinetClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProdCabinetClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ProdCabinetClass" nillable="true" type="tns:ProdCabinetClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ProdCabinetClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CabinetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScanDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScanTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Assembler" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WrappingDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WrappingTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LineNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CartID" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_DoorList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_DoorListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_DoorListResult" type="tns:ArrayOfProdDoorClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProdDoorClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="prodDoorClass" nillable="true" type="tns:prodDoorClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="prodDoorClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Style" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Glazing" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RawDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PaintDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DoorCount" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_DoorDomaList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Master_FKNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Doma_Number" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_DoorDomaListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_DoorDomaListResult" type="tns:ArrayOfProdDoorDomaClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfProdDoorDomaClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="prodDoorDomaClass" nillable="true" type="tns:prodDoorDomaClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="prodDoorDomaClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Status" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Style" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OrderDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProdReceived" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CompletedDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FrendelOrderDate" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_OrderList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_OrderListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_OrderListResult" type="tns:ArrayOfOrderStatusByCSID_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfOrderStatusByCSID_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="OrderStatusByCSID_class" nillable="true" type="tns:OrderStatusByCSID_class" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="OrderStatusByCSID_class">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="builderName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="projNum" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="projName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotName" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LotFileID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileExt" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Uptime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="UserName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileData" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FileImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="FilePageArray" type="tns:ArrayOfString" />
+          <s:element minOccurs="0" maxOccurs="1" name="CreatedBy" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_getLotFromLOTDB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_getLotFromLOTDBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_getLotFromLOTDBResult" type="tns:ArrayOfOrderStatusByCSID_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_TotalDefReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_TotalDefReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_TotalDefReportResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfReportClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="reportClass" nillable="true" type="tns:reportClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="reportClass">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="coordinates_X" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="coordinate_X" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="coordinates_Y" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipTime" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ExpectedShip" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Installer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InspectionDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Inspector" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ProjectedInstall" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AssignPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measured" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colors" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutRequiredDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutPerson_X" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalLayoutDone_Y" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="Phase" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Doors" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_TonyDashReport">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_TonyDashReportResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_TonyDashReportResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPTracking_Shipping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPTracking_ShippingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKPTracking_ShippingResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_RecentInstallation">
+        <s:complexType />
+      </s:element>
+      <s:element name="spKP_RecentInstallationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_RecentInstallationResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_OutstandingInstallation">
+        <s:complexType />
+      </s:element>
+      <s:element name="spKP_OutstandingInstallationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_OutstandingInstallationResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_RequiredLayout">
+        <s:complexType />
+      </s:element>
+      <s:element name="spKP_RequiredLayoutResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_RequiredLayoutResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_TotalLayoutByPerson">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FromDate" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="ToDate" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_TotalLayoutByPersonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_TotalLayoutByPersonResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPTracking_CabinetsComplete">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="date" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPTracking_CabinetsCompleteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKPTracking_CabinetsCompleteResult" type="tns:ArrayOfReportClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_getImageLOTFromLOTDB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LotFileID" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_getImageLOTFromLOTDBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_getImageLOTFromLOTDBResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_InsertImageToLOTDB">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="LotList" type="tns:OrderStatusByCSID_class" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_InsertImageToLOTDBResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="spKP_InsertImageToLOTDBResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ServiceQAList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID_Number" type="s:long" />
+            <s:element minOccurs="0" maxOccurs="1" name="optionType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ServiceQAListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_ServiceQAListResult" type="tns:ArrayOfServiceQAClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServiceQAClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="ServiceQAClass" nillable="true" type="tns:ServiceQAClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ServiceQAClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="LOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FKNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ModelType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StreetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="StateProv" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ZipPostal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Country" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="HomePhone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkPhone1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkPhone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellPh" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefKey_Closed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InDate_Closed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category_Closed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description_Closed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateDone_Closed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DefKey_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InDate_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Category_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Description_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="NextVisit_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Age_Open" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Schedule_Date" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Schedule_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Schedule_ServiceMan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Schedule_Comment" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeIn" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="TimeOut" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Call_Time" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="User_ID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Action" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Comment" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spGetConvertedFKNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Converted_No" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="withX" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spGetConvertedFKNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spGetConvertedFKNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spGetProjectSelectionByProjNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proj_No" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="projSelectionTab" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spGetProjectSelectionByProjNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spGetProjectSelectionByProjNoResult" type="tns:ArrayOfAddress_ProjectList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAddress_ProjectList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Address_ProjectList" nillable="true" type="tns:Address_ProjectList" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Address_ProjectList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="strRegion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strDeliveryeRegion" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strStreetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strCity" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strProvince" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strPostal" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strCountry" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strPhone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strFax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strEmail" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="strWebsite" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Type" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Name" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Phone" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Phone2" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Fax" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Cell" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Contact_Email" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Sales" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measurer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceOffice" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceField" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalLots" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Measured" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LayoutDone" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InProduction" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Shipped" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Inspected" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstShippingDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LastShippingDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutstandingDeficiencies" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CompletedDeficiency" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Forecast" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SiteRequest" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Measuring" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colours" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LayoutDone_ProjSchedule" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Production" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Delivery" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstalledDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MeasuringImageTest" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="MeasuringImageID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="MeasuringImage" type="s:base64Binary" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Installed" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shipped_Done" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Installer" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CustomDateDisplay" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="DateMeasured" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShipDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Shipper" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceMan" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ServiceSchedule" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ScheduleTime" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_ProjectSchedule">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proj_No" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_ProjectScheduleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_ProjectScheduleResult" type="tns:ArrayOfAddress_ProjectList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_MeasuringImage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="imageMeasuring" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_MeasuringImageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_MeasuringImageResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPRoomLayoutPage">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSIDNo" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPRoomLayoutPageResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKPRoomLayoutPageResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spGetProjectSelection_FullCalendarByProjNo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="proj_No" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="dateVal" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfAnyType">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="anyType" nillable="true" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spGetProjectSelection_FullCalendarByProjNoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spGetProjectSelection_FullCalendarByProjNoResult" type="tns:ArrayOfAnyType" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPGetCSIDByFK">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="MasterNumber" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKPGetCSIDByFKResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="spKPGetCSIDByFKResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="spKP_getLotList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="projNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="LotListClass">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:long" />
+          <s:element minOccurs="0" maxOccurs="1" name="LOT" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="PHASE" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FKNO" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Model" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LotName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BLK" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="LotNo" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfLotListClass">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="LotListClass" nillable="true" type="tns:LotListClass" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="spKP_getLotListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="spKP_getLotListResult" type="tns:ArrayOfLotListClass" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLast10ViewedProjectNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLast10ViewedProjectNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getLast10ViewedProjectNumberResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLast10ViewedProjectBuilderName">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="project_Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getLast10ViewedProjectBuilderNameResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getLast10ViewedProjectBuilderNameResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProjectNum">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="builder_Name" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="project_Name" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getProjectNumResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getProjectNumResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMaster_FKNumber">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLOT" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="projNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getMaster_FKNumberResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getMaster_FKNumberResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCSID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="strLOT" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="projNum" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getCSIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="getCSIDResult" type="s:long" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstaller">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="installerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ins_GetInstallerList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Company" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Project" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Lot" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="MasterNum" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallAssignDate" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallAssignPerson" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ShippedDone" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="InstallerAssignID" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InstallerJobStatus" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallerJobStart" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="InstallerJobComplete" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIns_GetInstallerList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ins_GetInstallerList" nillable="true" type="tns:Ins_GetInstallerList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_GetInstallerResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetInstallerResult" type="tns:ArrayOfIns_GetInstallerList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerByCSID">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="installerId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerByCSIDResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetInstallerByCSIDResult" type="tns:ArrayOfIns_GetInstallerList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetRoomInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ins_GetRoomInfoList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="RSNo" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CSID" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Rooms" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Style" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Colour" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Hardware" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CounterTop" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIns_GetRoomInfoList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ins_GetRoomInfoList" nillable="true" type="tns:Ins_GetRoomInfoList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_GetRoomInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetRoomInfoResult" type="tns:ArrayOfIns_GetRoomInfoList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartInfo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="FKNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="Ins_GetPartsInfoList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="CabinetName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LFinish" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="RFinish" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="PartType" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfIns_GetPartsInfoList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Ins_GetPartsInfoList" nillable="true" type="tns:Ins_GetPartsInfoList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_GetPartInfoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetPartInfoResult" type="tns:ArrayOfIns_GetPartsInfoList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartIssueList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartType" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartOrderID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="InsKP_GetPartIssueList">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="PartIssueListID" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="PartDescription" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCbSelected" type="s:boolean" />
+          <s:element minOccurs="1" maxOccurs="1" name="IsCbEnabled" type="s:boolean" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfInsKP_GetPartIssueList">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="InsKP_GetPartIssueList" nillable="true" type="tns:InsKP_GetPartIssueList" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_GetPartIssueListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetPartIssueListResult" type="tns:ArrayOfInsKP_GetPartIssueList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_UpdateInstallerStatus">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="InstallerJobStatus" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_UpdateInstallerStatusResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_UpdateInstallerStatusResult" type="tns:ArrayOfIns_GetInstallerList" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="uName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_LoginResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insKP_InsertInstallerImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CSID" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="installerImage" type="s:base64Binary" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoomNo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="RoomName" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfBase64Binary">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="base64Binary" nillable="true" type="s:base64Binary" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="insKP_InsertInstallerImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insKP_InsertInstallerImagesResult" type="tns:ArrayOfBase64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insKP_getInstallerImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="insKP_getInstallerImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="insKP_getInstallerImagesResult" type="tns:ArrayOfBase64Binary" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_CountInstallerImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_CountInstallerImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_CountInstallerImagesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrder">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrderResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_PartsOrderResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_PartsOrderIssue">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartOrderID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="PartIssueListID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="InsertRequest" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfInt">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="int" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="InsKP_PartsOrderIssueResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_PartsOrderIssueResult" type="tns:ArrayOfInt" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartOrderIssuesCount">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PartTypeID" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="LabelNo" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="CSID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetPartOrderIssuesCountResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_GetPartOrderIssuesCountResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerCompany">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="installerID" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_GetInstallerCompanyResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="InsKP_GetInstallerCompanyResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServerTime">
+        <s:complexType />
+      </s:element>
+      <s:element name="ServerTimeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="ServerTimeResult" type="s:dateTime" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ServerTimeJson">
+        <s:complexType />
+      </s:element>
+      <s:element name="ServerTimeJsonResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ServerTimeJsonResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="spKP_UserLoginSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_UserLogin" />
+  </wsdl:message>
+  <wsdl:message name="spKP_UserLoginSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_UserLoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getBuilderListFromtblBuilderSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_getBuilderListFromtblBuilder" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getBuilderListFromtblBuilderSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_getBuilderListFromtblBuilderResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProjectListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_ProjectList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProjectListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_ProjectListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_seqLITEUsageSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_seqLITEUsage" />
+  </wsdl:message>
+  <wsdl:message name="spKP_seqLITEUsageSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_seqLITEUsageResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_InsertLast10ViewedProjectsSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_InsertLast10ViewedProjects" />
+  </wsdl:message>
+  <wsdl:message name="spKP_InsertLast10ViewedProjectsSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_InsertLast10ViewedProjectsResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_Last10ViewedProjectListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_Last10ViewedProjectList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_Last10ViewedProjectListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_Last10ViewedProjectListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_StyleColourInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_StyleColourInfo" />
+  </wsdl:message>
+  <wsdl:message name="spKP_StyleColourInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_StyleColourInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ScheduleInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_ScheduleInfo" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ScheduleInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_ScheduleInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OfficeStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_OfficeStatus" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OfficeStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_OfficeStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProductionInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_ProductionInfo" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProductionInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_ProductionInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_CabinetListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_CabinetList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_CabinetListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_CabinetListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_DoorListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_DoorList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_DoorListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_DoorListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_DoorDomaListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_DoorDomaList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_DoorDomaListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_DoorDomaListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OrderListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_OrderList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OrderListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_OrderListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getLotFromLOTDBSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_getLotFromLOTDB" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getLotFromLOTDBSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_getLotFromLOTDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TotalDefReportSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_TotalDefReport" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TotalDefReportSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_TotalDefReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TonyDashReportSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_TonyDashReport" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TonyDashReportSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_TonyDashReportResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKPTracking_ShippingSoapIn">
+    <wsdl:part name="parameters" element="tns:spKPTracking_Shipping" />
+  </wsdl:message>
+  <wsdl:message name="spKPTracking_ShippingSoapOut">
+    <wsdl:part name="parameters" element="tns:spKPTracking_ShippingResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_RecentInstallationSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_RecentInstallation" />
+  </wsdl:message>
+  <wsdl:message name="spKP_RecentInstallationSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_RecentInstallationResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OutstandingInstallationSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_OutstandingInstallation" />
+  </wsdl:message>
+  <wsdl:message name="spKP_OutstandingInstallationSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_OutstandingInstallationResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_RequiredLayoutSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_RequiredLayout" />
+  </wsdl:message>
+  <wsdl:message name="spKP_RequiredLayoutSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_RequiredLayoutResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TotalLayoutByPersonSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_TotalLayoutByPerson" />
+  </wsdl:message>
+  <wsdl:message name="spKP_TotalLayoutByPersonSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_TotalLayoutByPersonResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKPTracking_CabinetsCompleteSoapIn">
+    <wsdl:part name="parameters" element="tns:spKPTracking_CabinetsComplete" />
+  </wsdl:message>
+  <wsdl:message name="spKPTracking_CabinetsCompleteSoapOut">
+    <wsdl:part name="parameters" element="tns:spKPTracking_CabinetsCompleteResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getImageLOTFromLOTDBSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_getImageLOTFromLOTDB" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getImageLOTFromLOTDBSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_getImageLOTFromLOTDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_InsertImageToLOTDBSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_InsertImageToLOTDB" />
+  </wsdl:message>
+  <wsdl:message name="spKP_InsertImageToLOTDBSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_InsertImageToLOTDBResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ServiceQAListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_ServiceQAList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ServiceQAListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_ServiceQAListResponse" />
+  </wsdl:message>
+  <wsdl:message name="spGetConvertedFKNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:spGetConvertedFKNumber" />
+  </wsdl:message>
+  <wsdl:message name="spGetConvertedFKNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:spGetConvertedFKNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="spGetProjectSelectionByProjNoSoapIn">
+    <wsdl:part name="parameters" element="tns:spGetProjectSelectionByProjNo" />
+  </wsdl:message>
+  <wsdl:message name="spGetProjectSelectionByProjNoSoapOut">
+    <wsdl:part name="parameters" element="tns:spGetProjectSelectionByProjNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProjectScheduleSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_ProjectSchedule" />
+  </wsdl:message>
+  <wsdl:message name="spKP_ProjectScheduleSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_ProjectScheduleResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_MeasuringImageSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_MeasuringImage" />
+  </wsdl:message>
+  <wsdl:message name="spKP_MeasuringImageSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_MeasuringImageResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKPRoomLayoutPageSoapIn">
+    <wsdl:part name="parameters" element="tns:spKPRoomLayoutPage" />
+  </wsdl:message>
+  <wsdl:message name="spKPRoomLayoutPageSoapOut">
+    <wsdl:part name="parameters" element="tns:spKPRoomLayoutPageResponse" />
+  </wsdl:message>
+  <wsdl:message name="spGetProjectSelection_FullCalendarByProjNoSoapIn">
+    <wsdl:part name="parameters" element="tns:spGetProjectSelection_FullCalendarByProjNo" />
+  </wsdl:message>
+  <wsdl:message name="spGetProjectSelection_FullCalendarByProjNoSoapOut">
+    <wsdl:part name="parameters" element="tns:spGetProjectSelection_FullCalendarByProjNoResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKPGetCSIDByFKSoapIn">
+    <wsdl:part name="parameters" element="tns:spKPGetCSIDByFK" />
+  </wsdl:message>
+  <wsdl:message name="spKPGetCSIDByFKSoapOut">
+    <wsdl:part name="parameters" element="tns:spKPGetCSIDByFKResponse" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getLotListSoapIn">
+    <wsdl:part name="parameters" element="tns:spKP_getLotList" />
+  </wsdl:message>
+  <wsdl:message name="spKP_getLotListSoapOut">
+    <wsdl:part name="parameters" element="tns:spKP_getLotListResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLast10ViewedProjectNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:getLast10ViewedProjectNumber" />
+  </wsdl:message>
+  <wsdl:message name="getLast10ViewedProjectNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:getLast10ViewedProjectNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="getLast10ViewedProjectBuilderNameSoapIn">
+    <wsdl:part name="parameters" element="tns:getLast10ViewedProjectBuilderName" />
+  </wsdl:message>
+  <wsdl:message name="getLast10ViewedProjectBuilderNameSoapOut">
+    <wsdl:part name="parameters" element="tns:getLast10ViewedProjectBuilderNameResponse" />
+  </wsdl:message>
+  <wsdl:message name="getProjectNumSoapIn">
+    <wsdl:part name="parameters" element="tns:getProjectNum" />
+  </wsdl:message>
+  <wsdl:message name="getProjectNumSoapOut">
+    <wsdl:part name="parameters" element="tns:getProjectNumResponse" />
+  </wsdl:message>
+  <wsdl:message name="getMaster_FKNumberSoapIn">
+    <wsdl:part name="parameters" element="tns:getMaster_FKNumber" />
+  </wsdl:message>
+  <wsdl:message name="getMaster_FKNumberSoapOut">
+    <wsdl:part name="parameters" element="tns:getMaster_FKNumberResponse" />
+  </wsdl:message>
+  <wsdl:message name="getCSIDSoapIn">
+    <wsdl:part name="parameters" element="tns:getCSID" />
+  </wsdl:message>
+  <wsdl:message name="getCSIDSoapOut">
+    <wsdl:part name="parameters" element="tns:getCSIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstaller" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerByCSIDSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerByCSID" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerByCSIDSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerByCSIDResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetRoomInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetRoomInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetRoomInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetRoomInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartInfoSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartInfo" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartInfoSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartInfoResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartIssueListSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartIssueList" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartIssueListSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartIssueListResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_UpdateInstallerStatusSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_UpdateInstallerStatus" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_UpdateInstallerStatusSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_UpdateInstallerStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_Login" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="insKP_InsertInstallerImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:insKP_InsertInstallerImages" />
+  </wsdl:message>
+  <wsdl:message name="insKP_InsertInstallerImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:insKP_InsertInstallerImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="insKP_getInstallerImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:insKP_getInstallerImages" />
+  </wsdl:message>
+  <wsdl:message name="insKP_getInstallerImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:insKP_getInstallerImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_CountInstallerImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_CountInstallerImages" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_CountInstallerImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_CountInstallerImagesResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrder" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderIssueSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderIssue" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_PartsOrderIssueSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_PartsOrderIssueResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartOrderIssuesCountSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartOrderIssuesCount" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetPartOrderIssuesCountSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetPartOrderIssuesCountResponse" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerCompanySoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerCompany" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_GetInstallerCompanySoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_GetInstallerCompanyResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServerTimeSoapIn">
+    <wsdl:part name="parameters" element="tns:ServerTime" />
+  </wsdl:message>
+  <wsdl:message name="ServerTimeSoapOut">
+    <wsdl:part name="parameters" element="tns:ServerTimeResponse" />
+  </wsdl:message>
+  <wsdl:message name="ServerTimeJsonSoapIn">
+    <wsdl:part name="parameters" element="tns:ServerTimeJson" />
+  </wsdl:message>
+  <wsdl:message name="ServerTimeJsonSoapOut">
+    <wsdl:part name="parameters" element="tns:ServerTimeJsonResponse" />
+  </wsdl:message>
+  <wsdl:portType name="phonegapSoap">
+    <wsdl:operation name="spKP_UserLogin">
+      <wsdl:input message="tns:spKP_UserLoginSoapIn" />
+      <wsdl:output message="tns:spKP_UserLoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getBuilderListFromtblBuilder">
+      <wsdl:input message="tns:spKP_getBuilderListFromtblBuilderSoapIn" />
+      <wsdl:output message="tns:spKP_getBuilderListFromtblBuilderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectList">
+      <wsdl:input message="tns:spKP_ProjectListSoapIn" />
+      <wsdl:output message="tns:spKP_ProjectListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_seqLITEUsage">
+      <wsdl:input message="tns:spKP_seqLITEUsageSoapIn" />
+      <wsdl:output message="tns:spKP_seqLITEUsageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertLast10ViewedProjects">
+      <wsdl:input message="tns:spKP_InsertLast10ViewedProjectsSoapIn" />
+      <wsdl:output message="tns:spKP_InsertLast10ViewedProjectsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_Last10ViewedProjectList">
+      <wsdl:input message="tns:spKP_Last10ViewedProjectListSoapIn" />
+      <wsdl:output message="tns:spKP_Last10ViewedProjectListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_StyleColourInfo">
+      <wsdl:input message="tns:spKP_StyleColourInfoSoapIn" />
+      <wsdl:output message="tns:spKP_StyleColourInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ScheduleInfo">
+      <wsdl:input message="tns:spKP_ScheduleInfoSoapIn" />
+      <wsdl:output message="tns:spKP_ScheduleInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OfficeStatus">
+      <wsdl:input message="tns:spKP_OfficeStatusSoapIn" />
+      <wsdl:output message="tns:spKP_OfficeStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProductionInfo">
+      <wsdl:input message="tns:spKP_ProductionInfoSoapIn" />
+      <wsdl:output message="tns:spKP_ProductionInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_CabinetList">
+      <wsdl:input message="tns:spKP_CabinetListSoapIn" />
+      <wsdl:output message="tns:spKP_CabinetListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorList">
+      <wsdl:input message="tns:spKP_DoorListSoapIn" />
+      <wsdl:output message="tns:spKP_DoorListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorDomaList">
+      <wsdl:input message="tns:spKP_DoorDomaListSoapIn" />
+      <wsdl:output message="tns:spKP_DoorDomaListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OrderList">
+      <wsdl:input message="tns:spKP_OrderListSoapIn" />
+      <wsdl:output message="tns:spKP_OrderListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotFromLOTDB">
+      <wsdl:input message="tns:spKP_getLotFromLOTDBSoapIn" />
+      <wsdl:output message="tns:spKP_getLotFromLOTDBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalDefReport">
+      <wsdl:input message="tns:spKP_TotalDefReportSoapIn" />
+      <wsdl:output message="tns:spKP_TotalDefReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TonyDashReport">
+      <wsdl:input message="tns:spKP_TonyDashReportSoapIn" />
+      <wsdl:output message="tns:spKP_TonyDashReportSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_Shipping">
+      <wsdl:input message="tns:spKPTracking_ShippingSoapIn" />
+      <wsdl:output message="tns:spKPTracking_ShippingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RecentInstallation">
+      <wsdl:input message="tns:spKP_RecentInstallationSoapIn" />
+      <wsdl:output message="tns:spKP_RecentInstallationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OutstandingInstallation">
+      <wsdl:input message="tns:spKP_OutstandingInstallationSoapIn" />
+      <wsdl:output message="tns:spKP_OutstandingInstallationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RequiredLayout">
+      <wsdl:input message="tns:spKP_RequiredLayoutSoapIn" />
+      <wsdl:output message="tns:spKP_RequiredLayoutSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalLayoutByPerson">
+      <wsdl:input message="tns:spKP_TotalLayoutByPersonSoapIn" />
+      <wsdl:output message="tns:spKP_TotalLayoutByPersonSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_CabinetsComplete">
+      <wsdl:input message="tns:spKPTracking_CabinetsCompleteSoapIn" />
+      <wsdl:output message="tns:spKPTracking_CabinetsCompleteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getImageLOTFromLOTDB">
+      <wsdl:input message="tns:spKP_getImageLOTFromLOTDBSoapIn" />
+      <wsdl:output message="tns:spKP_getImageLOTFromLOTDBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertImageToLOTDB">
+      <wsdl:input message="tns:spKP_InsertImageToLOTDBSoapIn" />
+      <wsdl:output message="tns:spKP_InsertImageToLOTDBSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ServiceQAList">
+      <wsdl:input message="tns:spKP_ServiceQAListSoapIn" />
+      <wsdl:output message="tns:spKP_ServiceQAListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spGetConvertedFKNumber">
+      <wsdl:input message="tns:spGetConvertedFKNumberSoapIn" />
+      <wsdl:output message="tns:spGetConvertedFKNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelectionByProjNo">
+      <wsdl:input message="tns:spGetProjectSelectionByProjNoSoapIn" />
+      <wsdl:output message="tns:spGetProjectSelectionByProjNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectSchedule">
+      <wsdl:input message="tns:spKP_ProjectScheduleSoapIn" />
+      <wsdl:output message="tns:spKP_ProjectScheduleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_MeasuringImage">
+      <wsdl:input message="tns:spKP_MeasuringImageSoapIn" />
+      <wsdl:output message="tns:spKP_MeasuringImageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKPRoomLayoutPage">
+      <wsdl:input message="tns:spKPRoomLayoutPageSoapIn" />
+      <wsdl:output message="tns:spKPRoomLayoutPageSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelection_FullCalendarByProjNo">
+      <wsdl:input message="tns:spGetProjectSelection_FullCalendarByProjNoSoapIn" />
+      <wsdl:output message="tns:spGetProjectSelection_FullCalendarByProjNoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKPGetCSIDByFK">
+      <wsdl:input message="tns:spKPGetCSIDByFKSoapIn" />
+      <wsdl:output message="tns:spKPGetCSIDByFKSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotList">
+      <wsdl:input message="tns:spKP_getLotListSoapIn" />
+      <wsdl:output message="tns:spKP_getLotListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectNumber">
+      <wsdl:input message="tns:getLast10ViewedProjectNumberSoapIn" />
+      <wsdl:output message="tns:getLast10ViewedProjectNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectBuilderName">
+      <wsdl:input message="tns:getLast10ViewedProjectBuilderNameSoapIn" />
+      <wsdl:output message="tns:getLast10ViewedProjectBuilderNameSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getProjectNum">
+      <wsdl:input message="tns:getProjectNumSoapIn" />
+      <wsdl:output message="tns:getProjectNumSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getMaster_FKNumber">
+      <wsdl:input message="tns:getMaster_FKNumberSoapIn" />
+      <wsdl:output message="tns:getMaster_FKNumberSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getCSID">
+      <wsdl:input message="tns:getCSIDSoapIn" />
+      <wsdl:output message="tns:getCSIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstaller">
+      <wsdl:input message="tns:InsKP_GetInstallerSoapIn" />
+      <wsdl:output message="tns:InsKP_GetInstallerSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerByCSID">
+      <wsdl:input message="tns:InsKP_GetInstallerByCSIDSoapIn" />
+      <wsdl:output message="tns:InsKP_GetInstallerByCSIDSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetRoomInfo">
+      <wsdl:input message="tns:InsKP_GetRoomInfoSoapIn" />
+      <wsdl:output message="tns:InsKP_GetRoomInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartInfo">
+      <wsdl:input message="tns:InsKP_GetPartInfoSoapIn" />
+      <wsdl:output message="tns:InsKP_GetPartInfoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartIssueList">
+      <wsdl:input message="tns:InsKP_GetPartIssueListSoapIn" />
+      <wsdl:output message="tns:InsKP_GetPartIssueListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_UpdateInstallerStatus">
+      <wsdl:input message="tns:InsKP_UpdateInstallerStatusSoapIn" />
+      <wsdl:output message="tns:InsKP_UpdateInstallerStatusSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <wsdl:input message="tns:InsKP_LoginSoapIn" />
+      <wsdl:output message="tns:InsKP_LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insKP_InsertInstallerImages">
+      <wsdl:input message="tns:insKP_InsertInstallerImagesSoapIn" />
+      <wsdl:output message="tns:insKP_InsertInstallerImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="insKP_getInstallerImages">
+      <wsdl:input message="tns:insKP_getInstallerImagesSoapIn" />
+      <wsdl:output message="tns:insKP_getInstallerImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <wsdl:input message="tns:InsKP_CountInstallerImagesSoapIn" />
+      <wsdl:output message="tns:InsKP_CountInstallerImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <wsdl:input message="tns:InsKP_PartsOrderSoapIn" />
+      <wsdl:output message="tns:InsKP_PartsOrderSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <wsdl:input message="tns:InsKP_PartsOrderIssueSoapIn" />
+      <wsdl:output message="tns:InsKP_PartsOrderIssueSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <wsdl:input message="tns:InsKP_GetPartOrderIssuesCountSoapIn" />
+      <wsdl:output message="tns:InsKP_GetPartOrderIssuesCountSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <wsdl:input message="tns:InsKP_GetInstallerCompanySoapIn" />
+      <wsdl:output message="tns:InsKP_GetInstallerCompanySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ServerTime">
+      <wsdl:input message="tns:ServerTimeSoapIn" />
+      <wsdl:output message="tns:ServerTimeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ServerTimeJson">
+      <wsdl:input message="tns:ServerTimeJsonSoapIn" />
+      <wsdl:output message="tns:ServerTimeJsonSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="phonegapSoap" type="tns:phonegapSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="spKP_UserLogin">
+      <soap:operation soapAction="http://tempuri.org/spKP_UserLogin" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getBuilderListFromtblBuilder">
+      <soap:operation soapAction="http://tempuri.org/spKP_getBuilderListFromtblBuilder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectList">
+      <soap:operation soapAction="http://tempuri.org/spKP_ProjectList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_seqLITEUsage">
+      <soap:operation soapAction="http://tempuri.org/spKP_seqLITEUsage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertLast10ViewedProjects">
+      <soap:operation soapAction="http://tempuri.org/spKP_InsertLast10ViewedProjects" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_Last10ViewedProjectList">
+      <soap:operation soapAction="http://tempuri.org/spKP_Last10ViewedProjectList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_StyleColourInfo">
+      <soap:operation soapAction="http://tempuri.org/spKP_StyleColourInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ScheduleInfo">
+      <soap:operation soapAction="http://tempuri.org/spKP_ScheduleInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OfficeStatus">
+      <soap:operation soapAction="http://tempuri.org/spKP_OfficeStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProductionInfo">
+      <soap:operation soapAction="http://tempuri.org/spKP_ProductionInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_CabinetList">
+      <soap:operation soapAction="http://tempuri.org/spKP_CabinetList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorList">
+      <soap:operation soapAction="http://tempuri.org/spKP_DoorList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorDomaList">
+      <soap:operation soapAction="http://tempuri.org/spKP_DoorDomaList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OrderList">
+      <soap:operation soapAction="http://tempuri.org/spKP_OrderList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotFromLOTDB">
+      <soap:operation soapAction="http://tempuri.org/spKP_getLotFromLOTDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalDefReport">
+      <soap:operation soapAction="http://tempuri.org/spKP_TotalDefReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TonyDashReport">
+      <soap:operation soapAction="http://tempuri.org/spKP_TonyDashReport" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_Shipping">
+      <soap:operation soapAction="http://tempuri.org/spKPTracking_Shipping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RecentInstallation">
+      <soap:operation soapAction="http://tempuri.org/spKP_RecentInstallation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OutstandingInstallation">
+      <soap:operation soapAction="http://tempuri.org/spKP_OutstandingInstallation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RequiredLayout">
+      <soap:operation soapAction="http://tempuri.org/spKP_RequiredLayout" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalLayoutByPerson">
+      <soap:operation soapAction="http://tempuri.org/spKP_TotalLayoutByPerson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_CabinetsComplete">
+      <soap:operation soapAction="http://tempuri.org/spKPTracking_CabinetsComplete" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getImageLOTFromLOTDB">
+      <soap:operation soapAction="http://tempuri.org/spKP_getImageLOTFromLOTDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertImageToLOTDB">
+      <soap:operation soapAction="http://tempuri.org/spKP_InsertImageToLOTDB" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ServiceQAList">
+      <soap:operation soapAction="http://tempuri.org/spKP_ServiceQAList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetConvertedFKNumber">
+      <soap:operation soapAction="http://tempuri.org/spGetConvertedFKNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelectionByProjNo">
+      <soap:operation soapAction="http://tempuri.org/spGetProjectSelectionByProjNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectSchedule">
+      <soap:operation soapAction="http://tempuri.org/spKP_ProjectSchedule" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_MeasuringImage">
+      <soap:operation soapAction="http://tempuri.org/spKP_MeasuringImage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPRoomLayoutPage">
+      <soap:operation soapAction="http://tempuri.org/spKPRoomLayoutPage" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelection_FullCalendarByProjNo">
+      <soap:operation soapAction="http://tempuri.org/spGetProjectSelection_FullCalendarByProjNo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPGetCSIDByFK">
+      <soap:operation soapAction="http://tempuri.org/spKPGetCSIDByFK" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotList">
+      <soap:operation soapAction="http://tempuri.org/spKP_getLotList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectNumber">
+      <soap:operation soapAction="http://tempuri.org/getLast10ViewedProjectNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectBuilderName">
+      <soap:operation soapAction="http://tempuri.org/getLast10ViewedProjectBuilderName" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectNum">
+      <soap:operation soapAction="http://tempuri.org/getProjectNum" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMaster_FKNumber">
+      <soap:operation soapAction="http://tempuri.org/getMaster_FKNumber" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCSID">
+      <soap:operation soapAction="http://tempuri.org/getCSID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstaller">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetInstaller" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerByCSID">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetInstallerByCSID" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetRoomInfo">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetRoomInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartInfo">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetPartInfo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartIssueList">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetPartIssueList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_UpdateInstallerStatus">
+      <soap:operation soapAction="http://tempuri.org/InsKP_UpdateInstallerStatus" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <soap:operation soapAction="http://tempuri.org/InsKP_Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insKP_InsertInstallerImages">
+      <soap:operation soapAction="http://tempuri.org/insKP_InsertInstallerImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insKP_getInstallerImages">
+      <soap:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <soap:operation soapAction="http://tempuri.org/InsKP_CountInstallerImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <soap:operation soapAction="http://tempuri.org/InsKP_PartsOrder" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <soap:operation soapAction="http://tempuri.org/InsKP_PartsOrderIssue" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetPartOrderIssuesCount" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <soap:operation soapAction="http://tempuri.org/InsKP_GetInstallerCompany" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerTime">
+      <soap:operation soapAction="http://tempuri.org/ServerTime" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerTimeJson">
+      <soap:operation soapAction="http://tempuri.org/ServerTimeJson" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="phonegapSoap12" type="tns:phonegapSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="spKP_UserLogin">
+      <soap12:operation soapAction="http://tempuri.org/spKP_UserLogin" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getBuilderListFromtblBuilder">
+      <soap12:operation soapAction="http://tempuri.org/spKP_getBuilderListFromtblBuilder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_ProjectList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_seqLITEUsage">
+      <soap12:operation soapAction="http://tempuri.org/spKP_seqLITEUsage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertLast10ViewedProjects">
+      <soap12:operation soapAction="http://tempuri.org/spKP_InsertLast10ViewedProjects" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_Last10ViewedProjectList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_Last10ViewedProjectList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_StyleColourInfo">
+      <soap12:operation soapAction="http://tempuri.org/spKP_StyleColourInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ScheduleInfo">
+      <soap12:operation soapAction="http://tempuri.org/spKP_ScheduleInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OfficeStatus">
+      <soap12:operation soapAction="http://tempuri.org/spKP_OfficeStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProductionInfo">
+      <soap12:operation soapAction="http://tempuri.org/spKP_ProductionInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_CabinetList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_CabinetList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_DoorList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_DoorDomaList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_DoorDomaList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OrderList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_OrderList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotFromLOTDB">
+      <soap12:operation soapAction="http://tempuri.org/spKP_getLotFromLOTDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalDefReport">
+      <soap12:operation soapAction="http://tempuri.org/spKP_TotalDefReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TonyDashReport">
+      <soap12:operation soapAction="http://tempuri.org/spKP_TonyDashReport" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_Shipping">
+      <soap12:operation soapAction="http://tempuri.org/spKPTracking_Shipping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RecentInstallation">
+      <soap12:operation soapAction="http://tempuri.org/spKP_RecentInstallation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_OutstandingInstallation">
+      <soap12:operation soapAction="http://tempuri.org/spKP_OutstandingInstallation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_RequiredLayout">
+      <soap12:operation soapAction="http://tempuri.org/spKP_RequiredLayout" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_TotalLayoutByPerson">
+      <soap12:operation soapAction="http://tempuri.org/spKP_TotalLayoutByPerson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPTracking_CabinetsComplete">
+      <soap12:operation soapAction="http://tempuri.org/spKPTracking_CabinetsComplete" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getImageLOTFromLOTDB">
+      <soap12:operation soapAction="http://tempuri.org/spKP_getImageLOTFromLOTDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_InsertImageToLOTDB">
+      <soap12:operation soapAction="http://tempuri.org/spKP_InsertImageToLOTDB" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ServiceQAList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_ServiceQAList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetConvertedFKNumber">
+      <soap12:operation soapAction="http://tempuri.org/spGetConvertedFKNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelectionByProjNo">
+      <soap12:operation soapAction="http://tempuri.org/spGetProjectSelectionByProjNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_ProjectSchedule">
+      <soap12:operation soapAction="http://tempuri.org/spKP_ProjectSchedule" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_MeasuringImage">
+      <soap12:operation soapAction="http://tempuri.org/spKP_MeasuringImage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPRoomLayoutPage">
+      <soap12:operation soapAction="http://tempuri.org/spKPRoomLayoutPage" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spGetProjectSelection_FullCalendarByProjNo">
+      <soap12:operation soapAction="http://tempuri.org/spGetProjectSelection_FullCalendarByProjNo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKPGetCSIDByFK">
+      <soap12:operation soapAction="http://tempuri.org/spKPGetCSIDByFK" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="spKP_getLotList">
+      <soap12:operation soapAction="http://tempuri.org/spKP_getLotList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectNumber">
+      <soap12:operation soapAction="http://tempuri.org/getLast10ViewedProjectNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getLast10ViewedProjectBuilderName">
+      <soap12:operation soapAction="http://tempuri.org/getLast10ViewedProjectBuilderName" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getProjectNum">
+      <soap12:operation soapAction="http://tempuri.org/getProjectNum" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getMaster_FKNumber">
+      <soap12:operation soapAction="http://tempuri.org/getMaster_FKNumber" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCSID">
+      <soap12:operation soapAction="http://tempuri.org/getCSID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstaller">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetInstaller" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerByCSID">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetInstallerByCSID" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetRoomInfo">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetRoomInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartInfo">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetPartInfo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartIssueList">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetPartIssueList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_UpdateInstallerStatus">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_UpdateInstallerStatus" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_Login">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insKP_InsertInstallerImages">
+      <soap12:operation soapAction="http://tempuri.org/insKP_InsertInstallerImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="insKP_getInstallerImages">
+      <soap12:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_CountInstallerImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrder">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_PartsOrder" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_PartsOrderIssue">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_PartsOrderIssue" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetPartOrderIssuesCount">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetPartOrderIssuesCount" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_GetInstallerCompany">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_GetInstallerCompany" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerTime">
+      <soap12:operation soapAction="http://tempuri.org/ServerTime" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ServerTimeJson">
+      <soap12:operation soapAction="http://tempuri.org/ServerTimeJson" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="phonegap">
+    <wsdl:port name="phonegapSoap" binding="tns:phonegapSoap">
+      <soap:address location="http://ws.frendel.com/mobile/phonegap.asmx" />
+    </wsdl:port>
+    <wsdl:port name="phonegapSoap12" binding="tns:phonegapSoap12">
+      <soap12:address location="http://ws.frendel.com/mobile/phonegap.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
