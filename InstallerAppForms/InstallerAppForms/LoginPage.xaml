@@ -71,12 +71,20 @@
         <Label HorizontalTextAlignment="Center" IsVisible="False"  Style="{Binding Source={x:Reference emailValidator}, 
                                 Path=IsValid, 
                                 Converter={StaticResource boolToStyleEmail}}" />
-        <Frame BackgroundColor="#BF043055" HasShadow="False">
-            <StackLayout Orientation="Vertical" Spacing="10">
-                <Entry x:Name="txtUserName" Placeholder="UserName" PlaceholderColor="White" TextColor="White"/>
-                <Entry x:Name="txtPassword" Placeholder="Password" PlaceholderColor="White" IsPassword="True" TextColor="White"/>
+        <Frame BackgroundColor="#088da5" HasShadow="False" Margin="0, 10 , 0 ,0">
+            <StackLayout Orientation="Vertical" Spacing="15">
+                <Entry x:Name="txtUserName" Placeholder="User Name" PlaceholderColor="White">
+                    <Entry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="40" WinPhone="40" />
+                    </Entry.HeightRequest>
+                </Entry>
+                <Entry x:Name="txtPassword" Placeholder="Password" PlaceholderColor="White" IsPassword="True">
+                    <Entry.HeightRequest>
+                        <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="40" WinPhone="40" />
+                    </Entry.HeightRequest>
+                </Entry>
             </StackLayout>
         </Frame>
-        <Button x:Name="btnLogin" BackgroundColor="#088da5" Text="Login" Clicked="btnLogin_Clicked"/>
+        <Button x:Name="btnLogin" BackgroundColor="#088da5" Text="Login" TextColor="Black" Clicked="btnLogin_Clicked"/>
     </StackLayout>
 </ContentPage>
