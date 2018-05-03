@@ -51,7 +51,7 @@
         <Image x:Name="imgFrendelLogo"
                Aspect="AspectFit"
                Source="FrendelLogo.png" BackgroundColor="Transparent" /> <!--Source="{local:EmbeddedImage InstallerAppForms.Images.FrendelLogo.png}"-->
-        <Label x:Name="lblErrorMsg" HorizontalTextAlignment="Center" TextColor="Red" Text=""/>
+        <Label x:Name="lblErrorMsg" HorizontalTextAlignment="Center" TextColor="Red" Text="" AutomationId="auto_lblErrorMsg"/>
         <ProgressBar x:Name="ProgrssBarLogin"
                      IsVisible="False"
                      Progress="0.0"
@@ -73,18 +73,18 @@
                                 Converter={StaticResource boolToStyleEmail}}" />
         <Frame BackgroundColor="#088da5" HasShadow="False" Margin="0, 10 , 0 ,0">
             <StackLayout Orientation="Vertical" Spacing="15">
-                <Entry x:Name="txtUserName" Placeholder="User Name" PlaceholderColor="White">
+                <Entry x:Name="txtUserName" Placeholder="User Name" PlaceholderColor="White" AutomationId="auto_txtUserName">
                     <Entry.HeightRequest>
                         <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="40" WinPhone="40" />
                     </Entry.HeightRequest>
                 </Entry>
-                <Entry x:Name="txtPassword" Placeholder="Password" PlaceholderColor="White" IsPassword="True">
+                <Entry x:Name="txtPassword" Placeholder="Password" PlaceholderColor="White" IsPassword="True" AutomationId="auto_txtPassword">
                     <Entry.HeightRequest>
                         <OnPlatform x:TypeArguments="x:Double" iOS="40" Android="40" WinPhone="40" />
                     </Entry.HeightRequest>
                 </Entry>
             </StackLayout>
         </Frame>
-        <Button x:Name="btnLogin" BackgroundColor="#088da5" Text="Login" TextColor="Black" Clicked="btnLogin_Clicked"/>
+        <Button x:Name="btnLogin" BackgroundColor="#088da5" Text="Login" TextColor="Black" Clicked="btnLogin_Clicked" AutomationId="auto_btnLogin" />
     </StackLayout>
 </ContentPage>
