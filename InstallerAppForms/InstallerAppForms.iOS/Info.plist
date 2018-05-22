@@ -23,7 +23,7 @@
 	<key>MinimumOSVersion</key>
 	<string>8.0</string>
 	<key>CFBundleDisplayName</key>
-	<string>InstallerAppForms</string>
+	<string>Installer</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.fk.InstallerAppForms</string>
 	<key>CFBundleVersion</key>

@@ -307,6 +307,23 @@
   <ItemGroup>
     <BundleResource Include="Resources\Settings%403x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <ImageAsset Include="Resources\Media.xcassets\AppIcons.appiconset\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+    <ImageAsset Include="Resources\Media.xcassets\LaunchImages.launchimage\Contents.json">
+      <InProject>false</InProject>
+    </ImageAsset>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Completed.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Progress.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Schedule.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

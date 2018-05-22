@@ -44,6 +44,11 @@ namespace InstallerAppForms
                 await DisplayAlert("JSONParsing", "No network is available.", "Ok");
             }*/
         }
+
+        private void lstJobScreen_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new StartJobScheduleStatus(installerId));
+        }
     }
 
 }

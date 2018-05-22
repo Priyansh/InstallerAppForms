@@ -12,9 +12,11 @@ namespace InstallerAppForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class StartJobScheduleStatus : ContentPage
     {
-        public StartJobScheduleStatus()
+        int installerId;
+        public StartJobScheduleStatus(int getInstallerId)
         {
             InitializeComponent();
+            installerId = getInstallerId;
         }
     }
 }

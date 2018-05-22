@@ -11,7 +11,8 @@
         </ResourceDictionary>
     </ContentPage.Resources>
     <ListView x:Name="lstJobScreen" 
-              HasUnevenRows="True">
+              HasUnevenRows="True"
+              ItemTapped="lstJobScreen_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
                 <ViewCell>
@@ -22,14 +23,14 @@
                                 <Label Text="Job Number : " FontAttributes="Bold" FontSize="20" />
                                 <Label Text="{Binding JobNum}" FontAttributes="Bold" FontSize="20" />
                             </StackLayout>
-                            <Label Text="{Binding Company}" FontSize="14" FontAttributes="Bold"/>
-                            <Label Text="{Binding Project}" FontSize="14" FontAttributes="Bold"/>
+                            <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
+                            <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Unit " FontSize="14" FontAttributes="Bold"/>
-                                <Label Text="{Binding Lot}" FontSize="14" FontAttributes="Bold"/>
+                                <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                                <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
                             </StackLayout>
                         </StackLayout>
-                        <Label Text="{Binding JobCurrentStatus}" FontSize="12" FontAttributes="None" HorizontalOptions="CenterAndExpand" VerticalOptions="EndAndExpand"
+                        <Label Text="{Binding JobCurrentStatus}" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
                                TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
                     </StackLayout>
                 </ViewCell>
