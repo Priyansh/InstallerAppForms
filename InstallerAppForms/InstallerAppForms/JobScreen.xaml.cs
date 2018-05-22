@@ -9,6 +9,7 @@ namespace InstallerAppForms
     public partial class JobScreen : ContentPage
     {
         int installerId;
+        List<JobsInstallerCS> jobList;
         public JobScreen(int getInstallerId)
         {
             InitializeComponent();
@@ -19,7 +20,7 @@ namespace InstallerAppForms
         {
             base.OnAppearing();
             lstJobScreen.BeginRefresh();
-            var jobList = await App.FrendelSOAPService.GetInstaller(installerId);
+            jobList = await App.FrendelSOAPService.GetInstaller(installerId);
             lstJobScreen.ItemsSource = jobList;
             lstJobScreen.EndRefresh();
         }
@@ -45,9 +46,10 @@ namespace InstallerAppForms
             }*/
         }
 
-        private void lstJobScreen_ItemTapped(object sender, ItemTappedEventArgs e)
+        private async void lstJobScreen_ItemTapped(object sender, ItemTappedEventArgs e)
         {
-            Navigation.PushAsync(new StartJobScheduleStatus(installerId));
+            var JobsInstallerCS = e.Item as JobsInstallerCS;
+            await Navigation.PushAsync(new StartJobScheduleStatus(installerId, JobsInstallerCS));
         }
     }
 

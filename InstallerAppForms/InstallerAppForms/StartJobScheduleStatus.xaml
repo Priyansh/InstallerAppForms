@@ -2,17 +2,37 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="InstallerAppForms.StartJobScheduleStatus">
-    <ScrollView Orientation="Vertical" VerticalOptions="Center">
-        <StackLayout Orientation="Vertical">
-            <Label Text="Text1"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="Text2"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-            <Label Text="Text3"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    
+    <ScrollView Orientation="Vertical">
+        <StackLayout Orientation="Vertical" Padding="20, 20, 0, 0" Spacing="15">
+            <Label Text="{Binding Company}" 
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            <Label Text="{Binding Project}"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Unit "
+                       FontSize="20"
+                       FontAttributes="Bold" />
+                <Label Text="{Binding Lot}"
+                   FontSize="20"
+                   FontAttributes="Bold" />
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Delivered on "
+                       FontSize="20"/>
+                <Label Text="{Binding ShippedDone}" 
+                       FontSize="20"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="Job Started on " 
+                       FontSize="20"/>
+                <Label Text="{Binding InstallerJobStart}" 
+                       FontSize="20"/>
+            </StackLayout>
+            <Label Text="Select a Room for more options" 
+                   FontSize="20"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
