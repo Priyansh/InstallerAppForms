@@ -28,7 +28,7 @@
             <StackLayout x:Name="slJobStartedOn" Orientation="Horizontal" IsVisible="False">
                 <Label Text="Job Started on "
                        FontSize="20"/>
-                <Label Text="{Binding InstallerJobStart}" 
+                <Label x:Name="lblInstallerJobStart" Text="{Binding InstallerJobStart}" 
                        FontSize="20"/>
             </StackLayout>
             <Label x:Name="lblStartJob" Text="Press the button to start the job"

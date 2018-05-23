@@ -36,10 +36,13 @@ namespace InstallerAppForms
             installerId = getInstallerId;
         }
 
-        private void btnJobStart_Clicked(object sender, EventArgs e)
+        private async void btnJobStart_Clicked(object sender, EventArgs e)
         {
-            //TODO update JobStart date in database and update value of this.SelectedJobItem.InstallerJobStart
             this.SelectedJobItem.InstallerJobStatus = 1;
+            await App.FrendelSOAPService.UpdateInstallerStatus(this.SelectedJobItem.CSID, this.SelectedJobItem.InstallerJobStatus);
+            var installerByCSID = await App.FrendelSOAPService.GetInstaller(installerId);
+            var tempList = installerByCSID.Where(i => i.CSID == this.SelectedJobItem.CSID).ToList();
+            this.SelectedJobItem.InstallerJobStart = tempList[0].InstallerJobStart;
             funStartingJob(this.SelectedJobItem.InstallerJobStatus);
         }
 
@@ -52,6 +55,7 @@ namespace InstallerAppForms
                 string installerJobStart = string.IsNullOrEmpty(this.SelectedJobItem.InstallerJobStart) ? "" : Convert.ToDateTime(this.SelectedJobItem.InstallerJobStart).ToString("MMM dd, yyyy");
                 this.SelectedJobItem.InstallerJobStart = installerJobStart;
                 lblStartJob.Text = "Select a Room for more options";
+                lblInstallerJobStart.Text = this.SelectedJobItem.InstallerJobStart;
                 //TODO Grid of dynamic buttons
             }
         }

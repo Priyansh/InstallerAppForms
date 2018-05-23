@@ -70,5 +70,12 @@ namespace InstallerAppForms.Droid
                 return lstInstallerInfoClass;
             });
         }
+        public async Task UpdateInstallerStatus(int CSID, int InstallerJobStatus)
+        {
+            await Task.Run(() =>
+            {
+                FrendelWS.InsKP_UpdateInstallerStatus(CSID, InstallerJobStatus);
+            });
+        }
     }
 }
