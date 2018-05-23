@@ -25,14 +25,16 @@
                 <Label Text="{Binding ShippedDone}" 
                        FontSize="20"/>
             </StackLayout>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Job Started on " 
+            <StackLayout x:Name="slJobStartedOn" Orientation="Horizontal" IsVisible="False">
+                <Label Text="Job Started on "
                        FontSize="20"/>
                 <Label Text="{Binding InstallerJobStart}" 
                        FontSize="20"/>
             </StackLayout>
-            <Label Text="Select a Room for more options" 
-                   FontSize="20"/>
+            <Label x:Name="lblStartJob" Text="Press the button to start the job"
+                   FontSize="20"
+                   HorizontalTextAlignment="Center"/>
+            <Button x:Name="btnJobStart" HorizontalOptions="Center" Text="" Image="StartJobButton.png" BackgroundColor="Transparent" Clicked="btnJobStart_Clicked"/>
         </StackLayout>
     </ScrollView>
 </ContentPage>
