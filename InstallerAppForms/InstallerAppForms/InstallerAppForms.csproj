@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomRenderers\WrappedButton.cs" />
     <Compile Include="Interface\IInstallerAppMethods.cs" />
     <Compile Include="JobScreen.xaml.cs">
       <DependentUpon>JobScreen.xaml</DependentUpon>
@@ -54,6 +55,7 @@
     <Compile Include="MarkupExtension\NumberValidatorBehavior.cs" />
     <Compile Include="MarkupExtension\StringToColorConverter.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
+    <Compile Include="Models\RoomInfoCS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StartJobScheduleStatus.xaml.cs">
       <DependentUpon>StartJobScheduleStatus.xaml</DependentUpon>

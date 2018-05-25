@@ -70,6 +70,32 @@ namespace InstallerAppForms.Droid
                 return lstInstallerInfoClass;
             });
         }
+
+        public async Task<List<RoomInfoCS>> GetRoomInfo(int CSID)
+        {
+            var lstRoomInfo = new List<RoomInfoCS>();
+            return await Task.Run(() =>
+            {
+                var result = FrendelWS.InsKP_GetRoomInfo(CSID);
+                for (int i = 0; i < result.Length; i++)
+                {
+                    var fillRoomInfoProperties = new RoomInfoCS
+                    {
+                        RSNo = result[i].RSNo,
+                        CSID = result[i].CSID,
+                        Rooms = result[i].Rooms,
+                        Style = result[i].Style,
+                        Colour = result[i].Colour,
+                        Hardware = result[i].Hardware,
+                        CounterTop = result[i].CounterTop
+                    };
+                    lstRoomInfo.Add(fillRoomInfoProperties);
+                }
+                return lstRoomInfo;
+            });
+        }
+
+        //------------------------ALL UPDATES METHODS STARTS HERE -------------------------------------
         public async Task UpdateInstallerStatus(int CSID, int InstallerJobStatus)
         {
             await Task.Run(() =>

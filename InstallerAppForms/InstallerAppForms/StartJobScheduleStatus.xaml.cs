@@ -46,17 +46,29 @@ namespace InstallerAppForms
             funStartingJob(this.SelectedJobItem.InstallerJobStatus);
         }
 
-        public void funStartingJob(int jobStatus)
+        public async void funStartingJob(int jobStatus)
         {
             if(jobStatus == 1)
             {
                 btnJobStart.IsVisible = false;
                 slJobStartedOn.IsVisible = true;
+                gridJobScheduleStatus.IsVisible = true;
                 string installerJobStart = string.IsNullOrEmpty(this.SelectedJobItem.InstallerJobStart) ? "" : Convert.ToDateTime(this.SelectedJobItem.InstallerJobStart).ToString("MMM dd, yyyy");
                 this.SelectedJobItem.InstallerJobStart = installerJobStart;
                 lblStartJob.Text = "Select a Room for more options";
                 lblInstallerJobStart.Text = this.SelectedJobItem.InstallerJobStart;
-                //TODO Grid of dynamic buttons
+
+                var roomInfo = await App.FrendelSOAPService.GetRoomInfo(this.SelectedJobItem.CSID);
+
+                for (int row = 0; row < 3; row++)
+                {
+                    for(int col = 0; col < 3; col++)
+                    {
+                        var button = new InstallerAppForms.WrappedButton { Text = "Kitchen Drawing is amazing", HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
+                        gridJobScheduleStatus.Children.Add(button, col, row);
+                    }
+                }
+                
             }
         }
     }

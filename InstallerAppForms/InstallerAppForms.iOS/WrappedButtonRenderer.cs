@@ -8,6 +8,7 @@ using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
 
+[assembly: ExportRenderer(typeof(InstallerAppForms.WrappedButton), typeof(InstallerAppForms.iOS.WrappedButtonRenderer))]
 namespace InstallerAppForms.iOS
 {
     public class WrappedButtonRenderer : ButtonRenderer

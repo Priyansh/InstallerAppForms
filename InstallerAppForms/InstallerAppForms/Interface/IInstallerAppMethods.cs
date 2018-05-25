@@ -11,6 +11,7 @@ namespace InstallerAppForms.Interface
         
         //Get Methods
         Task<List<JobsInstallerCS>> GetInstaller(int installerId);
+        Task<List<RoomInfoCS>> GetRoomInfo(int CSID);
 
         //Update Methods
         Task UpdateInstallerStatus(int CSID, int InstallerJobStatus);
