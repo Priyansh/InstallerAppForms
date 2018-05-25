@@ -60,15 +60,23 @@ namespace InstallerAppForms
 
                 var roomInfo = await App.FrendelSOAPService.GetRoomInfo(this.SelectedJobItem.CSID);
 
-                for (int row = 0; row < 3; row++)
+                int columnCount = 0;
+                for (int row = 0; columnCount != roomInfo.Count; row++)
                 {
+                    gridJobScheduleStatus.RowDefinitions.Add(new RowDefinition
+                    {
+                        Height = 80
+                    });
+
                     for(int col = 0; col < 3; col++)
                     {
-                        var button = new InstallerAppForms.WrappedButton { Text = "Kitchen Drawing is amazing", HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
-                        gridJobScheduleStatus.Children.Add(button, col, row);
+                        if(columnCount != roomInfo.Count){
+                            var button = new InstallerAppForms.WrappedButton { Text = roomInfo[columnCount].Rooms, HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
+                            gridJobScheduleStatus.Children.Add(button, col, row);
+                            columnCount++;   
+                        }
                     }
                 }
-                
             }
         }
     }

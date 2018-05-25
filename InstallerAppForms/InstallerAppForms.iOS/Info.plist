@@ -50,5 +50,7 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0</string>
+	<key>CFBundleName</key>
+	<string>Installer</string>
 </dict>
 </plist>

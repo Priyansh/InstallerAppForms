@@ -232,7 +232,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\InstallerAppForms\InstallerAppForms.csproj">
-      <Project>{262e097f-7608-4882-8684-9455ea52ae11}</Project>
+      <Project>{10F11ACB-2DDC-48AA-B883-4E895E8C380A}</Project>
       <Name>InstallerAppForms</Name>
     </ProjectReference>
   </ItemGroup>

@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:InstallerAppForms.CustomRenderers"
@@ -37,11 +37,7 @@
                    HorizontalTextAlignment="Center"/>
             <Button x:Name="btnJobStart" HorizontalOptions="Center" Text="" Image="StartJobButton.png" BackgroundColor="Transparent" Clicked="btnJobStart_Clicked"/>
             <Grid x:Name="gridJobScheduleStatus" Padding="10" RowSpacing="15" ColumnSpacing="15" IsVisible="False">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                    <RowDefinition Height="80" />
-                </Grid.RowDefinitions>
+                
             </Grid>
         </StackLayout>
         
