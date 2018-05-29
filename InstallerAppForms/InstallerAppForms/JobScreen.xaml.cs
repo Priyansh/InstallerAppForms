@@ -14,8 +14,18 @@ namespace InstallerAppForms
         {
             InitializeComponent();
             installerId = getInstallerId;
+            SizeChanged += JobScreen_SizeChanged;
             GetJSON();
         }
+
+        private void JobScreen_SizeChanged(object sender, EventArgs e)
+        {
+            if( Height < Width)
+            {
+                //In Landscape Mode
+            }
+        }
+
         protected override async void OnAppearing()
         {
             base.OnAppearing();

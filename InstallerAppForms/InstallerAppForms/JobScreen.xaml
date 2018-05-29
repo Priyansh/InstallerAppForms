@@ -30,7 +30,7 @@
                                 <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
                             </StackLayout>
                         </StackLayout>
-                        <Label Text="{Binding JobCurrentStatus}" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                        <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
                                TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
                     </StackLayout>
                 </ViewCell>
