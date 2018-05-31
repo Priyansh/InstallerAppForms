@@ -6,7 +6,7 @@ using Xamarin.Forms.Xaml;
 namespace InstallerAppForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class JobScreen : ContentPage
+    public partial class JobScreen : CustomContentPageBackButton
     {
         int installerId;
         List<JobsInstallerCS> jobList;
@@ -14,6 +14,13 @@ namespace InstallerAppForms
         {
             InitializeComponent();
             installerId = getInstallerId;
+            if (EnableBackButtonOverride)
+            {
+                this.CustomBackButtonAction = async () =>
+                {
+                    await Navigation.PopAsync(true);
+                };
+            }
             SizeChanged += JobScreen_SizeChanged;
             GetJSON();
         }

@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace InstallerAppForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MainMenu : ContentPage
+    public partial class MainMenu : CustomContentPageBackButton
     {
         int installerId;
         public MainMenu(int getInstallerId)

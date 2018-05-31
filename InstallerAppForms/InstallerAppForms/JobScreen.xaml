@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+<InstallerAppForms:CustomContentPageBackButton xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
              xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
              x:Class="InstallerAppForms.JobScreen"
+             EnableBackButtonOverride="True" 
              Title="Jobs"
              Padding="0, 20, 0, 0">
     <ContentPage.Resources>
@@ -20,8 +22,7 @@
                         <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
                         <StackLayout Orientation="Vertical">
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="Job Number : " FontAttributes="Bold" FontSize="20" />
-                                <Label Text="{Binding JobNum}" FontAttributes="Bold" FontSize="20" />
+                                <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
                             </StackLayout>
                             <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
                             <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
@@ -37,4 +38,4 @@
             </DataTemplate>
         </ListView.ItemTemplate>
     </ListView>
-</ContentPage>
+</InstallerAppForms:CustomContentPageBackButton>

@@ -19,6 +19,8 @@ namespace InstallerAppForms
 
         public string JobNum { get; set; }
 
+        public string FullJobNum => string.Format("{0} : {1}", "Job Number", JobNum);
+
         public string MasterNum { get; set; }
 
         public string InstallAssignDate { get; set; }

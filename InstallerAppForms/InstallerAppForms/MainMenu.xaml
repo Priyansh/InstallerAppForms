@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<InstallerAppForms:CustomContentPageBackButton xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
              x:Class="InstallerAppForms.MainMenu"
              Padding="0, 15, 0, 0"
+             EnableBackButtonOverride="False"
              Title="Frendel Kitchens-Installer App">
     <Grid RowSpacing="15">
         <Grid.RowDefinitions>
@@ -38,4 +40,4 @@
             <Label  HorizontalOptions="CenterAndExpand" Text="LogOut" Margin="0, -25, 0, 0" FontSize="20" />
         </StackLayout>
     </Grid>
-</ContentPage>
+</InstallerAppForms:CustomContentPageBackButton>

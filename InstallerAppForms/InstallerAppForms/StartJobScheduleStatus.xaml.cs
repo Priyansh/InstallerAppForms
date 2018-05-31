@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace InstallerAppForms
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class StartJobScheduleStatus : ContentPage
+    public partial class StartJobScheduleStatus : CustomContentPageBackButton
     {
         int installerId;
         JobsInstallerCS SelectedJobItem;
@@ -18,6 +18,13 @@ namespace InstallerAppForms
         {
             InitializeComponent();
             this.SelectedJobItem = SelectedJobItem;
+            if (EnableBackButtonOverride)
+            {
+                this.CustomBackButtonAction = async () =>
+                {
+                    await Navigation.PopAsync(true);
+                };
+            }
 
             if (this.SelectedJobItem is null) return;
             string shippedDone = string.IsNullOrEmpty(this.SelectedJobItem.ShippedDone) ? "" : Convert.ToDateTime(this.SelectedJobItem.ShippedDone).ToString("MMM dd, yyyy");

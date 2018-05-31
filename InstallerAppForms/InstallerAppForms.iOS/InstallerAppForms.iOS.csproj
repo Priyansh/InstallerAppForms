@@ -93,6 +93,7 @@
     <AppExtensionDebugBundleId />
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="CustomContentBackButtonRenderer.cs" />
     <Compile Include="FrendelSOAPService.cs" />
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
@@ -327,6 +328,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\StartJobButton.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\iosbackarrow%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
