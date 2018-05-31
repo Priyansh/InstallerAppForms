@@ -17,7 +17,7 @@ namespace InstallerAppForms.iOS
         public override void ViewWillAppear(bool animated)
         {
             base.ViewWillAppear(animated);
-            //this.NavigationController.NavigationBar.BackItem.Title = "";
+            
             if (((CustomContentPageBackButton)Element).EnableBackButtonOverride)
             {
                 SetCustomBackButton();
