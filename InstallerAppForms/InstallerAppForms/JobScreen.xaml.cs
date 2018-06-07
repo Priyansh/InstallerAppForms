@@ -33,13 +33,11 @@ namespace InstallerAppForms
             }
         }
 
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
             lstJobScreen.BeginRefresh();
-            jobList = await App.FrendelSOAPService.GetInstaller(installerId);
-            lstJobScreen.ItemsSource = jobList;
-            lstJobScreen.EndRefresh();
+            jobListRefreshing();
         }
 
         //Method for calling REST API
@@ -67,6 +65,13 @@ namespace InstallerAppForms
         {
             var JobsInstallerCS = e.Item as JobsInstallerCS;
             await Navigation.PushAsync(new StartJobScheduleStatus(installerId, JobsInstallerCS));
+        }
+
+        private async void jobListRefreshing()
+        {
+            jobList = await App.FrendelSOAPService.GetInstaller(installerId);
+            lstJobScreen.ItemsSource = jobList;
+            lstJobScreen.EndRefresh();
         }
     }
 
