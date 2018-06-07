@@ -37,7 +37,7 @@ namespace InstallerAppForms
         {
             base.OnAppearing();
             lstJobScreen.BeginRefresh();
-            jobListRefreshing();
+            JobListRefreshing();
         }
 
         //Method for calling REST API
@@ -67,7 +67,7 @@ namespace InstallerAppForms
             await Navigation.PushAsync(new StartJobScheduleStatus(installerId, JobsInstallerCS));
         }
 
-        private async void jobListRefreshing()
+        private async void JobListRefreshing()
         {
             jobList = await App.FrendelSOAPService.GetInstaller(installerId);
             lstJobScreen.ItemsSource = jobList;

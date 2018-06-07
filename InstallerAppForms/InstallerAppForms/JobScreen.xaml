@@ -15,7 +15,7 @@
     <ListView x:Name="lstJobScreen" 
               HasUnevenRows="True"
               IsPullToRefreshEnabled="True"
-              Refreshing="jobListRefreshing"
+              Refreshing="JobListRefreshing"
               ItemTapped="lstJobScreen_ItemTapped">
         <ListView.ItemTemplate>
             <DataTemplate>
