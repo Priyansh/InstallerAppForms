@@ -79,12 +79,18 @@ namespace InstallerAppForms
                     {
                         if(columnCount != roomInfo.Count){
                             var button = new InstallerAppForms.WrappedButton { Text = roomInfo[columnCount].Rooms, HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
+                            button.Clicked += Button_Clicked;
                             gridJobScheduleStatus.Children.Add(button, col, row);
                             columnCount++;   
                         }
                     }
                 }
             }
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new IndividualRoom(installerId, SelectedJobItem));
         }
     }
 }

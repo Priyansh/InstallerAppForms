@@ -40,6 +40,9 @@
     </Compile>
     <Compile Include="CustomRenderers\CustomContentPageBackButton.cs" />
     <Compile Include="CustomRenderers\WrappedButton.cs" />
+    <Compile Include="IndividualRoom.xaml.cs">
+      <DependentUpon>IndividualRoom.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Interface\IInstallerAppMethods.cs" />
     <Compile Include="JobScreen.xaml.cs">
       <DependentUpon>JobScreen.xaml</DependentUpon>
@@ -118,6 +121,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="StartJobScheduleStatus.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IndividualRoom.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
