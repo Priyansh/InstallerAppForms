@@ -58,6 +58,7 @@
     <Compile Include="MarkupExtension\EmbeddedImage.cs" />
     <Compile Include="MarkupExtension\NumberValidatorBehavior.cs" />
     <Compile Include="MarkupExtension\StringToColorConverter.cs" />
+    <Compile Include="Models\IndividualRoomCS.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
     <Compile Include="Models\RoomInfoCS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

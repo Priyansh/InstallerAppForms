@@ -14,7 +14,9 @@ namespace InstallerAppForms
     {
         int installerId;
         JobsInstallerCS SelectedJobItem;
-        public IndividualRoom (int getInstallerId, JobsInstallerCS SelectedJobItem)
+        public JobsInstallerCS MyJobsInstallerCS { get; set; }
+        public IndividualRoomCS MyIndividualRoomCS { get; set; }
+        public IndividualRoom (int getInstallerId, JobsInstallerCS SelectedJobItem, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
             installerId = getInstallerId;
@@ -27,7 +29,12 @@ namespace InstallerAppForms
                 };
             }
             if (this.SelectedJobItem is null) return;
+
+            //MyJobsInstallerCS = DependencyService.Get<JobsInstallerCS>();
+            //MyIndividualRoomCS = DependencyService.Get<IndividualRoomCS>();
+            
             BindingContext = this.SelectedJobItem;
+            //RoomLabel.SetBinding(Label.TextProperty, new Binding(""));
         }
         protected override void OnAppearing()
         {

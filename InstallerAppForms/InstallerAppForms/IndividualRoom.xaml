@@ -6,26 +6,29 @@
              x:Class="InstallerAppForms.IndividualRoom"
              EnableBackButtonOverride="True" 
              Title="{Binding FullJobNum}"
-             Padding="0, 20, 0, 0">
+             Padding="0, 20, 0, 0" x:Name="IndividualRoom">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringToColorConverter x:Key="StringToColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout Orientation="Horizontal">
-        <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal">
-                <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                </StackLayout>
+                <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
+                </StackLayout>
             </StackLayout>
-            <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
-            <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
-            <StackLayout Orientation="Horizontal">
-                <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
-                <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
-            </StackLayout>
+            <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
         </StackLayout>
-        <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
-                               TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        <Label Text="{Binding IndividualRoom.Rooms}" FontSize="15" />
     </StackLayout>
 </InstallerAppForms:CustomContentPageBackButton>

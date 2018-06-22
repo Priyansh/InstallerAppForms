@@ -14,6 +14,7 @@ namespace InstallerAppForms
     {
         int installerId;
         JobsInstallerCS SelectedJobItem;
+        List<RoomInfoCS> roomInfo;
         public StartJobScheduleStatus(int getInstallerId, JobsInstallerCS SelectedJobItem)
         {
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace InstallerAppForms
                 lblStartJob.Text = "Select a Room for more options";
                 lblInstallerJobStart.Text = this.SelectedJobItem.InstallerJobStart;
 
-                var roomInfo = await App.FrendelSOAPService.GetRoomInfo(this.SelectedJobItem.CSID);
+                roomInfo = await App.FrendelSOAPService.GetRoomInfo(this.SelectedJobItem.CSID);
 
                 int columnCount = 0;
                 for (int row = 0; columnCount != roomInfo.Count; row++)
@@ -78,10 +79,10 @@ namespace InstallerAppForms
                     for(int col = 0; col < 3; col++)
                     {
                         if(columnCount != roomInfo.Count){
-                            var button = new InstallerAppForms.WrappedButton { Text = roomInfo[columnCount].Rooms, HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
+                            var button = new InstallerAppForms.WrappedButton { Text = roomInfo[columnCount].Rooms,  HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
                             button.Clicked += Button_Clicked;
                             gridJobScheduleStatus.Children.Add(button, col, row);
-                            columnCount++;   
+                            columnCount++;
                         }
                     }
                 }
@@ -90,7 +91,19 @@ namespace InstallerAppForms
 
         private async void Button_Clicked(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new IndividualRoom(installerId, SelectedJobItem));
+            var item = ((Button)sender).Text;
+            IEnumerable<RoomInfoCS> roomFound = roomInfo.Where(w => w.Rooms == item);
+            IndividualRoomCS individualRoom = new IndividualRoomCS();
+            individualRoom.RSNo = roomFound.ElementAt(0).RSNo;
+            individualRoom.CSID = roomFound.ElementAt(0).CSID;
+            individualRoom.Rooms = roomFound.ElementAt(0).Rooms;
+            individualRoom.Style = roomFound.ElementAt(0).Style;
+            individualRoom.Colour = roomFound.ElementAt(0).Colour;
+            individualRoom.Hardware = roomFound.ElementAt(0).Hardware;
+            individualRoom.CounterTop = roomFound.ElementAt(0).CounterTop;
+            individualRoom.PartsCount = await App.FrendelSOAPService.GetPartInfo(SelectedJobItem.MasterNum,individualRoom.Rooms);
+            individualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(individualRoom.RSNo);
+            await Navigation.PushAsync(new IndividualRoom(installerId, SelectedJobItem, individualRoom));
         }
     }
 }

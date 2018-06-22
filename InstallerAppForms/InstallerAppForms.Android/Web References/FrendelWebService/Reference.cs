@@ -125,6 +125,8 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         private System.Threading.SendOrPostCallback insKP_getInstallerImagesOperationCompleted;
         
+        private System.Threading.SendOrPostCallback InsKP_CountInstallerImagesOperationCompleted;
+        
         private System.Threading.SendOrPostCallback InsKP_PartsOrderOperationCompleted;
         
         private System.Threading.SendOrPostCallback InsKP_PartsOrderIssueOperationCompleted;
@@ -318,6 +320,9 @@ namespace InstallerAppForms.Droid.FrendelWebService {
         
         /// <remarks/>
         public event insKP_getInstallerImagesCompletedEventHandler insKP_getInstallerImagesCompleted;
+        
+        /// <remarks/>
+        public event InsKP_CountInstallerImagesCompletedEventHandler InsKP_CountInstallerImagesCompleted;
         
         /// <remarks/>
         public event InsKP_PartsOrderCompletedEventHandler InsKP_PartsOrderCompleted;
@@ -1765,6 +1770,35 @@ namespace InstallerAppForms.Droid.FrendelWebService {
             if ((this.insKP_getInstallerImagesCompleted != null)) {
                 System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
                 this.insKP_getInstallerImagesCompleted(this, new insKP_getInstallerImagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/InsKP_CountInstallerImages", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public int InsKP_CountInstallerImages(string RoomNo) {
+            object[] results = this.Invoke("InsKP_CountInstallerImages", new object[] {
+                        RoomNo});
+            return ((int)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void InsKP_CountInstallerImagesAsync(string RoomNo) {
+            this.InsKP_CountInstallerImagesAsync(RoomNo, null);
+        }
+        
+        /// <remarks/>
+        public void InsKP_CountInstallerImagesAsync(string RoomNo, object userState) {
+            if ((this.InsKP_CountInstallerImagesOperationCompleted == null)) {
+                this.InsKP_CountInstallerImagesOperationCompleted = new System.Threading.SendOrPostCallback(this.OnInsKP_CountInstallerImagesOperationCompleted);
+            }
+            this.InvokeAsync("InsKP_CountInstallerImages", new object[] {
+                        RoomNo}, this.InsKP_CountInstallerImagesOperationCompleted, userState);
+        }
+        
+        private void OnInsKP_CountInstallerImagesOperationCompleted(object arg) {
+            if ((this.InsKP_CountInstallerImagesCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.InsKP_CountInstallerImagesCompleted(this, new InsKP_CountInstallerImagesCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
             }
         }
         
@@ -6381,6 +6415,32 @@ namespace InstallerAppForms.Droid.FrendelWebService {
             get {
                 this.RaiseExceptionIfNecessary();
                 return ((byte[][])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    public delegate void InsKP_CountInstallerImagesCompletedEventHandler(object sender, InsKP_CountInstallerImagesCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.7.2556.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class InsKP_CountInstallerImagesCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal InsKP_CountInstallerImagesCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public int Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((int)(this.results[0]));
             }
         }
     }

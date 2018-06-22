@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using InstallerAppForms.Interface;
+using Xamarin.Forms;
 
+[assembly: Dependency(typeof(InstallerAppForms.JobsInstallerCS))]
 namespace InstallerAppForms
 {
     public class JobsInstallerCS

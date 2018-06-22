@@ -1107,6 +1107,20 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="InsKP_CountInstallerImages">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="RoomNo" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="InsKP_CountInstallerImagesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="InsKP_CountInstallerImagesResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
       <s:element name="InsKP_PartsOrder">
         <s:complexType>
           <s:sequence>
@@ -1484,6 +1498,12 @@
   <wsdl:message name="insKP_getInstallerImagesSoapOut">
     <wsdl:part name="parameters" element="tns:insKP_getInstallerImagesResponse" />
   </wsdl:message>
+  <wsdl:message name="InsKP_CountInstallerImagesSoapIn">
+    <wsdl:part name="parameters" element="tns:InsKP_CountInstallerImages" />
+  </wsdl:message>
+  <wsdl:message name="InsKP_CountInstallerImagesSoapOut">
+    <wsdl:part name="parameters" element="tns:InsKP_CountInstallerImagesResponse" />
+  </wsdl:message>
   <wsdl:message name="InsKP_PartsOrderSoapIn">
     <wsdl:part name="parameters" element="tns:InsKP_PartsOrder" />
   </wsdl:message>
@@ -1712,6 +1732,10 @@
     <wsdl:operation name="insKP_getInstallerImages">
       <wsdl:input message="tns:insKP_getInstallerImagesSoapIn" />
       <wsdl:output message="tns:insKP_getInstallerImagesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <wsdl:input message="tns:InsKP_CountInstallerImagesSoapIn" />
+      <wsdl:output message="tns:InsKP_CountInstallerImagesSoapOut" />
     </wsdl:operation>
     <wsdl:operation name="InsKP_PartsOrder">
       <wsdl:input message="tns:InsKP_PartsOrderSoapIn" />
@@ -2165,6 +2189,15 @@
     </wsdl:operation>
     <wsdl:operation name="insKP_getInstallerImages">
       <soap:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <soap:operation soapAction="http://tempuri.org/InsKP_CountInstallerImages" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
@@ -2654,6 +2687,15 @@
     </wsdl:operation>
     <wsdl:operation name="insKP_getInstallerImages">
       <soap12:operation soapAction="http://tempuri.org/insKP_getInstallerImages" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="InsKP_CountInstallerImages">
+      <soap12:operation soapAction="http://tempuri.org/InsKP_CountInstallerImages" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>
