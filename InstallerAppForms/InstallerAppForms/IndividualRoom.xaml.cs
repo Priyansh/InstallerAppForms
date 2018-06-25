@@ -13,14 +13,11 @@ namespace InstallerAppForms
 	public partial class IndividualRoom : CustomContentPageBackButton
     {
         int installerId;
-        JobsInstallerCS SelectedJobItem;
-        public JobsInstallerCS MyJobsInstallerCS { get; set; }
-        public IndividualRoomCS MyIndividualRoomCS { get; set; }
         public IndividualRoom (int getInstallerId, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
             installerId = getInstallerId;
-            //this.SelectedJobItem = SelectedJobItem;
+            
             if (EnableBackButtonOverride)
             {
                 this.CustomBackButtonAction = async () =>
@@ -29,18 +26,24 @@ namespace InstallerAppForms
                 };
             }
             if (individualRoom is null) return;
-
-            //MyJobsInstallerCS = DependencyService.Get<JobsInstallerCS>();
-            //MyIndividualRoomCS = DependencyService.Get<IndividualRoomCS>();
             
             BindingContext = individualRoom;
-            //RoomLabel.SetBinding(Label.TextProperty, new Binding(""));
         }
         protected override void OnAppearing()
         {
             base.OnAppearing();
             //lstJobScreen.BeginRefresh();
             //JobListRefreshing();
+        }
+
+        private async void OnPartsTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainMenu(installerId));
+        }
+
+        private async void OnPhotosTapped(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainMenu(installerId));
         }
     }
 }

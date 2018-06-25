@@ -20,6 +20,8 @@ namespace InstallerAppForms
 
         public string Colour { get; set; }
 
+        public string FormattedStyleColor { get { return Style + " / " + Colour; } }
+
         public string Hardware { get; set; }
 
         public string CounterTop { get; set; }
@@ -29,5 +31,7 @@ namespace InstallerAppForms
         public int DeliveryPhoto { get; set; }
 
         public int InstallationPhoto { get; set; }
+
+        public string FormattedInstallationPhoto { get { return "Installation Photos : " + InstallationPhoto; } }
     }
 }

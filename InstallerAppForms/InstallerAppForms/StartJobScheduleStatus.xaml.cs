@@ -51,6 +51,8 @@ namespace InstallerAppForms
             var installerByCSID = await App.FrendelSOAPService.GetInstaller(installerId);
             var tempList = installerByCSID.Where(i => i.CSID == this.SelectedJobItem.CSID).ToList();
             this.SelectedJobItem.InstallerJobStart = tempList[0].InstallerJobStart;
+            this.SelectedJobItem.ImageJobStatus = tempList[0].ImageJobStatus;
+            this.SelectedJobItem.JobCurrentStatus = tempList[0].JobCurrentStatus;
             funStartingJob(this.SelectedJobItem.InstallerJobStatus);
         }
 
