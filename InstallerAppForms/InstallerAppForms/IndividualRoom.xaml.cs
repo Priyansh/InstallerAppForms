@@ -16,11 +16,11 @@ namespace InstallerAppForms
         JobsInstallerCS SelectedJobItem;
         public JobsInstallerCS MyJobsInstallerCS { get; set; }
         public IndividualRoomCS MyIndividualRoomCS { get; set; }
-        public IndividualRoom (int getInstallerId, JobsInstallerCS SelectedJobItem, IndividualRoomCS individualRoom)
+        public IndividualRoom (int getInstallerId, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
             installerId = getInstallerId;
-            this.SelectedJobItem = SelectedJobItem;
+            //this.SelectedJobItem = SelectedJobItem;
             if (EnableBackButtonOverride)
             {
                 this.CustomBackButtonAction = async () =>
@@ -28,12 +28,12 @@ namespace InstallerAppForms
                     await Navigation.PopAsync(true);
                 };
             }
-            if (this.SelectedJobItem is null) return;
+            if (individualRoom is null) return;
 
             //MyJobsInstallerCS = DependencyService.Get<JobsInstallerCS>();
             //MyIndividualRoomCS = DependencyService.Get<IndividualRoomCS>();
             
-            BindingContext = this.SelectedJobItem;
+            BindingContext = individualRoom;
             //RoomLabel.SetBinding(Label.TextProperty, new Binding(""));
         }
         protected override void OnAppearing()

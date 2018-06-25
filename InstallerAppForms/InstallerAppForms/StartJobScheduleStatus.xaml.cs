@@ -94,6 +94,23 @@ namespace InstallerAppForms
             var item = ((Button)sender).Text;
             IEnumerable<RoomInfoCS> roomFound = roomInfo.Where(w => w.Rooms == item);
             IndividualRoomCS individualRoom = new IndividualRoomCS();
+            individualRoom.Company = SelectedJobItem.Company;
+            individualRoom.Project = SelectedJobItem.Project;
+            individualRoom.Lot = SelectedJobItem.Lot;
+            individualRoom.JobNum = SelectedJobItem.JobNum;
+            individualRoom.MasterNum = SelectedJobItem.MasterNum;
+            individualRoom.InstallAssignDate = SelectedJobItem.InstallAssignDate;
+            individualRoom.InstallAssignPerson = SelectedJobItem.InstallAssignPerson;
+            individualRoom.ShippedDone = SelectedJobItem.ShippedDone;
+            individualRoom.JobNum = SelectedJobItem.JobNum;
+            individualRoom.InstallerAssignID = SelectedJobItem.InstallerAssignID;
+            individualRoom.InstallerJobStatus = SelectedJobItem.InstallerJobStatus;
+            individualRoom.InstallerJobStart = SelectedJobItem.InstallerJobStart;
+            individualRoom.InstallerJobComplete = SelectedJobItem.InstallerJobComplete;
+            individualRoom.ImageJobStatus = SelectedJobItem.ImageJobStatus;
+            individualRoom.JobCurrentStatus = SelectedJobItem.JobCurrentStatus;
+            individualRoom.JobStatusTextColor = SelectedJobItem.JobStatusTextColor;
+
             individualRoom.RSNo = roomFound.ElementAt(0).RSNo;
             individualRoom.CSID = roomFound.ElementAt(0).CSID;
             individualRoom.Rooms = roomFound.ElementAt(0).Rooms;
@@ -103,7 +120,7 @@ namespace InstallerAppForms
             individualRoom.CounterTop = roomFound.ElementAt(0).CounterTop;
             individualRoom.PartsCount = await App.FrendelSOAPService.GetPartInfo(SelectedJobItem.MasterNum,individualRoom.Rooms);
             individualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(individualRoom.RSNo);
-            await Navigation.PushAsync(new IndividualRoom(installerId, SelectedJobItem, individualRoom));
+            await Navigation.PushAsync(new IndividualRoom(installerId, individualRoom));
         }
     }
 }
