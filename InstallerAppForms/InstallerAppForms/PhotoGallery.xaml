@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<InstallerAppForms:CustomContentPageBackButton xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
+             xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
+             x:Class="InstallerAppForms.PhotoGallery"
+             EnableBackButtonOverride="True"
+             Title="{Binding FullJobNum}"
+             Padding="0, 20, 0, 0" x:Name="PhotoGallery">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConverter x:Key="StringToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <StackLayout Orientation="Vertical">
+        <StackLayout Orientation="Horizontal">
+            <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                </StackLayout>
+                <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        </StackLayout>
+        <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+    </StackLayout>
+</InstallerAppForms:CustomContentPageBackButton>

@@ -13,11 +13,12 @@ namespace InstallerAppForms
 	public partial class IndividualRoom : CustomContentPageBackButton
     {
         int installerId;
+        IndividualRoomCS selectedIndividualRoom;
         public IndividualRoom (int getInstallerId, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
             installerId = getInstallerId;
-            
+            this.selectedIndividualRoom = individualRoom;
             if (EnableBackButtonOverride)
             {
                 this.CustomBackButtonAction = async () =>
@@ -25,9 +26,9 @@ namespace InstallerAppForms
                     await Navigation.PopAsync(true);
                 };
             }
-            if (individualRoom is null) return;
+            if (this.selectedIndividualRoom is null) return;
             
-            BindingContext = individualRoom;
+            BindingContext = this.selectedIndividualRoom;
         }
         protected override void OnAppearing()
         {
@@ -43,7 +44,7 @@ namespace InstallerAppForms
 
         private async void OnPhotosTapped(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new MainMenu(installerId));
+            await Navigation.PushAsync(new PhotoGallery(installerId, this.selectedIndividualRoom));
         }
     }
 }

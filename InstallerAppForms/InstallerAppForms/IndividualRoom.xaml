@@ -46,22 +46,22 @@
         <StackLayout Orientation="Horizontal">
             <Label Text="PARTS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
             <Label Text="Parts Ordered" FontSize="15" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding PartsCount}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+            <Label Text="{Binding PartsCount}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
         </StackLayout>
         <StackLayout Orientation="Horizontal" Padding="0, 15, 0, 0">
             <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
-            <StackLayout Orientation="Vertical" HorizontalOptions="Center" VerticalOptions="Center">
+            <StackLayout Orientation="Vertical">
                 <StackLayout.GestureRecognizers>
                     <TapGestureRecognizer Tapped="OnPhotosTapped"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Delivery Photos : 0 " FontSize="15" FontAttributes="Bold" />
+                <Label Text="Delivery Photos : 0 " FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
                 <Label Text="" />
-                <Label Text="{Binding FormattedInstallationPhoto}" FontSize="15" FontAttributes="Bold" />
+                <Label Text="{Binding FormattedInstallationPhoto}" FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
             </StackLayout>
         </StackLayout>
         <StackLayout Orientation="Horizontal">
             <Label Text="PHOTOS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
-            <Label Text="{Binding InstallationPhoto}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" />
+            <Label Text="{Binding InstallationPhoto}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
         </StackLayout>
     </StackLayout>
 </InstallerAppForms:CustomContentPageBackButton>
