@@ -12,56 +12,65 @@
             <local:StringToColorConverter x:Key="StringToColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    <StackLayout Orientation="Vertical">
-        <StackLayout Orientation="Horizontal">
-            <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
-            <StackLayout Orientation="Vertical">
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+    <ScrollView Orientation="Vertical">
+        <StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                    </StackLayout>
+                    <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                        <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
+                    </StackLayout>
                 </StackLayout>
-                <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
-                <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
-                <StackLayout Orientation="Horizontal">
-                    <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
-                    <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
-                </StackLayout>
+
+                <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
             </StackLayout>
 
-            <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
-                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
-        </StackLayout>
-        
-        <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
-        <StackLayout Orientation="Horizontal">
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Tapped="OnPartsTapped"/>
-            </StackLayout.GestureRecognizers>
-            <Image x:Name="imgParts" Source="Barcode.png" VerticalOptions="Start" BackgroundColor="Transparent" />
-            <StackLayout Orientation="Vertical">
-                <Label Text="{Binding FormattedStyleColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" />
-                <Label Text="{Binding Hardware}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-                <Label Text="{Binding CounterTop}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
-            </StackLayout>
-        </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="PARTS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
-            <Label Text="Parts Ordered" FontSize="15" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
-            <Label Text="{Binding PartsCount}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
-        </StackLayout>
-        <StackLayout Orientation="Horizontal" Padding="0, 15, 0, 0">
-            <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
-            <StackLayout Orientation="Vertical">
+            <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" VerticalOptions="Center" HorizontalOptions="Center" />
+            <StackLayout Orientation="Horizontal">
                 <StackLayout.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="OnPhotosTapped"/>
+                    <TapGestureRecognizer Tapped="OnPartsTapped"/>
                 </StackLayout.GestureRecognizers>
-                <Label Text="Delivery Photos : 0 " FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
-                <Label Text="" />
-                <Label Text="{Binding FormattedInstallationPhoto}" FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
+                <Image x:Name="imgParts" Source="Barcode.png" VerticalOptions="Start" BackgroundColor="Transparent" />
+                <StackLayout Orientation="Vertical">
+                    <Label Text="{Binding FormattedStyleColor}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center" />
+                    <Label Text="{Binding Hardware}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                    <Label Text="{Binding CounterTop}" FontSize="15" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="PARTS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
+                <Label Text="Parts Ordered" FontSize="15" FontAttributes="Bold" HorizontalOptions="CenterAndExpand"/>
+                <Label Text="{Binding PartsCount}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
+            </StackLayout>
+
+            <BoxView HeightRequest="1" 
+                     BackgroundColor="Black" 
+                     HorizontalOptions="FillAndExpand" />
+            
+            <StackLayout Orientation="Horizontal" Padding="0, 15, 0, 0">
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnPhotosTapped" 
+                                              NumberOfTapsRequired="1" />
+                </StackLayout.GestureRecognizers>
+                <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
+                <StackLayout Orientation="Vertical">
+                    <Label Text="Delivery Photos : 0 " FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
+                    <Label Text="" />
+                    <Label Text="{Binding FormattedInstallationPhoto}" FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal">
+                <Label Text="PHOTOS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
+                <Label Text="{Binding InstallationPhoto}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
             </StackLayout>
         </StackLayout>
-        <StackLayout Orientation="Horizontal">
-            <Label Text="PHOTOS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
-            <Label Text="{Binding InstallationPhoto}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
-        </StackLayout>
-    </StackLayout>
+    </ScrollView>
+    
 </InstallerAppForms:CustomContentPageBackButton>

@@ -339,6 +339,9 @@
   <ItemGroup>
     <BundleResource Include="Resources\CameraDigital.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\Camera.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

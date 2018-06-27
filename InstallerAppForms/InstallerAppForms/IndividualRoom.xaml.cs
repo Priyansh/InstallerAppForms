@@ -14,6 +14,7 @@ namespace InstallerAppForms
     {
         int installerId;
         IndividualRoomCS selectedIndividualRoom;
+        int tapCount = 0;
         public IndividualRoom (int getInstallerId, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
@@ -39,11 +40,27 @@ namespace InstallerAppForms
 
         private async void OnPartsTapped(object sender, EventArgs e)
         {
+            const int _animationTime = 50;
+            try
+            {
+                var layout = (StackLayout)sender;
+                await layout.FadeTo(0.5, _animationTime);
+                await layout.FadeTo(1, _animationTime);
+            }
+            catch (Exception ex) { }
             await Navigation.PushAsync(new MainMenu(installerId));
         }
 
         private async void OnPhotosTapped(object sender, EventArgs e)
         {
+            const int _animationTime = 50;
+            try
+            {
+                var layout = (StackLayout)sender;
+                await layout.FadeTo(0.5, _animationTime);
+                await layout.FadeTo(1, _animationTime);
+            }
+            catch (Exception ex) { }
             await Navigation.PushAsync(new PhotoGallery(installerId, this.selectedIndividualRoom));
         }
     }

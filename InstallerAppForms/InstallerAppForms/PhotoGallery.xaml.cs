@@ -31,5 +31,10 @@ namespace InstallerAppForms
 
             BindingContext = this.selectedIndividualRoom;
         }
+
+        private void BtnPhoto_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 }
