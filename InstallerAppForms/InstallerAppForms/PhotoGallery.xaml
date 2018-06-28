@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <InstallerAppForms:CustomContentPageBackButton xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
@@ -12,8 +12,7 @@
             <local:StringToColorConverter x:Key="StringToColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
-    
-    <ScrollView>
+
         <RelativeLayout>
             <StackLayout Orientation="Horizontal" x:Name="slJobStatus"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
@@ -38,25 +37,39 @@
             <StackLayout Orientation="Vertical" BackgroundColor="LightBlue" x:Name="slPhotoGallery"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
-                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.6}">
-                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" BackgroundColor="LightCyan">
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.8}">
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                     <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
                     <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+                    <Button Text="AddPhoto" Image="Camera.png" TextColor="Black" FontSize="15" WidthRequest="100" HeightRequest="80" Margin="0, 0, 0, -20" FontAttributes="Bold" Clicked="BtnPhoto_Clicked" />
                 </StackLayout>
-                <Grid x:Name="grdLayout" RowSpacing="5">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="40"/>
-                        <RowDefinition Height="100"/>
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
-                        <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
-                        <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
-                    </StackLayout>
-                    <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">
-                        <Button x:Name="btnJobs1" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
-                        <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
-                    </StackLayout>
-                </Grid>
+                <ScrollView>
+                    <Grid x:Name="grdLayout" RowSpacing="5" Margin="0, -50, 0, 0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="100"/>
+                            <RowDefinition Height="40"/>
+                            <RowDefinition Height="100"/>
+                        </Grid.RowDefinitions>
+                        <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
+                            <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
+                            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Row="2" Grid.ColumnSpan="3">
+                            <Button x:Name="btnJobs1" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
+                            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Row="3" Grid.ColumnSpan="3">
+                            <Button x:Name="btnJobs2" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
+                            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
+                        </StackLayout>
+                        <StackLayout Orientation="Horizontal" Grid.Row="4" Grid.ColumnSpan="3">
+                            <Button x:Name="btnJobs3" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" />
+                            <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
+                        </StackLayout>
+                    </Grid>
+                </ScrollView>
+                
             </StackLayout>
 
             <!--<StackLayout Orientation="Horizontal" VerticalOptions="End" BackgroundColor="LightBlue"
@@ -79,7 +92,5 @@
             </RelativeLayout>-->
             
         </RelativeLayout>
-    </ScrollView>
-    
     
 </InstallerAppForms:CustomContentPageBackButton>
