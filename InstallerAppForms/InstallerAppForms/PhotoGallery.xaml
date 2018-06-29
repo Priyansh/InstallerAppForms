@@ -108,7 +108,7 @@
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.1}">
-                <Button Text="" Image="Camera.png" TextColor="Black" WidthRequest="50" HeightRequest="50" Clicked="BtnPhoto_Clicked" HorizontalOptions="Fill" BackgroundColor="Transparent" />
+                <Button Text="" Image="Camera.png" TextColor="Black" WidthRequest="50" HeightRequest="50" Clicked="BtnPhoto_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
                 <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0" />
             </StackLayout>
         </StackLayout>
