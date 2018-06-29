@@ -75,7 +75,7 @@
             </RelativeLayout>
             
         </RelativeLayout> -->
-    <ScrollView>
+    
         <StackLayout Orientation="Vertical">
             <StackLayout Orientation="Horizontal" x:Name="slJobStatus">
                 <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
@@ -101,7 +101,11 @@
                 <!--<Button Text="" Image="Camera.png" TextColor="Black" FontSize="15" WidthRequest="100" HeightRequest="80" Margin="0, -15, 0, 0" FontAttributes="Bold" Clicked="BtnPhoto_Clicked" />-->
             </StackLayout>
             <ScrollView>
-                <Grid x:Name="grdLayout">
+                <Grid x:Name="grdLayout" BackgroundColor="White" ColumnSpacing="-10" RowSpacing="30">
+                    <!--<Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="50" />
+                        <ColumnDefinition Width="50" />
+                    </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="*" />
                         <RowDefinition Height="Auto" />
@@ -109,7 +113,7 @@
                     <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
                         <Image x:Name="PhotoImage" WidthRequest="200" HeightRequest="200" />
                         <Image x:Name="PhotoImage1" WidthRequest="200" HeightRequest="200" />
-                    </StackLayout>
+                    </StackLayout> -->
                 </Grid>
             </ScrollView>
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue"
@@ -117,9 +121,8 @@
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.1}">
                 <Button Text="" HorizontalOptions="Start" />
                 <Button Text="" Image="Camera.png" TextColor="Black" WidthRequest="120" HeightRequest="80" Clicked="BtnPhoto_Clicked" HorizontalOptions="Center" />
-                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 20, 0, 0" HorizontalOptions="Center" />
+                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="-20, 30, 0, 0" HorizontalOptions="Center" />
             </StackLayout>
         </StackLayout>
-    </ScrollView>
     
 </InstallerAppForms:CustomContentPageBackButton>
