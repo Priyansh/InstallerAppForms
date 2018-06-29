@@ -121,5 +121,14 @@ namespace InstallerAppForms.Droid
                 FrendelWS.InsKP_UpdateInstallerStatus(CSID, InstallerJobStatus);
             });
         }
+
+        //-----------------------ALL INSERT METHODS STARTS HERE------------------------------------------
+        public async Task<byte[][]> InsertInstallerImages(int CSID, byte[] InstallerImages, string RoomNo, string RoomName)
+        {
+            return await Task.Run(() =>
+            {
+                return FrendelWS.insKP_InsertInstallerImages(CSID.ToString(), InstallerImages, RoomNo, RoomName);
+            });
+        }
     }
 }

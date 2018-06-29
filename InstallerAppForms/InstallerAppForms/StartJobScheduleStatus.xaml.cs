@@ -99,6 +99,7 @@ namespace InstallerAppForms
             individualRoom.Company = SelectedJobItem.Company;
             individualRoom.Project = SelectedJobItem.Project;
             individualRoom.Lot = SelectedJobItem.Lot;
+            individualRoom.CSID = SelectedJobItem.CSID;
             individualRoom.JobNum = SelectedJobItem.JobNum;
             individualRoom.MasterNum = SelectedJobItem.MasterNum;
             individualRoom.InstallAssignDate = SelectedJobItem.InstallAssignDate;
@@ -114,7 +115,6 @@ namespace InstallerAppForms
             individualRoom.JobStatusTextColor = SelectedJobItem.JobStatusTextColor;
 
             individualRoom.RSNo = roomFound.ElementAt(0).RSNo;
-            individualRoom.CSID = roomFound.ElementAt(0).CSID;
             individualRoom.Rooms = roomFound.ElementAt(0).Rooms;
             individualRoom.Style = roomFound.ElementAt(0).Style;
             individualRoom.Colour = roomFound.ElementAt(0).Colour;

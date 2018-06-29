@@ -102,26 +102,14 @@
             </StackLayout>
             <ScrollView>
                 <Grid x:Name="grdLayout" BackgroundColor="White" ColumnSpacing="-10" RowSpacing="30">
-                    <!--<Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="50" />
-                        <ColumnDefinition Width="50" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="2">
-                        <Image x:Name="PhotoImage" WidthRequest="200" HeightRequest="200" />
-                        <Image x:Name="PhotoImage1" WidthRequest="200" HeightRequest="200" />
-                    </StackLayout> -->
+                    
                 </Grid>
             </ScrollView>
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.1}">
-                <Button Text="" HorizontalOptions="Start" />
-                <Button Text="" Image="Camera.png" TextColor="Black" WidthRequest="120" HeightRequest="80" Clicked="BtnPhoto_Clicked" HorizontalOptions="Center" />
-                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="-20, 30, 0, 0" HorizontalOptions="Center" />
+                <Button Text="" Image="Camera.png" TextColor="Black" WidthRequest="50" HeightRequest="50" Clicked="BtnPhoto_Clicked" HorizontalOptions="Fill" BackgroundColor="Transparent" />
+                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0" />
             </StackLayout>
         </StackLayout>
     

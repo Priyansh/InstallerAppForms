@@ -16,5 +16,7 @@ namespace InstallerAppForms.Interface
         Task<int> CountInstallerImages(string RoomNo);
         //Update Methods
         Task UpdateInstallerStatus(int CSID, int InstallerJobStatus);
+        //Insert Methods
+        Task<byte[][]> InsertInstallerImages(int CSID, byte[] InstallerImages, string RoomNo, string RoomName);
     }
 }

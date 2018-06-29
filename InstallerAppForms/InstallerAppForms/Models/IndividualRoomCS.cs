@@ -12,7 +12,7 @@ namespace InstallerAppForms
     {
         public string RSNo { get; set; }
 
-        public string CSID { get; set; }
+        //public string CSID { get; set; }
 
         public string Rooms { get; set; }
 
