@@ -14,6 +14,7 @@ namespace InstallerAppForms.Interface
         Task<List<RoomInfoCS>> GetRoomInfo(int CSID);
         Task<int> GetPartInfo(string FkNo, string RoomName);
         Task<int> CountInstallerImages(string RoomNo);
+        Task<byte[][]> GetInstallerImages(string RoomNo);
         //Update Methods
         Task UpdateInstallerStatus(int CSID, int InstallerJobStatus);
         //Insert Methods

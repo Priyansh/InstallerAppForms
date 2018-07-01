@@ -14,7 +14,7 @@ namespace InstallerAppForms
     {
         int installerId;
         IndividualRoomCS selectedIndividualRoom;
-        int tapCount = 0;
+
         public IndividualRoom (int getInstallerId, IndividualRoomCS individualRoom)
 		{
 			InitializeComponent();
@@ -28,12 +28,13 @@ namespace InstallerAppForms
                 };
             }
             if (this.selectedIndividualRoom is null) return;
-            
-            BindingContext = this.selectedIndividualRoom;
+
         }
-        protected override void OnAppearing()
+        protected override async void OnAppearing()
         {
             base.OnAppearing();
+            this.selectedIndividualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(this.selectedIndividualRoom.RSNo);
+            BindingContext = this.selectedIndividualRoom;
             //lstJobScreen.BeginRefresh();
             //JobListRefreshing();
         }

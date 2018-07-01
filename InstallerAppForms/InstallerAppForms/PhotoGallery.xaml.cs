@@ -16,12 +16,18 @@ namespace InstallerAppForms
     {
         int installerId;
         IndividualRoomCS selectedIndividualRoom;
-        int row = 0;  int col = 0;
+        int row = 0;  int col = 0, CSID, TotalImages = 0;
+        string RoomNo, RoomName;
+
         public PhotoGallery(int getInstallerId, IndividualRoomCS individualRoom)
         {
             InitializeComponent();
             installerId = getInstallerId;
             this.selectedIndividualRoom = individualRoom;
+            CSID = this.selectedIndividualRoom.CSID;
+            RoomNo = this.selectedIndividualRoom.RSNo;
+            RoomName = this.selectedIndividualRoom.Rooms;
+
             if (EnableBackButtonOverride)
             {
                 this.CustomBackButtonAction = async () =>
@@ -33,6 +39,8 @@ namespace InstallerAppForms
             if (this.selectedIndividualRoom is null) return;
 
             BindingContext = this.selectedIndividualRoom;
+
+            GetInstallerImages();
         }
         
         private async void BtnPhoto_Clicked(object sender, EventArgs e)
@@ -74,13 +82,43 @@ namespace InstallerAppForms
             }
 
             //Insert photos in DB and fetch info from DB at same time
-            //Store images in bitmap array, then upload to Grid
-            int CSID = this.selectedIndividualRoom.CSID;
-            string RoomNo = this.selectedIndividualRoom.RSNo;
-            string RoomName = this.selectedIndividualRoom.Rooms;
+            //Store images in byte array, then upload to Grid
 
-            byte[][] lstByteArryImages;
-            lstByteArryImages = await App.FrendelSOAPService.InsertInstallerImages(CSID, imageAsBytes, RoomNo, RoomName);
+            await App.FrendelSOAPService.InsertInstallerImages(CSID, imageAsBytes, RoomNo, RoomName);
         }
+
+        public async void GetInstallerImages(){
+            byte[][] lstByteArryImages = await App.FrendelSOAPService.GetInstallerImages(RoomNo);
+            TotalImages = lstByteArryImages.Count();
+
+            foreach(var imageBytes in lstByteArryImages){
+                var newImage = new Image
+                {
+                    Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)),
+                    WidthRequest = 200,
+                    HeightRequest = 200
+                };
+                if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
+
+                grdLayout.ColumnDefinitions.Add(new ColumnDefinition
+                {
+                    Width = new GridLength(200, GridUnitType.Absolute)
+                });
+
+                grdLayout.Children.Add(newImage, col, row);
+                col++;
+                if (col == 2) { col = 0; row++; }
+
+            }
+
+            //Calculation for Rows
+            if (TotalImages % 2 == 0) row = TotalImages / 2;
+            else { 
+                row = (TotalImages / 2) + 1;
+                col = 1;
+                row--; //row always starts from 0, so if row = 2 it means starts from (0, 1) = 2 , same like index
+            }
+
+        } //End of Method
     }
 }

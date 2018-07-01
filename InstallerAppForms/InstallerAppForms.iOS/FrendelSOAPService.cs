@@ -118,6 +118,13 @@ namespace InstallerAppForms.iOS
             });
         }
 
+        public async Task<byte[][]> GetInstallerImages(string RoomNo){
+            return await Task.Run(() =>
+            {
+                return FrendelWS.insKP_getInstallerImages(RoomNo);
+            });
+        }
+
         //------------------------ALL UPDATES METHODS STARTS HERE -------------------------------------
         public async Task UpdateInstallerStatus(int CSID, int InstallerJobStatus)
         {
