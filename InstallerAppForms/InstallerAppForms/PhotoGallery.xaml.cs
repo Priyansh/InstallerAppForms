@@ -18,7 +18,13 @@ namespace InstallerAppForms
         IndividualRoomCS selectedIndividualRoom;
         int row = 0;  int col = 0, CSID, TotalImages = 0;
         string RoomNo, RoomName;
-
+        ActivityIndicator indicator = new ActivityIndicator
+        {
+            HorizontalOptions = LayoutOptions.FillAndExpand,
+            VerticalOptions = LayoutOptions.FillAndExpand,
+            Color = Color.Black,
+            IsVisible = false
+        };
         public PhotoGallery(int getInstallerId, IndividualRoomCS individualRoom)
         {
             InitializeComponent();
@@ -88,6 +94,10 @@ namespace InstallerAppForms
         }
 
         public async void GetInstallerImages(){
+            indicator.IsRunning = true;
+            indicator.IsVisible = true;
+            grdLayout.Children.Add(indicator, 0, 0);
+            Grid.SetColumnSpan(indicator, 2);
             byte[][] lstByteArryImages = await App.FrendelSOAPService.GetInstallerImages(RoomNo);
             TotalImages = lstByteArryImages.Count();
 
@@ -98,6 +108,13 @@ namespace InstallerAppForms
                     WidthRequest = 200,
                     HeightRequest = 200
                 };
+                TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+                {
+                    Command = new Command(OnGridImageTapped),
+                    CommandParameter = newImage
+                };
+                newImage.GestureRecognizers.Add(tapGestureRecognizer);
+
                 if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
 
                 grdLayout.ColumnDefinitions.Add(new ColumnDefinition
@@ -118,7 +135,18 @@ namespace InstallerAppForms
                 col = 1;
                 row--; //row always starts from 0, so if row = 2 it means starts from (0, 1) = 2 , same like index
             }
-
+            indicator.IsRunning = false;
+            indicator.IsVisible = false;
+            btnCamera.IsEnabled = true;
         } //End of Method
+
+        private void OnGridImageTapped(object obj)
+        {
+            Image img = new Image();
+            img = obj as Image;
+            img.Aspect = Aspect.AspectFill;
+            img.HorizontalOptions = LayoutOptions.Center;
+            img.VerticalOptions = LayoutOptions.Center;
+        }
     }
 }

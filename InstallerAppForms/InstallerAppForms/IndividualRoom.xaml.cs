@@ -28,15 +28,15 @@ namespace InstallerAppForms
                 };
             }
             if (this.selectedIndividualRoom is null) return;
-
+            BindingContext = this.selectedIndividualRoom;
         }
         protected override async void OnAppearing()
         {
             base.OnAppearing();
             this.selectedIndividualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(this.selectedIndividualRoom.RSNo);
-            BindingContext = this.selectedIndividualRoom;
-            //lstJobScreen.BeginRefresh();
-            //JobListRefreshing();
+            int TotalPhotos = this.selectedIndividualRoom.InstallationPhoto;
+            lblTotalInstallationPics.Text = TotalPhotos.ToString();
+            lblFormattedTextTotalPics.Text = "Installation Photos : " + TotalPhotos.ToString();
         }
 
         private async void OnPartsTapped(object sender, EventArgs e)

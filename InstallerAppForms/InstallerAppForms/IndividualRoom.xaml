@@ -63,12 +63,12 @@
                 <StackLayout Orientation="Vertical">
                     <Label Text="Delivery Photos : 0 " FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
                     <Label Text="" />
-                    <Label Text="{Binding FormattedInstallationPhoto}" FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
+                    <Label Text="{Binding FormattedInstallationPhoto}" x:Name="lblFormattedTextTotalPics" FontSize="15" FontAttributes="Bold" Margin="20, 0, 0, 0" />
                 </StackLayout>
             </StackLayout>
             <StackLayout Orientation="Horizontal">
                 <Label Text="PHOTOS" FontSize="16" FontAttributes="Bold" HorizontalOptions="Start" />
-                <Label Text="{Binding InstallationPhoto}" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
+                <Label Text="{Binding InstallationPhoto}" x:Name="lblTotalInstallationPics" FontSize="18" FontAttributes="Bold" HorizontalOptions="EndAndExpand" Margin="0, 0, 10, 0" />
             </StackLayout>
         </StackLayout>
     </ScrollView>
