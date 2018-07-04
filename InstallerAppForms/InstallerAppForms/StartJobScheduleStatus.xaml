@@ -5,8 +5,7 @@
              x:Class="InstallerAppForms.StartJobScheduleStatus"
              EnableBackButtonOverride="True"
              Title="{Binding FullJobNum}">
-    
-    <ScrollView Orientation="Vertical">
+    <ScrollView>
         <StackLayout Orientation="Vertical" Padding="20, 20, 0, 0" Spacing="15">
             <Label Text="{Binding Company}" 
                    FontSize="20"
@@ -38,10 +37,15 @@
                    FontSize="20"
                    HorizontalTextAlignment="Center"/>
             <Button x:Name="btnJobStart" HorizontalOptions="Center" Text="" Image="StartJobButton.png" BackgroundColor="Transparent" Clicked="btnJobStart_Clicked"/>
-            <Grid x:Name="gridJobScheduleStatus" Padding="10" RowSpacing="15" ColumnSpacing="15" IsVisible="False">
-                
-            </Grid>
+            <ScrollView>
+                <Grid x:Name="gridJobScheduleStatus" Padding="10" RowSpacing="15" ColumnSpacing="15" IsVisible="False">
+
+                </Grid>
+            </ScrollView>
+
+            <Button x:Name="btnSetCompletedJob" VerticalOptions="EndAndExpand" Margin="20, 0" Text="Set Completed Job" TextColor="Black" IsVisible="False" Clicked="btnSetCompletedJob_Clicked" />
+
         </StackLayout>
-        
     </ScrollView>
+
 </InstallerAppForms:CustomContentPageBackButton>

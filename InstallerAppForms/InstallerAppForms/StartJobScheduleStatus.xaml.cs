@@ -42,6 +42,7 @@ namespace InstallerAppForms
             }
             BindingContext = this.SelectedJobItem;
             installerId = getInstallerId;
+            btnSetCompletedJob.BackgroundColor = Color.FromHex("#088da5");
         }
 
         private async void btnJobStart_Clicked(object sender, EventArgs e)
@@ -63,6 +64,7 @@ namespace InstallerAppForms
                 btnJobStart.IsVisible = false;
                 slJobStartedOn.IsVisible = true;
                 gridJobScheduleStatus.IsVisible = true;
+                btnSetCompletedJob.IsVisible = true;
                 string installerJobStart = string.IsNullOrEmpty(this.SelectedJobItem.InstallerJobStart) ? "" : Convert.ToDateTime(this.SelectedJobItem.InstallerJobStart).ToString("MMM dd, yyyy");
                 this.SelectedJobItem.InstallerJobStart = installerJobStart;
                 lblStartJob.Text = "Select a Room for more options";
@@ -82,6 +84,13 @@ namespace InstallerAppForms
                     {
                         if(columnCount != roomInfo.Count){
                             var button = new InstallerAppForms.WrappedButton { Text = roomInfo[columnCount].Rooms,  HeightRequest = 60, WidthRequest = 100, TextColor = Color.Black, BackgroundColor = Color.Silver };
+                            int countRoomImage = await App.FrendelSOAPService.CountInstallerImages(roomInfo[columnCount].RSNo);
+                            if (countRoomImage == 0)
+                            {
+                                btnSetCompletedJob.IsEnabled = false;
+                                btnSetCompletedJob.FontAttributes = FontAttributes.Bold;
+                                btnSetCompletedJob.TextColor = Color.Black;
+                            }
                             button.Clicked += Button_Clicked;
                             gridJobScheduleStatus.Children.Add(button, col, row);
                             columnCount++;
@@ -123,6 +132,17 @@ namespace InstallerAppForms
             individualRoom.PartsCount = await App.FrendelSOAPService.GetPartInfo(SelectedJobItem.MasterNum,individualRoom.Rooms);
             individualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(individualRoom.RSNo);
             await Navigation.PushAsync(new IndividualRoom(installerId, individualRoom));
+        }
+
+        private async void btnSetCompletedJob_Clicked(object sender, EventArgs e)
+        {
+            var option = await DisplayAlert("JobSchedule!!", "Want to complete job?", "Yes", "Cancel");
+            if (option) //Success
+            {
+                await App.FrendelSOAPService.UpdateInstallerStatus(this.SelectedJobItem.CSID, 2);
+                await Navigation.PopAsync(true);
+            }
+            else {  } 
         }
     }
 }
