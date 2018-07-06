@@ -17,6 +17,12 @@ namespace InstallerAppForms
         {
             InitializeComponent();
             installerId = getInstallerId;
+            GetInstallerName();
+        }
+
+        public async void GetInstallerName()
+        {
+            lblInstallerName.Text = await App.FrendelSOAPService.GetInstallerCompany(installerId);
         }
 
         void btnJobs_Clicked(object sender, System.EventArgs e)

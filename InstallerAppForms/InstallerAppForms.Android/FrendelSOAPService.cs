@@ -103,6 +103,14 @@ namespace InstallerAppForms.Droid
                 return result.Length;
             });
         }
+        public async Task<string> GetInstallerCompany(int installerId)
+        {
+            return await Task.Run(() =>
+            {
+                var result = FrendelWS.InsKP_GetInstallerCompany(installerId);
+                return result;
+            });
+        }
 
         public async Task<int> CountInstallerImages(string RoomNo)
         {
