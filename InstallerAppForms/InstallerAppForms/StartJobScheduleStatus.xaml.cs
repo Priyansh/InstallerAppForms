@@ -13,6 +13,7 @@ namespace InstallerAppForms
     public partial class StartJobScheduleStatus : CustomContentPageBackButton
     {
         int installerId;
+        bool hasRoomImage = true;
         JobsInstallerCS SelectedJobItem;
         List<RoomInfoCS> roomInfo;
         public StartJobScheduleStatus(int getInstallerId, JobsInstallerCS SelectedJobItem)
@@ -87,7 +88,7 @@ namespace InstallerAppForms
                             int countRoomImage = await App.FrendelSOAPService.CountInstallerImages(roomInfo[columnCount].RSNo);
                             if (countRoomImage == 0)
                             {
-                                btnSetCompletedJob.IsEnabled = false;
+                                hasRoomImage = false;
                                 btnSetCompletedJob.FontAttributes = FontAttributes.Bold;
                                 btnSetCompletedJob.TextColor = Color.Black;
                             }
@@ -136,13 +137,16 @@ namespace InstallerAppForms
 
         private async void btnSetCompletedJob_Clicked(object sender, EventArgs e)
         {
-            var option = await DisplayAlert("JobSchedule!!", "Want to complete job?", "Yes", "Cancel");
-            if (option) //Success
+            if (hasRoomImage)
             {
-                await App.FrendelSOAPService.UpdateInstallerStatus(this.SelectedJobItem.CSID, 2);
-                await Navigation.PopAsync(true);
+                var option = await DisplayAlert("JobSchedule!!", "Want to complete job?", "Yes", "Cancel");
+                if (option) //Success
+                {
+                    await App.FrendelSOAPService.UpdateInstallerStatus(this.SelectedJobItem.CSID, 2);
+                    await Navigation.PopAsync(true);
+                }
+                else { }
             }
-            else {  } 
         }
     }
 }
