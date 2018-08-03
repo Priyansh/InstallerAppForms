@@ -8,6 +8,8 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using Plugin.Media;
 using System.IO;
+using Rg.Plugins.Popup.Services;
+using Rg.Plugins.Popup.Extensions;
 
 namespace InstallerAppForms
 {
@@ -140,13 +142,14 @@ namespace InstallerAppForms
             btnCamera.IsEnabled = true;
         } //End of Method
 
-        private void OnGridImageTapped(object obj)
+        private async void OnGridImageTapped(object obj)
         {
             Image img = new Image();
             img = obj as Image;
             img.Aspect = Aspect.AspectFill;
-            img.HorizontalOptions = LayoutOptions.Center;
-            img.VerticalOptions = LayoutOptions.Center;
+            
+            await PopupNavigation.Instance.PushAsync(new ImagePopUp(img));
+            //await Navigation.PushPopupAsync(new ImagePopUp(img));
         }
     }
 }
