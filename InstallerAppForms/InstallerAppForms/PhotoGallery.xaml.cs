@@ -146,6 +146,8 @@ namespace InstallerAppForms
         {
             Image img = new Image();
             img = obj as Image;
+            img.WidthRequest = 400;
+            img.HeightRequest = 500;
             img.Aspect = Aspect.AspectFill;
             
             await PopupNavigation.Instance.PushAsync(new ImagePopUp(img));
