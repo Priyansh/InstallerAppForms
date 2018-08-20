@@ -6,14 +6,14 @@
              x:Class="InstallerAppForms.PhotoGallery"
              EnableBackButtonOverride="True"
              Title="{Binding FullJobNum}"
-             Padding="0, 20, 0, 0" x:Name="PhotoGallery">
+             Padding="0, 5, 0, 0" x:Name="PhotoGallery">
     <ContentPage.Resources>
         <ResourceDictionary>
             <local:StringToColorConverter x:Key="StringToColorConverter"/>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-        <!--<RelativeLayout>
+    <!--<RelativeLayout>
             <StackLayout Orientation="Horizontal" x:Name="slJobStatus"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.25}">
@@ -75,42 +75,58 @@
             </RelativeLayout>
             
         </RelativeLayout> -->
-    
-        <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" x:Name="slJobStatus">
-                <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
-                <StackLayout Orientation="Vertical">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
-                    </StackLayout>
-                    <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
-                    <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
-                        <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
-                    </StackLayout>
-                </StackLayout>
 
-                <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
-                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+    <RelativeLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal" x:Name="slJobStatus" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}">
+            <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                </StackLayout>
+                <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
+                </StackLayout>
             </StackLayout>
 
+            <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        </StackLayout>
+
+        <StackLayout Orientation="Vertical" x:Name="slPhotoGallery"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.85}">
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
                 <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
                 <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
             </StackLayout>
             <ScrollView>
-                <Grid x:Name="grdLayout" BackgroundColor="White" ColumnSpacing="-10" RowSpacing="30">
-                    
+                <Grid x:Name="grdLayout" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" 
+                            BackgroundColor="White" ColumnSpacing="10" RowSpacing="5">
+
                 </Grid>
             </ScrollView>
-        
+            
+            <ActivityIndicator IsVisible="False"
+                                   IsRunning="False"
+                                   x:Name="indicator"
+                                   Color="Black"
+                                   VerticalOptions="Center"
+                                   RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
+                                            Property=Height,
+                                            Factor=0.33}"  />
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue"
-                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
-                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.2}">
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.2}">
                 <Button Text="" Image="Camera.png" x:Name="btnCamera" IsEnabled="False" TextColor="Black" WidthRequest="50" HeightRequest="50" Clicked="BtnPhoto_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="StartAndExpand"  Margin="0, 10, 0, 0" />
+                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="StartAndExpand"  Margin="-10, 10, 0, 0" />
             </StackLayout>
         </StackLayout>
-    
+
+    </RelativeLayout>
+
 </InstallerAppForms:CustomContentPageBackButton>

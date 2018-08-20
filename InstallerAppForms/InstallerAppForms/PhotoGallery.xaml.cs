@@ -9,7 +9,6 @@ using Xamarin.Forms.Xaml;
 using Plugin.Media;
 using System.IO;
 using Rg.Plugins.Popup.Services;
-using Rg.Plugins.Popup.Extensions;
 
 namespace InstallerAppForms
 {
@@ -20,13 +19,16 @@ namespace InstallerAppForms
         IndividualRoomCS selectedIndividualRoom;
         int row = 0;  int col = 0, CSID, TotalImages = 0;
         string RoomNo, RoomName;
-        ActivityIndicator indicator = new ActivityIndicator
+        
+        /*ActivityIndicator indicator = new ActivityIndicator
         {
             HorizontalOptions = LayoutOptions.FillAndExpand,
             VerticalOptions = LayoutOptions.FillAndExpand,
-            Color = Color.Black,
+            Color = Color.White,
+            BackgroundColor = Color.Gray,
             IsVisible = false
-        };
+        };*/
+
         public PhotoGallery(int getInstallerId, IndividualRoomCS individualRoom)
         {
             InitializeComponent();
@@ -53,7 +55,6 @@ namespace InstallerAppForms
         
         private async void BtnPhoto_Clicked(object sender, EventArgs e)
         {
-            byte[] imageAsBytes;
             if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
             {
                 await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
@@ -64,12 +65,39 @@ namespace InstallerAppForms
 
             if (file == null) return;
 
-            var alpha = new Image
+            /*var alpha = new Image
             {
                 Source = ImageSource.FromStream(() => { return file.GetStream(); }),
-                WidthRequest = 200,
-                HeightRequest = 200
+                Aspect = Aspect.AspectFit
+            };*/
+
+            indicator.IsRunning = true;
+            indicator.IsVisible = true;
+            //grdLayout.Children.Add(indicator);
+            //Grid.SetColumnSpan(indicator, 2);
+
+            var alpha = new Image();
+            using (var memoryStream = new MemoryStream())
+            {
+                file.GetStream().CopyTo(memoryStream);
+                file.Dispose();
+
+                //Insert photos in DB and fetch info from DB at same time
+                //Store images in byte array, then upload to Grid
+                var item = memoryStream.ToArray();
+                alpha.Source = ImageSource.FromStream(() => new MemoryStream(item));
+                await App.FrendelSOAPService.InsertInstallerImages(CSID, memoryStream.ToArray(), RoomNo, RoomName);
+            }
+
+            indicator.IsRunning = false;
+            indicator.IsVisible = false;
+
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+            {
+                Command = new Command(OnGridImageTapped),
+                CommandParameter = alpha
             };
+            alpha.GestureRecognizers.Add(tapGestureRecognizer);
 
             if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
 
@@ -82,24 +110,17 @@ namespace InstallerAppForms
             col++;
             if (col == 2) { col = 0; row++; }
 
-            using (var memoryStream = new MemoryStream())
-            {
-                file.GetStream().CopyTo(memoryStream);
-                file.Dispose();
-                imageAsBytes = memoryStream.ToArray();
-            }
-
-            //Insert photos in DB and fetch info from DB at same time
-            //Store images in byte array, then upload to Grid
-
-            await App.FrendelSOAPService.InsertInstallerImages(CSID, imageAsBytes, RoomNo, RoomName);
+            
         }
 
         public async void GetInstallerImages(){
             indicator.IsRunning = true;
             indicator.IsVisible = true;
-            grdLayout.Children.Add(indicator, 0, 0);
-            Grid.SetColumnSpan(indicator, 2);
+            //grdLayout.HorizontalOptions = LayoutOptions.FillAndExpand;
+            //grdLayout.VerticalOptions = LayoutOptions.FillAndExpand;
+            //grdLayout.Children.Add(indicator);
+            //Grid.SetColumnSpan(indicator, 2);
+
             byte[][] lstByteArryImages = await App.FrendelSOAPService.GetInstallerImages(RoomNo);
             TotalImages = lstByteArryImages.Count();
 
@@ -107,8 +128,7 @@ namespace InstallerAppForms
                 var newImage = new Image
                 {
                     Source = ImageSource.FromStream(() => new MemoryStream(imageBytes)),
-                    WidthRequest = 200,
-                    HeightRequest = 200
+                    Aspect = Aspect.AspectFit
                 };
                 TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
                 {
@@ -144,13 +164,13 @@ namespace InstallerAppForms
 
         private async void OnGridImageTapped(object obj)
         {
-            Image img = new Image();
-            img = obj as Image;
-            img.WidthRequest = 400;
-            img.HeightRequest = 500;
-            img.Aspect = Aspect.AspectFill;
-            
-            await PopupNavigation.Instance.PushAsync(new ImagePopUp(img));
+            Image img = obj as Image;
+            //img = obj as Image;
+            //img.WidthRequest = 400;
+            //img.HeightRequest = 500;
+            img.Aspect = Aspect.AspectFit;
+
+            await PopupNavigation.Instance.PushAsync(new ImagePopUp(new Image { Source = img.Source }));
             //await Navigation.PushPopupAsync(new ImagePopUp(img));
         }
     }
