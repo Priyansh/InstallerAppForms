@@ -49,7 +49,7 @@ namespace InstallerAppForms
                 await layout.FadeTo(1, _animationTime);
             }
             catch (Exception ex) { }
-            await Navigation.PushAsync(new MainMenu(installerId));
+            await Navigation.PushAsync(new PartsInfo(installerId, this.selectedIndividualRoom));
         }
 
         private async void OnPhotosTapped(object sender, EventArgs e)

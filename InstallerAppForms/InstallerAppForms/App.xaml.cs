@@ -17,7 +17,7 @@ namespace InstallerAppForms
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new LoginPage()) {
+            MainPage = new NavigationPage(new MainMenu(9)) {
                 BarBackgroundColor = Color.FromHex("#AFDAE6"),
                 BarTextColor = Color.Black
             };

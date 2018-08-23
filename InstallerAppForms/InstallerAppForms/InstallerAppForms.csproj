@@ -64,6 +64,9 @@
     <Compile Include="Models\IndividualRoomCS.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
     <Compile Include="Models\RoomInfoCS.cs" />
+    <Compile Include="PartsInfo.xaml.cs">
+      <DependentUpon>PartsInfo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PhotoGallery.xaml.cs">
       <DependentUpon>PhotoGallery.xaml</DependentUpon>
     </Compile>
@@ -158,6 +161,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="ImagePopUp.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PartsInfo.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
