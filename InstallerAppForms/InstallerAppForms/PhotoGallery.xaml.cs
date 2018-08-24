@@ -61,7 +61,16 @@ namespace InstallerAppForms
                 return;
             }
             
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions() { });
+            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+            {
+                SaveToAlbum = true,
+                AllowCropping = true
+            });
+            //Get the public album path
+            var aPpath = file.AlbumPath;
+
+            //Get private path
+            var path = file.Path;
 
             if (file == null) return;
 
