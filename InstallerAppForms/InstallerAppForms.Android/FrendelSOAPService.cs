@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
 using InstallerAppForms.Interface;
+using InstallerAppForms.Models;
 using Xamarin.Forms;
 
 [assembly: Dependency(typeof(InstallerAppForms.Droid.FrendelSOAPService))]
@@ -94,13 +95,27 @@ namespace InstallerAppForms.Droid
                 return lstRoomInfo;
             });
         }
-
-        public async Task<int> GetPartInfo(string FkNo, string RoomName)
+        public async Task<List<PartsInfoCS>> GetPartInfo(string fkNo, string roomName)
         {
+            List<PartsInfoCS> lstPartsInfo = new List<PartsInfoCS>();
             return await Task.Run(() =>
             {
-                var result = FrendelWS.InsKP_GetPartInfo(FkNo, RoomName);
-                return result.Length;
+                var result = FrendelWS.InsKP_GetPartInfo(fkNo, roomName);
+
+                foreach (var item in result)
+                {
+                    var fillPartsInfo = new PartsInfoCS
+                    {
+                        CSID = item.CSID,
+                        CabinetName = item.CabinetName,
+                        LFinish = item.LFinish,
+                        RFinish = item.RFinish,
+                        PartType = item.PartType,
+                        LabelNo = item.LabelNo
+                    };
+                    lstPartsInfo.Add(fillPartsInfo);
+                }
+                return lstPartsInfo;
             });
         }
         public async Task<string> GetInstallerCompany(int installerId)

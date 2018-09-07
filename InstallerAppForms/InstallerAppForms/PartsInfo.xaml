@@ -3,8 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
              xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
              EnableBackButtonOverride="True"
-             Title="{Binding FullJobNum}"
+             Title="{Binding IndividualRoomInfo.FullJobNum}"
+             Padding="10"
              x:Class="InstallerAppForms.PartsInfo">
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -15,21 +17,62 @@
     <RelativeLayout>
         <StackLayout Orientation="Horizontal" x:Name="slJobStatus" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                      RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}">
-            <Image x:Name="imgJobsStatus" Source="{Binding ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+            <Image x:Name="imgJobsStatus" Source="{Binding IndividualRoomInfo.ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
             <StackLayout Orientation="Vertical">
                 <StackLayout Orientation="Horizontal">
-                    <Label Text="{Binding FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                    <Label Text="{Binding IndividualRoomInfo.FullJobNum}" FontAttributes="Bold" FontSize="20" />
                 </StackLayout>
-                <Label Text="{Binding Company}" FontSize="15" FontAttributes="Bold"/>
-                <Label Text="{Binding Project}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding IndividualRoomInfo.Company}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding IndividualRoomInfo.Project}" FontSize="15" FontAttributes="Bold"/>
                 <StackLayout Orientation="Horizontal">
                     <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
-                    <Label Text="{Binding Lot}" FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding IndividualRoomInfo.Lot}" FontSize="15" FontAttributes="Bold"/>
                 </StackLayout>
             </StackLayout>
 
-            <Label Text="{Binding JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
-                   TextColor="{Binding JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+            <Label Text="{Binding IndividualRoomInfo.JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                   TextColor="{Binding IndividualRoomInfo.JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        </StackLayout>
+
+        <!-- Middle Portion-->
+        <StackLayout Orientation="Vertical" x:Name="slParts"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.85}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Label Text="{Binding IndividualRoomInfo.Rooms}" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+            </StackLayout>
+            <ListView HasUnevenRows="True"
+                      x:Name="lstViewPartsInfo"
+                      BackgroundColor="White"
+                      IsPullToRefreshEnabled="True"
+                      SeparatorColor="Gray"
+                      Refreshing="ListView_OnRefreshing"
+                      ItemsSource="{Binding LstPartsInfo}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <controls:CheckBox Margin="0, 5, 0, 0" BackgroundColor="Transparent" WidthRequest="40" HeightRequest="30" IsVisible="True" />
+                                <StackLayout>
+                                    <Label Text="{Binding CabinetName}" FontAttributes="Bold"/>
+                                    <Label Text="{Binding LFinish}" FontAttributes="Bold" />
+                                    <Label Text="{Binding RFinish}" FontAttributes="Bold" />
+                                </StackLayout>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.2}">
+                <Button Text="Submit Order" x:Name="btnSubmit"
+                        FontAttributes="Bold"
+                        TextColor="Black" BackgroundColor="#088da5" 
+                        WidthRequest="150" HeightRequest="50"  HorizontalOptions="FillAndExpand" />
+            </StackLayout>
         </StackLayout>
 
     </RelativeLayout>

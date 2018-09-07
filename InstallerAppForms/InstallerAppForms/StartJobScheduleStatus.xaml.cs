@@ -16,10 +16,10 @@ namespace InstallerAppForms
         bool hasRoomImage = true;
         JobsInstallerCS SelectedJobItem;
         List<RoomInfoCS> roomInfo;
-        public StartJobScheduleStatus(int getInstallerId, JobsInstallerCS SelectedJobItem)
+        public StartJobScheduleStatus(int getInstallerId, JobsInstallerCS selectedJobItem)
         {
             InitializeComponent();
-            this.SelectedJobItem = SelectedJobItem;
+            this.SelectedJobItem = selectedJobItem;
             if (EnableBackButtonOverride)
             {
                 this.CustomBackButtonAction = async () =>
@@ -39,7 +39,7 @@ namespace InstallerAppForms
             }
             else if(this.SelectedJobItem.InstallerJobStatus == 1) //InstallerJobStatus = 1, means jobs already started
             {
-                funStartingJob(this.SelectedJobItem.InstallerJobStatus);
+                FunStartingJob(this.SelectedJobItem.InstallerJobStatus);
             }
             BindingContext = this.SelectedJobItem;
             installerId = getInstallerId;
@@ -55,10 +55,10 @@ namespace InstallerAppForms
             this.SelectedJobItem.InstallerJobStart = tempList[0].InstallerJobStart;
             this.SelectedJobItem.ImageJobStatus = tempList[0].ImageJobStatus;
             this.SelectedJobItem.JobCurrentStatus = tempList[0].JobCurrentStatus;
-            funStartingJob(this.SelectedJobItem.InstallerJobStatus);
+            FunStartingJob(this.SelectedJobItem.InstallerJobStatus);
         }
 
-        public async void funStartingJob(int jobStatus)
+        public async void FunStartingJob(int jobStatus)
         {
             if(jobStatus == 1)
             {
@@ -104,7 +104,7 @@ namespace InstallerAppForms
         private async void Button_Clicked(object sender, EventArgs e)
         {
             var item = ((Button)sender).Text;
-            IEnumerable<RoomInfoCS> roomFound = roomInfo.Where(w => w.Rooms == item);
+            IEnumerable<RoomInfoCS> filteredRoomInfo = roomInfo.Where(w => w.Rooms == item).ToList();
             IndividualRoomCS individualRoom = new IndividualRoomCS();
             individualRoom.Company = SelectedJobItem.Company;
             individualRoom.Project = SelectedJobItem.Project;
@@ -124,13 +124,14 @@ namespace InstallerAppForms
             individualRoom.JobCurrentStatus = SelectedJobItem.JobCurrentStatus;
             individualRoom.JobStatusTextColor = SelectedJobItem.JobStatusTextColor;
 
-            individualRoom.RSNo = roomFound.ElementAt(0).RSNo;
-            individualRoom.Rooms = roomFound.ElementAt(0).Rooms;
-            individualRoom.Style = roomFound.ElementAt(0).Style;
-            individualRoom.Colour = roomFound.ElementAt(0).Colour;
-            individualRoom.Hardware = roomFound.ElementAt(0).Hardware;
-            individualRoom.CounterTop = roomFound.ElementAt(0).CounterTop;
-            individualRoom.PartsCount = await App.FrendelSOAPService.GetPartInfo(SelectedJobItem.MasterNum,individualRoom.Rooms);
+            individualRoom.RSNo = filteredRoomInfo.ElementAt(0).RSNo;
+            individualRoom.Rooms = filteredRoomInfo.ElementAt(0).Rooms;
+            individualRoom.Style = roomInfo.ElementAt(0).Style;
+            individualRoom.Colour = roomInfo.ElementAt(0).Colour;
+            individualRoom.Hardware = roomInfo.ElementAt(0).Hardware;
+            individualRoom.CounterTop = roomInfo.ElementAt(0).CounterTop;
+            var lstPartsInfo = await App.FrendelSOAPService.GetPartInfo(SelectedJobItem.MasterNum,individualRoom.Rooms);
+            individualRoom.PartsCount = lstPartsInfo.Count;
             individualRoom.InstallationPhoto = await App.FrendelSOAPService.CountInstallerImages(individualRoom.RSNo);
             await Navigation.PushAsync(new IndividualRoom(installerId, individualRoom));
         }
@@ -145,7 +146,6 @@ namespace InstallerAppForms
                     await App.FrendelSOAPService.UpdateInstallerStatus(this.SelectedJobItem.CSID, 2);
                     await Navigation.PopAsync(true);
                 }
-                else { }
             }
         }
     }

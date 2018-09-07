@@ -2,23 +2,24 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
+using InstallerAppForms.Models;
 
 namespace InstallerAppForms.Interface
 {
     public interface IInstallerAppMethods
     {
-        Task<int> LoginSuccess(string uName, string Pwd);
+        Task<int> LoginSuccess(string uName, string pwd);
         
         //Get Methods
         Task<List<JobsInstallerCS>> GetInstaller(int installerId);
         Task<List<RoomInfoCS>> GetRoomInfo(int CSID);
-        Task<int> GetPartInfo(string FkNo, string RoomName);
-        Task<int> CountInstallerImages(string RoomNo);
-        Task<byte[][]> GetInstallerImages(string RoomNo);
+        Task<List<PartsInfoCS>> GetPartInfo(string fkNo, string roomName);
+        Task<int> CountInstallerImages(string roomNo);
+        Task<byte[][]> GetInstallerImages(string roomNo);
         Task<string> GetInstallerCompany(int installerId);
         //Update Methods
-        Task UpdateInstallerStatus(int CSID, int InstallerJobStatus);
+        Task UpdateInstallerStatus(int CSID, int installerJobStatus);
         //Insert Methods
-        Task<byte[][]> InsertInstallerImages(int CSID, byte[] InstallerImages, string RoomNo, string RoomName);
+        Task<byte[][]> InsertInstallerImages(int CSID, byte[] installerImages, string roomNo, string roomName);
     }
 }

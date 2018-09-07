@@ -16,7 +16,7 @@
             <RowDefinition Height="100"/>
             <RowDefinition Height="25"/>
         </Grid.RowDefinitions>
-        <Label x:Name="lblInstallerName" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan= "3" Text="Stellato Installations and Services" FontSize="20" />
+        <Label x:Name="lblInstallerName" VerticalOptions="Center" HorizontalOptions="Center" Grid.Row="0" Grid.ColumnSpan= "3" Text="" FontSize="20" />
         <StackLayout Orientation="Horizontal" Grid.Row="1" Grid.ColumnSpan="3">
             <Button x:Name="btnJobs" HorizontalOptions="CenterAndExpand" Text="" Image="ToolBox.png" BackgroundColor="Transparent" Clicked="btnJobs_Clicked"/>
             <Button HorizontalOptions="CenterAndExpand" Text="" Image="Memo.png" BackgroundColor="Transparent" />
