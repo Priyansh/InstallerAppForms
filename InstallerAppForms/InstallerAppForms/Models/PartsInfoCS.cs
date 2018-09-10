@@ -14,6 +14,10 @@ namespace InstallerAppForms.Models
         
         public string RFinish { get; set; }
 
+        public string FormattedLFinish => "Left : " + LFinish;
+
+        public string FormattedRFinish => "Right : " + RFinish;
+
         public int PartType { get; set; }
 
         public int LabelNo { get; set; }

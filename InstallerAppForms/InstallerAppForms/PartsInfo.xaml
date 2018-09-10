@@ -56,9 +56,25 @@
                                 <controls:CheckBox Margin="0, 5, 0, 0" BackgroundColor="Transparent" WidthRequest="40" HeightRequest="30" IsVisible="True" />
                                 <StackLayout>
                                     <Label Text="{Binding CabinetName}" FontAttributes="Bold"/>
-                                    <Label Text="{Binding LFinish}" FontAttributes="Bold" />
-                                    <Label Text="{Binding RFinish}" FontAttributes="Bold" />
+                                    <Label Text="Cabinet" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
+                                    <Label Text="{Binding FormattedLFinish}" 
+                                           FontAttributes="Bold"
+                                           MinimumWidthRequest="150"
+                                           HorizontalOptions="StartAndExpand" />
                                 </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="Order Parts >" 
+                                           FontAttributes="Bold"
+                                           TextColor="#00CC00"
+                                           MinimumWidthRequest="120"
+                                           VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                    <Label Text="{Binding FormattedRFinish}" 
+                                           FontAttributes="Bold"
+                                           MinimumWidthRequest="150"
+                                           VerticalOptions="EndAndExpand" HorizontalOptions="EndAndExpand" />
+                                </StackLayout>
+                                
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
