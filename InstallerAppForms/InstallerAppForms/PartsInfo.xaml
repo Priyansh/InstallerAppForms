@@ -48,7 +48,8 @@
                       IsPullToRefreshEnabled="True"
                       SeparatorColor="Gray"
                       Refreshing="ListView_OnRefreshing"
-                      ItemsSource="{Binding LstPartsInfo}">
+                      ItemsSource="{Binding LstPartsInfo}"
+                      ItemSelected="LstViewPartsInfo_OnItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -79,6 +80,9 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Label />
+                </ListView.Footer>
             </ListView>
             
             <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand"

@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<InstallerAppForms:CustomContentPageBackButton xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
+             xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
+             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             EnableBackButtonOverride="True"
+             Title="{Binding IndividualRoomInfo.FullJobNum}"
+             Padding="0, 10, 0, 0"
+             x:Class="InstallerAppForms.OrderParts">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <local:StringToColorConverter x:Key="StringToColorConverter"/>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <RelativeLayout>
+        <StackLayout Orientation="Horizontal" x:Name="slJobStatus" RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor=0.15}">
+            <Image x:Name="imgJobsStatus" Source="{Binding IndividualRoomInfo.ImageJobStatus}" VerticalOptions="Start" BackgroundColor="Transparent" />
+            <StackLayout Orientation="Vertical">
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="{Binding IndividualRoomInfo.FullJobNum}" FontAttributes="Bold" FontSize="20" />
+                </StackLayout>
+                <Label Text="{Binding IndividualRoomInfo.Company}" FontSize="15" FontAttributes="Bold"/>
+                <Label Text="{Binding IndividualRoomInfo.Project}" FontSize="15" FontAttributes="Bold"/>
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Unit " FontSize="15" FontAttributes="Bold"/>
+                    <Label Text="{Binding IndividualRoomInfo.Lot}" FontSize="15" FontAttributes="Bold"/>
+                </StackLayout>
+            </StackLayout>
+
+            <Label Text="{Binding IndividualRoomInfo.JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
+                   TextColor="{Binding IndividualRoomInfo.JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        </StackLayout>
+    </RelativeLayout>
+</InstallerAppForms:CustomContentPageBackButton>

@@ -15,8 +15,7 @@ namespace InstallerAppForms
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class PartsInfo : CustomContentPageBackButton
     {
-        private int _installerId, CSID;
-        private IndividualRoomCS selectedIndividualRoom;
+        private int _installerId;
         private VmPartsInfo vmPartsInfo;
         private readonly string _masterNum, _roomName;
         public PartsInfo(int getInstallerId, IndividualRoomCS individualRoom)
@@ -24,7 +23,6 @@ namespace InstallerAppForms
             InitializeComponent();
             _installerId = getInstallerId;
             
-            this.selectedIndividualRoom = individualRoom;
             vmPartsInfo = new VmPartsInfo
             {
                 IndividualRoomInfo = individualRoom
@@ -40,8 +38,6 @@ namespace InstallerAppForms
                     await Navigation.PopAsync(true);
                 };
             }
-
-            if (this.selectedIndividualRoom is null) return;
 
             BindingContext = vmPartsInfo;
         }
@@ -62,6 +58,14 @@ namespace InstallerAppForms
         {
             GetPartsInfo();
             lstViewPartsInfo.EndRefresh();
+        }
+
+        private async void LstViewPartsInfo_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            var selectedPartInfo = e.SelectedItem as PartsInfoCS;
+            if(selectedPartInfo is null)
+                return;
+            await Navigation.PushAsync(new OrderParts(_installerId, vmPartsInfo.IndividualRoomInfo, selectedPartInfo));
         }
     }
 }

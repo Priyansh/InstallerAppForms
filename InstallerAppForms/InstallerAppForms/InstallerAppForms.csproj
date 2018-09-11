@@ -63,8 +63,12 @@
     <Compile Include="MarkupExtension\StringToColorConverter.cs" />
     <Compile Include="Models\IndividualRoomCS.cs" />
     <Compile Include="Models\JobsInstallerCS.cs" />
+    <Compile Include="Models\OrderPartsInfoCS.cs" />
     <Compile Include="Models\PartsInfoCS.cs" />
     <Compile Include="Models\RoomInfoCS.cs" />
+    <Compile Include="OrderParts.xaml.cs">
+      <DependentUpon>OrderParts.xaml</DependentUpon>
+    </Compile>
     <Compile Include="PartsInfo.xaml.cs">
       <DependentUpon>PartsInfo.xaml</DependentUpon>
     </Compile>
@@ -75,6 +79,7 @@
     <Compile Include="StartJobScheduleStatus.xaml.cs">
       <DependentUpon>StartJobScheduleStatus.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\VmOrderPartsInfo.cs" />
     <Compile Include="ViewModels\VmPartsInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -192,7 +197,12 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="OrderParts.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.5.0.121934\build\portable-win+net45+wp80+win81+wpa81\Xamarin.Forms.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
