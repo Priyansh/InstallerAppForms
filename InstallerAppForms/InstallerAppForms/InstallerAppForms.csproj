@@ -38,6 +38,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="CustomRenderers\CustomCheckBoxes.cs" />
     <Compile Include="CustomRenderers\CustomContentPageBackButton.cs" />
     <Compile Include="CustomRenderers\WrappedButton.cs" />
     <Compile Include="ImagePopUp.xaml.cs">

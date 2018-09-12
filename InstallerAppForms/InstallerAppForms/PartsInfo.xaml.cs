@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using InstallerAppForms.CustomRenderers;
 using InstallerAppForms.Models;
 using InstallerAppForms.ViewModels;
 using Xamarin.Forms;
@@ -66,6 +67,24 @@ namespace InstallerAppForms
             if(selectedPartInfo is null)
                 return;
             await Navigation.PushAsync(new OrderParts(_installerId, vmPartsInfo.IndividualRoomInfo, selectedPartInfo));
+        }
+
+        private void BtnSubmit_OnClicked(object sender, EventArgs e)
+        {
+            var lstCheckedItems = GetCheckedItems();
+        }
+
+        public List<PartsInfoCS> GetCheckedItems()
+        {
+            return vmPartsInfo.LstPartsInfo
+                .Where(a => a.IsCbSelected == true)
+                .Select(p => new PartsInfoCS
+                {
+                    CabinetName = p.CabinetName,
+                    LFinish = p.LFinish,
+                    RFinish = p.RFinish,
+                    IsCbSelected = true
+                }).ToList();
         }
     }
 }

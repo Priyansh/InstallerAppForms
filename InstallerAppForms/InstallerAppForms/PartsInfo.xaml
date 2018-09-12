@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
              xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
-             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:customRenderers="clr-namespace:InstallerAppForms.CustomRenderers;assembly=InstallerAppForms"
              EnableBackButtonOverride="True"
              Title="{Binding IndividualRoomInfo.FullJobNum}"
              Padding="10"
@@ -54,8 +54,21 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <controls:CheckBox Margin="0, 5, 0, 0" BackgroundColor="Transparent" WidthRequest="40" HeightRequest="30" IsVisible="True" />
-                                <StackLayout>
+                                <customRenderers:CustomCheckBoxes VerticalOptions="Center"
+                                                                  OutlineColor="Black" 
+                                                                  CheckedOutlineColor="Black" 
+                                                                  CheckColor="Green"
+                                                                  IsChecked="{Binding IsCbSelected}"
+                                                                  WidthRequest="28" HeightRequest="28">
+                                    <customRenderers:CustomCheckBoxes.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="2, 0, 0, 0" />
+                                            <On Platform="Android, WinPhone, Windows" Value="0, 0, 20, 0" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.Margin>
+
+                                </customRenderers:CustomCheckBoxes>
+                                <StackLayout Margin="2, 0, 0, 0">
                                     <Label Text="{Binding CabinetName}" FontAttributes="Bold"/>
                                     <Label Text="Cabinet" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
                                     <Label Text="{Binding FormattedLFinish}" 
@@ -91,7 +104,9 @@
                 <Button Text="Submit Order" x:Name="btnSubmit"
                         FontAttributes="Bold"
                         TextColor="Black" BackgroundColor="#088da5" 
-                        WidthRequest="150" HeightRequest="50"  HorizontalOptions="FillAndExpand" />
+                        WidthRequest="150" HeightRequest="50"
+                        Clicked="BtnSubmit_OnClicked"
+                        HorizontalOptions="FillAndExpand" />
             </StackLayout>
         </StackLayout>
 
