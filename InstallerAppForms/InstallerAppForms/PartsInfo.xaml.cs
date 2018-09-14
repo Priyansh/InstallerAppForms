@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using InstallerAppForms.CustomRenderers;
 using InstallerAppForms.Models;
 using InstallerAppForms.ViewModels;
+using Plugin.Messaging;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using XLabs.Serialization;
 
 namespace InstallerAppForms
 {
@@ -72,6 +70,36 @@ namespace InstallerAppForms
         private void BtnSubmit_OnClicked(object sender, EventArgs e)
         {
             var lstCheckedItems = GetCheckedItems();
+            if (lstCheckedItems.Count > 0)
+            {
+                var emailTask = CrossMessaging.Current.EmailMessenger;
+                if (emailTask.CanSendEmail)
+                {
+
+                    var emailText = new StringBuilder();
+                    string[] subject = new string[] { "FK #" + vmPartsInfo.IndividualRoomInfo.JobNum, vmPartsInfo.IndividualRoomInfo.Company, vmPartsInfo.IndividualRoomInfo.Project, vmPartsInfo.IndividualRoomInfo.Lot };
+                    emailText.AppendLine("--- Installer Company ---");
+                    emailText.AppendLine("");
+                    emailText.AppendFormat("{0}, {1} \n", vmPartsInfo.IndividualRoomInfo.Company, vmPartsInfo.IndividualRoomInfo.Project);
+                    emailText.AppendFormat("{0}, {1} \n", vmPartsInfo.IndividualRoomInfo.Lot, vmPartsInfo.IndividualRoomInfo.JobNum);
+                    emailText.AppendLine("");
+                    foreach (var items in lstCheckedItems)
+                    {
+                        emailText.AppendFormat("Cabinet : {0} \n", items.CabinetName);
+                        emailText.AppendFormat("LFinish : {0}, RFinish : {1} \n", items.LFinish, items.RFinish);
+                        emailText.AppendLine("");
+                    }
+
+                    var email = new EmailMessageBuilder()
+                        .To("installerparts@frendel.com")
+                        .Subject(string.Join(" / ", subject))
+                        .Body(emailText.ToString())
+                        .Build();
+
+                    emailTask.SendEmail(email);
+                }
+            }
+            
         }
 
         public List<PartsInfoCS> GetCheckedItems()

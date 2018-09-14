@@ -109,6 +109,12 @@
     <Reference Include="Plugin.Media, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xam.Plugin.Media.4.0.1.1\lib\netstandard1.0\Plugin.Media.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Messaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.1.0\lib\netstandard1.0\Plugin.Messaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Messaging.Abstractions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Messaging.5.1.0\lib\netstandard1.0\Plugin.Messaging.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Plugin.Permissions, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Plugin.Permissions.3.0.0.12\lib\netstandard1.0\Plugin.Permissions.dll</HintPath>
     </Reference>
