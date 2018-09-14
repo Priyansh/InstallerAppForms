@@ -38,7 +38,7 @@
         <StackLayout Orientation="Vertical" x:Name="slOrderParts"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
-                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.80}">
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.83}">
             
             <Label Text="{Binding IndividualRoomInfo.Rooms}"
                    HorizontalOptions="CenterAndExpand"
@@ -103,6 +103,7 @@
                         FontAttributes="Bold"
                         TextColor="Black" BackgroundColor="#088da5" 
                         WidthRequest="150" HeightRequest="50"
+                        Margin="10, 0"
                         Clicked="BtnAddOrder_OnClicked"
                         HorizontalOptions="FillAndExpand" />
             </StackLayout>
