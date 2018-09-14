@@ -124,6 +124,30 @@ namespace InstallerAppForms.iOS
                 return lstPartsInfo;
             });
         }
+        
+        public async Task<List<OrderPartsInfoCS>> GetPartIssueList(int partType, int labelNo, int CSID)
+        {
+            List<OrderPartsInfoCS> lstOrderPartsInfo = new List<OrderPartsInfoCS>();
+            return await Task.Run(() =>
+            {
+                int partsOrderId = FrendelWS.InsKP_PartsOrder(partType, labelNo, CSID);
+                var result = FrendelWS.InsKP_GetPartIssueList(partType, partsOrderId);
+
+                foreach (var item in result)
+                {
+                    var fillOrderPartsInfo = new OrderPartsInfoCS
+                    {
+                        PartIssueListId = item.PartIssueListID,
+                        PartDescription = item.PartDescription,
+                        IsCbSelected = item.IsCbSelected,
+                        IsCbEnabled = item.IsCbEnabled
+                    };
+                    lstOrderPartsInfo.Add(fillOrderPartsInfo);
+                }
+                return lstOrderPartsInfo;
+            });
+        }
+
         public async Task<string> GetInstallerCompany(int installerId)
         {
             return await Task.Run(() =>

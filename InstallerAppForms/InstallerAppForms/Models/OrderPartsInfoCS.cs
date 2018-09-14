@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Forms;
 
 namespace InstallerAppForms.Models
 {
@@ -15,5 +16,15 @@ namespace InstallerAppForms.Models
         public bool IsCbSelected { get; set; }
 
         public bool IsCbEnabled { get; set; }
+
+        public Color CbBackgroundColor
+        {
+            get
+            {
+                if (IsCbEnabled == false)
+                    return Color.Red;
+                return Color.Transparent;
+            }
+        }
     }
 }

@@ -14,6 +14,7 @@ namespace InstallerAppForms.Interface
         Task<List<JobsInstallerCS>> GetInstaller(int installerId);
         Task<List<RoomInfoCS>> GetRoomInfo(int CSID);
         Task<List<PartsInfoCS>> GetPartInfo(string fkNo, string roomName);
+        Task<List<OrderPartsInfoCS>> GetPartIssueList(int partType, int labelNo, int CSID);
         Task<int> CountInstallerImages(string roomNo);
         Task<byte[][]> GetInstallerImages(string roomNo);
         Task<string> GetInstallerCompany(int installerId);

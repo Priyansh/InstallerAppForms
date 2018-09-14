@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:InstallerAppForms="clr-namespace:InstallerAppForms;assembly=InstallerAppForms"
              xmlns:local="clr-namespace:InstallerAppForms.MarkupExtension"
-             xmlns:controls="clr-namespace:XLabs.Forms.Controls;assembly=XLabs.Forms"
+             xmlns:customRenderers="clr-namespace:InstallerAppForms.CustomRenderers;assembly=InstallerAppForms"
              EnableBackButtonOverride="True"
              Title="{Binding IndividualRoomInfo.FullJobNum}"
              Padding="0, 10, 0, 0"
@@ -32,6 +32,81 @@
 
             <Label Text="{Binding IndividualRoomInfo.JobCurrentStatus}" MinimumWidthRequest="85" FontSize="15" FontAttributes="Bold" VerticalOptions="Start" HorizontalOptions="EndAndExpand"
                    TextColor="{Binding IndividualRoomInfo.JobStatusTextColor, Converter={StaticResource StringToColorConverter}}" />
+        </StackLayout>
+
+        <!-- Middle Portion-->
+        <StackLayout Orientation="Vertical" x:Name="slOrderParts"
+                     RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
+                     RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.80}">
+            
+            <Label Text="{Binding IndividualRoomInfo.Rooms}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
+            <Label Text="{Binding PartsInfo.CabinetName}"
+                   HorizontalOptions="CenterAndExpand"
+                   FontSize="20" FontAttributes="Bold" Margin="0, 2, 0, 0"/>
+
+            <ListView HasUnevenRows="True"
+                      x:Name="lstViewOrderPartsInfo"
+                      BackgroundColor="White"
+                      IsPullToRefreshEnabled="True"
+                      SeparatorColor="Gray"
+                      Refreshing="LstViewOrderPartsInfo_OnRefreshing"
+                      ItemsSource="{Binding LstOrderPartsInfo}"
+                      ItemSelected="LstViewOrderPartsInfo_OnItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <customRenderers:CustomCheckBoxes VerticalOptions="Center"
+                                                                  OutlineColor="Black" 
+                                                                  CheckedOutlineColor="Black" 
+                                                                  CheckColor="Green"
+                                                                  IsChecked="{Binding IsCbSelected}"
+                                                                  IsEnabled="{Binding IsCbEnabled}"
+                                                                  BackgroundColor="{Binding CbBackgroundColor}"
+                                                                  WidthRequest="28" HeightRequest="28">
+                                    <customRenderers:CustomCheckBoxes.Margin>
+                                        <OnPlatform x:TypeArguments="Thickness">
+                                            <On Platform="iOS" Value="2, 0, 0, 0" />
+                                            <On Platform="Android, WinPhone, Windows" Value="0, 0, 20, 0" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.Margin>
+
+                                </customRenderers:CustomCheckBoxes>
+                                <StackLayout Margin="2, 15, 0, 15">
+                                    <Label Text="{Binding PartDescription}" FontAttributes="Bold"/>
+                                </StackLayout>
+
+                                <StackLayout HorizontalOptions="FillAndExpand">
+                                    <Label Text="IssueReady" 
+                                           FontAttributes="Bold"
+                                           TextColor="#00CC00"
+                                           MinimumWidthRequest="120"
+                                           VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                <ListView.Footer>
+                    <Label />
+                </ListView.Footer>
+            </ListView>
+
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand"
+                         RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.2}">
+                <Button Text="Add Order" x:Name="btnAddOrder"
+                        FontAttributes="Bold"
+                        TextColor="Black" BackgroundColor="#088da5" 
+                        WidthRequest="150" HeightRequest="50"
+                        Clicked="BtnAddOrder_OnClicked"
+                        HorizontalOptions="FillAndExpand" />
+            </StackLayout>
+
         </StackLayout>
     </RelativeLayout>
 </InstallerAppForms:CustomContentPageBackButton>

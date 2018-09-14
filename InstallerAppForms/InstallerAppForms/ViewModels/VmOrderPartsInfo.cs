@@ -12,6 +12,7 @@ namespace InstallerAppForms.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         private IndividualRoomCS _individualRoomInfo;
+        private PartsInfoCS _partsInfo;
         private ObservableCollection<OrderPartsInfoCS> _lstOrderPartsInfo;
 
         public IndividualRoomCS IndividualRoomInfo
@@ -20,6 +21,16 @@ namespace InstallerAppForms.ViewModels
             set
             {
                 _individualRoomInfo = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public PartsInfoCS PartsInfo
+        {
+            get => _partsInfo;
+            set
+            {
+                _partsInfo = value;
                 OnPropertyChanged();
             }
         }
