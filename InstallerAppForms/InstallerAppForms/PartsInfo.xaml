@@ -56,8 +56,6 @@
                             <StackLayout Orientation="Horizontal">
                                 <customRenderers:CustomCheckBoxes VerticalOptions="Center"
                                                                   OutlineColor="Black" 
-                                                                  CheckedOutlineColor="Black" 
-                                                                  CheckColor="Green"
                                                                   IsChecked="{Binding IsCbSelected}"
                                                                   WidthRequest="28" HeightRequest="28">
                                     <customRenderers:CustomCheckBoxes.Margin>
@@ -67,20 +65,41 @@
                                         </OnPlatform>
                                     </customRenderers:CustomCheckBoxes.Margin>
 
+                                    <customRenderers:CustomCheckBoxes.CheckedOutlineColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="Red" />
+                                            <On Platform="Android" Value="Black" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckedOutlineColor>
+
+                                    <customRenderers:CustomCheckBoxes.CheckedInnerColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="Green" />
+                                            <On Platform="Android" Value="Black" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckedInnerColor>
+
+                                    <customRenderers:CustomCheckBoxes.CheckColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="White" />
+                                            <On Platform="Android" Value="Green" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckColor>
+
                                 </customRenderers:CustomCheckBoxes>
                                 <StackLayout Margin="2, 0, 0, 0">
                                     <Label Text="{Binding CabinetName}" FontAttributes="Bold"/>
                                     <Label Text="Cabinet" FontAttributes="Bold" HorizontalOptions="StartAndExpand"/>
-                                    <Label Text="{Binding FormattedLFinish}" 
+                                    <Label Text="{Binding FormattedLFinish}"
                                            FontAttributes="Bold"
                                            MinimumWidthRequest="150"
                                            HorizontalOptions="StartAndExpand" />
                                 </StackLayout>
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
-                                    <Label Text="Order Parts >" 
+                                    <Label Text="{Binding OrderPartsStatus}" 
                                            FontAttributes="Bold"
-                                           TextColor="#00CC00"
+                                           TextColor="{Binding OrderPartsTextColor, Converter={StaticResource StringToColorConverter}}"
                                            MinimumWidthRequest="120"
                                            VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
                                     <Label Text="{Binding FormattedRFinish}" 

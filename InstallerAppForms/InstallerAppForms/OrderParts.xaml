@@ -61,18 +61,39 @@
                             <StackLayout Orientation="Horizontal">
                                 <customRenderers:CustomCheckBoxes VerticalOptions="Center"
                                                                   OutlineColor="Black" 
-                                                                  CheckedOutlineColor="Black" 
-                                                                  CheckColor="Green"
+                                                                  CheckedOutlineColor="Red"
+                                                                  CheckedInnerColor="Green"
+                                                                  CheckColor="White"
                                                                   IsChecked="{Binding IsCbSelected}"
-                                                                  IsEnabled="{Binding IsCbEnabled}"
-                                                                  BackgroundColor="{Binding CbBackgroundColor}"
+                                                                  IsEnabled="{Binding IsCbEnabled}"                                                                  
                                                                   WidthRequest="28" HeightRequest="28">
                                     <customRenderers:CustomCheckBoxes.Margin>
                                         <OnPlatform x:TypeArguments="Thickness">
-                                            <On Platform="iOS" Value="2, 0, 0, 0" />
+                                            <On Platform="iOS" Value="2, 0, 10, 0" />
                                             <On Platform="Android, WinPhone, Windows" Value="0, 0, 20, 0" />
                                         </OnPlatform>
                                     </customRenderers:CustomCheckBoxes.Margin>
+
+                                    <customRenderers:CustomCheckBoxes.CheckedOutlineColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="Red" />
+                                            <On Platform="Android" Value="Black" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckedOutlineColor>
+
+                                    <customRenderers:CustomCheckBoxes.CheckedInnerColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="Green" />
+                                            <On Platform="Android" Value="Black" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckedInnerColor>
+
+                                    <customRenderers:CustomCheckBoxes.CheckColor>
+                                        <OnPlatform x:TypeArguments="Color">
+                                            <On Platform="iOS" Value="White" />
+                                            <On Platform="Android" Value="Green" />
+                                        </OnPlatform>
+                                    </customRenderers:CustomCheckBoxes.CheckColor>
 
                                 </customRenderers:CustomCheckBoxes>
                                 <StackLayout Margin="2, 15, 0, 15">
@@ -80,9 +101,9 @@
                                 </StackLayout>
 
                                 <StackLayout HorizontalOptions="FillAndExpand">
-                                    <Label Text="IssueReady" 
+                                    <Label Text="{Binding PartIssueStatus}" 
                                            FontAttributes="Bold"
-                                           TextColor="#00CC00"
+                                           TextColor="{Binding PartIssueTextColor, Converter={StaticResource StringToColorConverter}}"
                                            MinimumWidthRequest="120"
                                            VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand" />
                                 </StackLayout>

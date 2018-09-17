@@ -24,8 +24,10 @@ namespace InstallerAppForms.Models
 
         public int CSID { get; set; }
 
-        public int OrderPartsStatus { get; set; }
-
         public bool IsCbSelected { get; set; }
+
+        public string OrderPartsStatus { get; set; }
+
+        public string OrderPartsTextColor { get; set; }
     }
 }

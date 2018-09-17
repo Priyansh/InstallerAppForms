@@ -119,6 +119,9 @@ namespace InstallerAppForms.iOS
                         PartType = item.PartType,
                         LabelNo = item.LabelNo
                     };
+                    var countOrderPartIssues = FrendelWS.InsKP_GetPartOrderIssuesCount(fillPartsInfo.PartType, fillPartsInfo.LabelNo, fillPartsInfo.CSID);
+                    fillPartsInfo.OrderPartsStatus = countOrderPartIssues > 0 ? "Order Parts: " + countOrderPartIssues : "Order Parts >";
+                    fillPartsInfo.OrderPartsTextColor = countOrderPartIssues > 0 ? "#FF3333" : "#00CC00";
                     lstPartsInfo.Add(fillPartsInfo);
                 }
                 return lstPartsInfo;
@@ -142,6 +145,12 @@ namespace InstallerAppForms.iOS
                         IsCbSelected = item.IsCbSelected,
                         IsCbEnabled = item.IsCbEnabled
                     };
+                    //fillOrderPartsInfo.CbBackgroundColor =
+                    //    fillOrderPartsInfo.IsCbEnabled == false ? "#FF3333" : "#CCFFFFFF";
+                    fillOrderPartsInfo.PartIssueStatus =
+                        fillOrderPartsInfo.IsCbEnabled == false ? "IssueProcessed" : "IssueReady";
+                    fillOrderPartsInfo.PartIssueTextColor =
+                        fillOrderPartsInfo.IsCbEnabled == false ? "#FF3333" : "#00CC00";
                     lstOrderPartsInfo.Add(fillOrderPartsInfo);
                 }
                 return lstOrderPartsInfo;

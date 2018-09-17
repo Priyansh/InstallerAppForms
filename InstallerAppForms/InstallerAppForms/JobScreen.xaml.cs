@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -9,7 +10,7 @@ namespace InstallerAppForms
     public partial class JobScreen : CustomContentPageBackButton
     {
         int installerId;
-        List<JobsInstallerCS> jobList;
+        ObservableCollection<JobsInstallerCS> jobList;
         public JobScreen(int getInstallerId)
         {
             InitializeComponent();
@@ -69,7 +70,8 @@ namespace InstallerAppForms
 
         private async void JobListRefreshing()
         {
-            jobList = await App.FrendelSOAPService.GetInstaller(installerId);
+            var result = await App.FrendelSOAPService.GetInstaller(installerId);
+            jobList = new ObservableCollection<JobsInstallerCS>(result);
             lstJobScreen.ItemsSource = jobList;
             lstJobScreen.EndRefresh();
         }

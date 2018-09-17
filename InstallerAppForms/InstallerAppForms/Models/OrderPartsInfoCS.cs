@@ -17,14 +17,10 @@ namespace InstallerAppForms.Models
 
         public bool IsCbEnabled { get; set; }
 
-        public Color CbBackgroundColor
-        {
-            get
-            {
-                if (IsCbEnabled == false)
-                    return Color.Red;
-                return Color.Transparent;
-            }
-        }
+        public string CbBackgroundColor { get; set; }
+
+        public string PartIssueStatus { get; set; }
+
+        public string PartIssueTextColor { get; set; }
     }
 }
