@@ -99,8 +99,8 @@
         <StackLayout Orientation="Vertical" x:Name="slPhotoGallery"
                      RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor=1}"
                      RelativeLayout.YConstraint="{ConstraintExpression Type=RelativeToView, ElementName=slJobStatus, Property=Height, Factor=1}"
-                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.85}">
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                     RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.86}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="0, 5, 0, 0">
                 <Image x:Name="imgCamera" Source="CameraDigital.png" VerticalOptions="Start" BackgroundColor="Transparent" />
                 <Label Text="{Binding Rooms}" FontSize="20" FontAttributes="Bold" Margin="0, 10, 0, 0"/>
             </StackLayout>
@@ -119,11 +119,25 @@
                                    RelativeLayout.XConstraint="{ConstraintExpression Type=RelativeToParent,
                                             Property=Height,
                                             Factor=0.33}"  />
-            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="LightBlue"
+            
+            <StackLayout Orientation="Horizontal" VerticalOptions="EndAndExpand" BackgroundColor="#088da5"
                          RelativeLayout.WidthConstraint="{ConstraintExpression Type=RelativeToParent, Property=Width, Factor = 1}"
-                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.2}">
-                <Button Text="" Image="Camera.png" x:Name="btnCamera" IsEnabled="False" TextColor="Black" WidthRequest="50" HeightRequest="50" Clicked="BtnPhoto_Clicked" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
-                <Label Text="Add Photo" TextColor="Black" FontSize="20" FontAttributes="Bold" HorizontalOptions="StartAndExpand"  Margin="-10, 10, 0, 0" />
+                         RelativeLayout.HeightConstraint="{ConstraintExpression Type=RelativeToParent, Property=Height, Factor = 0.22}">
+                <Label Text="" HorizontalOptions="Start" WidthRequest="80" HeightRequest="50" />
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                    <Button Text="Add Photo" x:Name="btnCamera"
+                        Image="Camera.png"
+                        FontAttributes="Bold"
+                        TextColor="Black"
+                        WidthRequest="120" HeightRequest="60"
+                        Clicked="BtnPhoto_Clicked" />
+                    <Label Text="Add Photo" TextColor="Black" 
+                       FontSize="20" FontAttributes="Bold"
+                       VerticalOptions="Center"
+                       Margin="0, 0, 35, 0"
+                       HorizontalOptions="StartAndExpand"/>
+                </StackLayout>
+                
             </StackLayout>
         </StackLayout>
 
