@@ -14,7 +14,7 @@ namespace InstallerAppForms.Interface
         Task<List<JobsInstallerCS>> GetInstaller(int installerId);
         Task<List<RoomInfoCS>> GetRoomInfo(int CSID);
         Task<List<PartsInfoCS>> GetPartInfo(string fkNo, string roomName);
-        Task<List<OrderPartsInfoCS>> GetPartIssueList(int partType, int labelNo, int CSID);
+        Task<Tuple<List<OrderPartsInfoCS>, int>> GetPartIssueList(int partType, int labelNo, int CSID);
         Task<int> CountInstallerImages(string roomNo);
         Task<byte[][]> GetInstallerImages(string roomNo);
         Task<string> GetInstallerCompany(int installerId);
@@ -22,5 +22,6 @@ namespace InstallerAppForms.Interface
         Task UpdateInstallerStatus(int CSID, int installerJobStatus);
         //Insert Methods
         Task<byte[][]> InsertInstallerImages(int CSID, byte[] installerImages, string roomNo, string roomName);
+        Task<int[]> InsertPartsOrderIssue(int PartOrderId, int PartIssueListId, int InsertRequest);
     }
 }

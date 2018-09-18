@@ -62,13 +62,13 @@
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARMv7, ARM64</MtouchArch>
     <ConsolePause>false</ConsolePause>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>iPhone Distribution</CodesignKey>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <MtouchFastDev>false</MtouchFastDev>
     <MtouchDebug>true</MtouchDebug>
     <BuildIpa>true</BuildIpa>
-    <CodesignProvision>InstallerAppDevProfile</CodesignProvision>
+    <CodesignProvision>InstallerAppDistriProfile2</CodesignProvision>
     <CodesignExtraArgs />
     <CodesignResourceRules />
     <OptimizePNGs>true</OptimizePNGs>

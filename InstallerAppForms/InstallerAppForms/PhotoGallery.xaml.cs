@@ -60,65 +60,71 @@ namespace InstallerAppForms
                 await DisplayAlert("No Camera", ":( No camera avaialble.", "OK");
                 return;
             }
-            
-            var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+
+            try
             {
-                SaveToAlbum = true,
-                AllowCropping = true
-            });
-            //Get the public album path
-            var aPpath = file.AlbumPath;
+                var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
+                {
+                    SaveToAlbum = true,
+                    AllowCropping = true
+                });
+                //Get the public album path
+                var aPpath = file.AlbumPath;
 
-            //Get private path
-            var path = file.Path;
+                //Get private path
+                var path = file.Path;
 
-            if (file == null) return;
+                if (file == null) return;
 
-            /*var alpha = new Image
-            {
-                Source = ImageSource.FromStream(() => { return file.GetStream(); }),
-                Aspect = Aspect.AspectFit
-            };*/
+                /*var alpha = new Image
+                {
+                    Source = ImageSource.FromStream(() => { return file.GetStream(); }),
+                    Aspect = Aspect.AspectFit
+                };*/
 
-            indicator.IsRunning = true;
-            indicator.IsVisible = true;
-            //grdLayout.Children.Add(indicator);
-            //Grid.SetColumnSpan(indicator, 2);
+                indicator.IsRunning = true;
+                indicator.IsVisible = true;
+                //grdLayout.Children.Add(indicator);
+                //Grid.SetColumnSpan(indicator, 2);
 
-            var alpha = new Image();
-            using (var memoryStream = new MemoryStream())
-            {
-                file.GetStream().CopyTo(memoryStream);
-                file.Dispose();
+                var alpha = new Image();
+                using (var memoryStream = new MemoryStream())
+                {
+                    file.GetStream().CopyTo(memoryStream);
+                    file.Dispose();
 
-                //Insert photos in DB and fetch info from DB at same time
-                //Store images in byte array, then upload to Grid
-                var item = memoryStream.ToArray();
-                alpha.Source = ImageSource.FromStream(() => new MemoryStream(item));
-                await App.FrendelSOAPService.InsertInstallerImages(CSID, memoryStream.ToArray(), RoomNo, RoomName);
+                    //Insert photos in DB and fetch info from DB at same time
+                    //Store images in byte array, then upload to Grid
+                    var item = memoryStream.ToArray();
+                    alpha.Source = ImageSource.FromStream(() => new MemoryStream(item));
+                    await App.FrendelSOAPService.InsertInstallerImages(CSID, memoryStream.ToArray(), RoomNo, RoomName);
+                }
+
+                indicator.IsRunning = false;
+                indicator.IsVisible = false;
+
+                TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+                {
+                    Command = new Command(OnGridImageTapped),
+                    CommandParameter = alpha
+                };
+                alpha.GestureRecognizers.Add(tapGestureRecognizer);
+
+                if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
+
+                grdLayout.ColumnDefinitions.Add(new ColumnDefinition
+                {
+                    Width = new GridLength(200, GridUnitType.Absolute)
+                });
+
+                grdLayout.Children.Add(alpha, col, row);
+                col++;
+                if (col == 2) { col = 0; row++; }
             }
-
-            indicator.IsRunning = false;
-            indicator.IsVisible = false;
-
-            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+            catch(Exception ex)
             {
-                Command = new Command(OnGridImageTapped),
-                CommandParameter = alpha
-            };
-            alpha.GestureRecognizers.Add(tapGestureRecognizer);
-
-            if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
-
-            grdLayout.ColumnDefinitions.Add(new ColumnDefinition
-            {
-                Width = new GridLength(200, GridUnitType.Absolute)
-            });
-
-            grdLayout.Children.Add(alpha, col, row);
-            col++;
-            if (col == 2) { col = 0; row++; }
-
+                return;   
+            }
             
         }
 

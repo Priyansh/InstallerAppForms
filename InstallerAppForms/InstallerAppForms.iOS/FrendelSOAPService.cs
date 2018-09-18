@@ -128,12 +128,13 @@ namespace InstallerAppForms.iOS
             });
         }
         
-        public async Task<List<OrderPartsInfoCS>> GetPartIssueList(int partType, int labelNo, int CSID)
+        public async Task<Tuple<List<OrderPartsInfoCS>,int>> GetPartIssueList(int partType, int labelNo, int CSID)
         {
             List<OrderPartsInfoCS> lstOrderPartsInfo = new List<OrderPartsInfoCS>();
+            int partsOrderId;
             return await Task.Run(() =>
             {
-                int partsOrderId = FrendelWS.InsKP_PartsOrder(partType, labelNo, CSID);
+                partsOrderId = FrendelWS.InsKP_PartsOrder(partType, labelNo, CSID);
                 var result = FrendelWS.InsKP_GetPartIssueList(partType, partsOrderId);
 
                 foreach (var item in result)
@@ -153,7 +154,7 @@ namespace InstallerAppForms.iOS
                         fillOrderPartsInfo.IsCbEnabled == false ? "#FF3333" : "#00CC00";
                     lstOrderPartsInfo.Add(fillOrderPartsInfo);
                 }
-                return lstOrderPartsInfo;
+                return Tuple.Create(lstOrderPartsInfo, partsOrderId);
             });
         }
 
@@ -197,6 +198,14 @@ namespace InstallerAppForms.iOS
             return await Task.Run(() =>
             {
                 return FrendelWS.insKP_InsertInstallerImages(CSID.ToString(), InstallerImages, RoomNo, RoomName);
+            });
+        }
+
+        public async Task<int[]> InsertPartsOrderIssue(int PartOrderId, int PartIssueListId, int InsertRequest)
+        {
+            return await Task.Run(() =>
+            {
+                return FrendelWS.InsKP_PartsOrderIssue(PartOrderId, PartIssueListId, InsertRequest);
             });
         }
     }
