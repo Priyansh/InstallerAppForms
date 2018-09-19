@@ -69,7 +69,7 @@ namespace InstallerAppForms
                     var file = await CrossMedia.Current.TakePhotoAsync(new Plugin.Media.Abstractions.StoreCameraMediaOptions
                     {
                         SaveToAlbum = true,
-                        AllowCropping = true
+                        PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full
                     });
                     //Get the public album path
                     var aPpath = file.AlbumPath;
@@ -77,52 +77,10 @@ namespace InstallerAppForms
                     //Get private path
                     var path = file.Path;
 
-                    if (file == null) return;
+                    if (file == null)
+                        return;
 
-                    /*var alpha = new Image
-                    {
-                        Source = ImageSource.FromStream(() => { return file.GetStream(); }),
-                        Aspect = Aspect.AspectFit
-                    };*/
-
-                    indicator.IsRunning = true;
-                    indicator.IsVisible = true;
-                    //grdLayout.Children.Add(indicator);
-                    //Grid.SetColumnSpan(indicator, 2);
-
-                    var alpha = new Image();
-                    using (var memoryStream = new MemoryStream())
-                    {
-                        file.GetStream().CopyTo(memoryStream);
-                        file.Dispose();
-
-                        //Insert photos in DB and fetch info from DB at same time
-                        //Store images in byte array, then upload to Grid
-                        var item = memoryStream.ToArray();
-                        alpha.Source = ImageSource.FromStream(() => new MemoryStream(item));
-                        await App.FrendelSOAPService.InsertInstallerImages(CSID, memoryStream.ToArray(), RoomNo, RoomName);
-                    }
-
-                    indicator.IsRunning = false;
-                    indicator.IsVisible = false;
-
-                    TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
-                    {
-                        Command = new Command(OnGridImageTapped),
-                        CommandParameter = alpha
-                    };
-                    alpha.GestureRecognizers.Add(tapGestureRecognizer);
-
-                    if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
-
-                    grdLayout.ColumnDefinitions.Add(new ColumnDefinition
-                    {
-                        Width = new GridLength(200, GridUnitType.Absolute)
-                    });
-
-                    grdLayout.Children.Add(alpha, col, row);
-                    col++;
-                    if (col == 2) { col = 0; row++; }
+                    InsertImages(file);
                 }
                 catch (Exception ex)
                 {
@@ -131,10 +89,74 @@ namespace InstallerAppForms
             }
             else if(action == "Upload From Gallery")
             {
+                try
+                {
+                    await CrossMedia.Current.Initialize();
+                    if (!CrossMedia.Current.IsPickPhotoSupported)
+                    {
+                        await DisplayAlert("Photos Not Supported", "Permission not granted to photos", "OK");
+                        return;
+                    }
+                    var file = await CrossMedia.Current.PickPhotoAsync(new
+                                      Plugin.Media.Abstractions.PickMediaOptions
+                    {
+                        PhotoSize = Plugin.Media.Abstractions.PhotoSize.Full
+                    });
+                    if (file == null)
+                        return;
 
+                    InsertImages(file);
+                }
+                catch(Exception ex)
+                {
+                    return;
+                }
+                
             }
             
             
+        }
+
+        public async void InsertImages(Plugin.Media.Abstractions.MediaFile file)
+        {
+            indicator.IsRunning = true;
+            indicator.IsVisible = true;
+            //grdLayout.Children.Add(indicator);
+            //Grid.SetColumnSpan(indicator, 2);
+
+            var alpha = new Image();
+            using (var memoryStream = new MemoryStream())
+            {
+                file.GetStream().CopyTo(memoryStream);
+                file.Dispose();
+
+                //Insert photos in DB and fetch info from DB at same time
+                //Store images in byte array, then upload to Grid
+                var item = memoryStream.ToArray();
+                alpha.Source = ImageSource.FromStream(() => new MemoryStream(item));
+                await App.FrendelSOAPService.InsertInstallerImages(CSID, memoryStream.ToArray(), RoomNo, RoomName);
+            }
+
+            indicator.IsRunning = false;
+            indicator.IsVisible = false;
+
+            TapGestureRecognizer tapGestureRecognizer = new TapGestureRecognizer
+            {
+                Command = new Command(OnGridImageTapped),
+                CommandParameter = alpha
+            };
+            alpha.GestureRecognizers.Add(tapGestureRecognizer);
+
+            if (col == 0) grdLayout.RowDefinitions.Add(new RowDefinition { Height = new GridLength(200, GridUnitType.Absolute) });
+
+            grdLayout.ColumnDefinitions.Add(new ColumnDefinition
+            {
+                Width = new GridLength(200, GridUnitType.Absolute)
+            });
+
+            grdLayout.Children.Add(alpha, col, row);
+            col++;
+            if (col == 2) { col = 0; row++; }
         }
 
         public async void GetInstallerImages(){
